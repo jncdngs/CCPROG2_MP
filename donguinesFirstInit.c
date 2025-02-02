@@ -90,4 +90,7 @@ ASSUMPTIONS:
 - The special shuttle (16-seater) is limited to just one (1) shuttle. If it’s 
   out then there are no more special shuttles until it returns.
 
+BONUS:
+- Add "login" screen for personnel (username and password)
+
 */
