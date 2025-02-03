@@ -5,13 +5,7 @@
 
 void cls()
 {
-    // system("cls");
-    int i;
-
-    for(i = 0; i < 100; i++)
-    {
-        printf("\n");
-    }
+    printf("\033[H\033[J");
 }
 
 void printTitle()
