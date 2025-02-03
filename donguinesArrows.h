@@ -2,6 +2,7 @@
 #define DONGUINES_ARROWS_H
 
 void cls();
+void clearInputBuffer();
 void printTitle();
 void printDivider();
 

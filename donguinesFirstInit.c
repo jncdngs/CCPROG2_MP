@@ -30,6 +30,7 @@ int main()
         printf("[3] Exit\n\n");
         printf("Enter option: ");
         scanf(" %c", &mainMenuOption);
+        clearInputBuffer();
         
         switch(mainMenuOption)
         {
@@ -40,7 +41,7 @@ int main()
                 {
                     printf("Passenger\n\n");
                     printf("[1] Enter passenger information\n");
-                    printf("[2] Back to main menu\n");
+                    printf("[2] Back to main menu\n\n");
                     printf("Enter option: ");
                     scanf(" %c", &passengerMenuOption);
                     

@@ -8,6 +8,11 @@ void cls()
     printf("\033[H\033[J");
 }
 
+void clearInputBuffer()
+{
+    while(getchar() != '\n');
+}
+
 void printTitle()
 {
     printf(" ______          _                                     _____                                  __\n");
