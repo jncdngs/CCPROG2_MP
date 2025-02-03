@@ -18,7 +18,7 @@ students and/or persons.
 
 int main()
 {
-    int mainMenuOption, passengerMenuOption, personnelMenuOption;
+    char mainMenuOption, passengerMenuOption, personnelMenuOption;
     
     cls();
 
@@ -29,121 +29,114 @@ int main()
         printf("[2] Arrows Express Personnel\n");
         printf("[3] Exit\n\n");
         printf("Enter option: ");
-
-        if(scanf("%d", &mainMenuOption) != 1)
+        scanf(" %c", &mainMenuOption);
+        clearInputBuffer();
+        
+        switch(mainMenuOption)
         {
-            while(getchar() != '\n');
+            case '1':
+                cls();
+                
+                do
+                {
+                    printf("Passenger\n\n");
+                    printf("[1] Enter passenger information\n");
+                    printf("[2] Back to main menu\n\n");
+                    printf("Enter option: ");
+                    scanf(" %c", &passengerMenuOption);
+                    
+                    switch(passengerMenuOption)
+                    {
+                        case '1': // [1] Enter passenger information
+                            cls();
+                            // Enter passenger information
+                            break;
+
+                        case '2': // [2] Back to main menu
+                            cls();
+                            break;
+
+                        default: // Invalid option
+                            cls();
+                            printf("Invalid option. Please try again.\n\n");
+                            break;
+                    }
+                }
+                while(passengerMenuOption != '2');
+
+                break;
+
+            case '2':
+                cls();
+                
+                do
+                {
+                    printf("Arrows Express Personnel\n\n");
+                    printf("[1] View passenger count\n");
+                    printf("[2] View drop-off count\n");
+                    printf("[3] View passenger information\n");
+                    printf("[4] Load passenger\n");
+                    printf("[5] Search passenger\n");
+                    printf("[6] Load recent trip file\n");
+                    printf("[7] Back to main menu\n\n");
+                    printf("Enter option: ");
+                    scanf(" %c", &personnelMenuOption);
+
+                    switch(personnelMenuOption)
+                    {
+                        case '1': // [1] View passenger count
+                            cls();
+                            // View passenger count
+                            break;
+
+                        case '2': // [2] View drop-off count
+                            cls();
+                            // View drop-off count
+                            break;
+
+                        case '3': // [3] View passenger information
+                            cls();
+                            // View passenger information
+                            break;
+
+                        case '4': // [4] Load passenger
+                            cls();
+                            // Load passenger
+                            break;
+
+                        case '5': // [5] Search passenger
+                            cls();
+                            // Search passenger
+                            break;
+
+                        case '6': // [6] Load recent trip file
+                            cls();
+                            // Load recent trip file
+                            break;
+
+                        case '7': // [7] Back to main menu
+                            cls();
+                            break;
+
+                        default: // Invalid option
+                            cls();
+                            printf("Invalid option. Please try again.\n\n");
+                            break;
+                    }
+                }
+                while(personnelMenuOption != '7');
+                
+                break;
+        }
+
+        if(mainMenuOption < '1' || mainMenuOption > '3')
+        {
             cls();
             printf("Invalid option. Please try again.\n\n");
         }
-        else
-        {
-            switch(mainMenuOption)
-            {
-                case 1:
-                    cls();
-                    
-                    do
-                    {
-                        printf("Passenger\n\n");
-                        printf("[1] Enter passenger information\n");
-                        printf("[2] Back to main menu\n\n");
-                        printf("Enter option: ");
-                        scanf("%d", &passengerMenuOption);
-                        clearInputBuffer();     // Prevent infinite loop
-                        
-                        switch(passengerMenuOption)
-                        {
-                            case 1: // [1] Enter passenger information
-                                cls();
-                                // Enter passenger information
-                                break;
 
-                            case 2: // [2] Back to main menu
-                                cls();
-                                break;
-
-                            default: // Invalid option
-                                cls();
-                                printf("Invalid option. Please try again.\n\n");
-                                break;
-                        }
-                    }
-                    while(passengerMenuOption != 2);
-
-                    break;
-
-                case 2:
-                    cls();
-                    
-                    do
-                    {
-                        printf("Arrows Express Personnel\n\n");
-                        printf("[1] View passenger count\n");
-                        printf("[2] View drop-off count\n");
-                        printf("[3] View passenger information\n");
-                        printf("[4] Load passenger\n");
-                        printf("[5] Search passenger\n");
-                        printf("[6] Load recent trip file\n");
-                        printf("[7] Back to main menu\n\n");
-                        printf("Enter option: ");
-                        scanf("%d", &personnelMenuOption);
-                        clearInputBuffer();     // Prevent infinite loop
-
-                        switch(personnelMenuOption)
-                        {
-                            case 1: // [1] View passenger count
-                                cls();
-                                // View passenger count
-                                break;
-
-                            case 2: // [2] View drop-off count
-                                cls();
-                                // View drop-off count
-                                break;
-
-                            case 3: // [3] View passenger information
-                                cls();
-                                // View passenger information
-                                break;
-
-                            case 4: // [4] Load passenger
-                                cls();
-                                // Load passenger
-                                break;
-
-                            case 5: // [5] Search passenger
-                                cls();
-                                // Search passenger
-                                break;
-
-                            case 6: // [6] Load recent trip file
-                                cls();
-                                // Load recent trip file
-                                break;
-
-                            case 7: // [7] Back to main menu
-                                cls();
-                                break;
-
-                            default: // Invalid option
-                                cls();
-                                printf("Invalid option. Please try again.\n\n");
-                                break;
-                        }
-                    }
-                    while(personnelMenuOption != 7);
-                    
-                    break;
-                
-                default: // Invalid option
-                    cls();
-                    printf("Invalid option. Please try again.\n\n");
-                    break;
-            }
-        }
     }
-    while(mainMenuOption != 3);
+    while(mainMenuOption != '3');
     
     cls();
     printf("Thank you for using the Arrows Express Embarkation System!\n\n");
