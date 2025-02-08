@@ -31,8 +31,6 @@ int main()
         printf("[2] Arrows Express Personnel\n");
         printf("[3] Exit\n\n");
         printf("Enter option: ");
-        // scanf("%d", &mainMenuOption);
-        // clearInputBuffer();     // Prevent infinite loop
 
         if(scanf("%f", &mainMenuOption) != 1)
         {
@@ -63,8 +61,6 @@ int main()
                 printf("[1] Enter passenger information\n");
                 printf("[2] Back to main menu\n\n");
                 printf("Enter option: ");
-                // scanf("%d", &passengerMenuOption);
-                // clearInputBuffer();     // Prevent infinite loop
 
                 if(scanf("%f", &passengerMenuOption) != 1)
                 {
@@ -117,8 +113,6 @@ int main()
                 printf("[6] Load recent trip file\n");
                 printf("[7] Back to main menu\n\n");
                 printf("Enter option: ");
-                // scanf("%f", &personnelMenuOption);
-                // clearInputBuffer();     // Prevent infinite loop
 
                 if(scanf("%f", &personnelMenuOption) != 1)
                 {
