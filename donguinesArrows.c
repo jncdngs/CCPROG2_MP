@@ -13,6 +13,11 @@ void clearInputBuffer()
     while(getchar() != '\n');
 }
 
+void printError()
+{
+    printf("Invalid option. Please try again.\n\n");
+}
+
 void printTitle()
 {
     printf(" ______          _                                     _____                                  __\n");
