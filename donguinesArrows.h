@@ -3,6 +3,7 @@
 
 void cls();
 void clearInputBuffer();
+void printError();
 void printTitle();
 void printDivider();
 
