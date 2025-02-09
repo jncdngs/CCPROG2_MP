@@ -167,7 +167,7 @@ Enter passenger information
 - Ask last name
 - Ask first name
 - Ask ID number
-- Ask for drop-off point
+- Ask for drop-off point (depending on trip)
 - Assign passenger to trip (Start from seat 1; Follow priority)
     - [Low priority] If full, notify user if trip is full
     - [High priority] If full, remove and notify low priority passenger
