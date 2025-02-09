@@ -57,7 +57,7 @@ int main()
             {
                 passengerMenuOption = 0;    // Initialize to zero (invalid by default)
                 
-                printf("Passenger\n\n");
+                printPassengerTitle();
                 printf("[1] Enter passenger information\n");
                 printf("[2] Back to main menu\n\n");
                 printf("Enter option: ");
