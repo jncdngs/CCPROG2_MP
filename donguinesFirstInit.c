@@ -42,7 +42,7 @@ int main()
             printError();
         }
 
-        // Display error when option is an invalid number
+        // Explicitly invalidate non-integers
         else if(mainMenuOption != 1 && mainMenuOption != 2 && mainMenuOption != 3)
         {
             cls();
