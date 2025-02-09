@@ -57,7 +57,9 @@ void enterPassengerInfo()
         printError();
     }
     
-    else if(passenger.priorityNo != 1 && passenger.priorityNo != 2)
+    else if(passenger.priorityNo != 1 && passenger.priorityNo != 2
+         && passenger.priorityNo != 3 && passenger.priorityNo != 4
+         && passenger.priorityNo != 5 && passenger.priorityNo != 6)
     {
         printError();
     }
