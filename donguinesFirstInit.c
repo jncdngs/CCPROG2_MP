@@ -82,7 +82,7 @@ int main()
                 if(passengerMenuOption == 1)        // [1] Enter passenger information
                 {
                     cls();
-                    // Enter passenger information
+                    enterPassengerInfo();
                 }
                 else if(passengerMenuOption == 2)   // [2] Back to main menu
                 {

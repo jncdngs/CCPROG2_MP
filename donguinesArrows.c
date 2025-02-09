@@ -40,3 +40,47 @@ void printDivider()
 
     printf("\n");
 }
+
+void enterPassengerInfo()
+{
+    Card passenger;
+    
+    printf("Enter passenger information\n\n");
+
+    printf("Priority No: ");
+    if(scanf("%d", &passenger.priorityNo) != 1)
+    {
+        // Prevent loop when entering char
+        clearInputBuffer();
+        
+        // Display error when option is a char/str
+        printError();
+    }
+    
+    else if(passenger.priorityNo != 1 && passenger.priorityNo != 2)
+    {
+        printError();
+    }
+
+    printf("Last Name (Do NOT use spaces): ");
+    scanf("%s", passenger.lastName);
+    clearInputBuffer();
+
+    printf("First Name (Do NOT use spaces): ");
+    scanf("%s", passenger.firstName);
+    clearInputBuffer();
+    
+    printf("ID No: ");
+    scanf("%d", &passenger.idNo);
+    clearInputBuffer();
+
+    printf("Drop-off: ");
+    scanf("%d", passenger.dropOff);
+    clearInputBuffer();
+
+    printf("%d\n%s\n%s\n%d\n%d\n\n\n", passenger.priorityNo, 
+                                       passenger.lastName, 
+                                       passenger.firstName, 
+                                       passenger.idNo, 
+                                       passenger.dropOff);
+}
