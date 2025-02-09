@@ -15,6 +15,7 @@ void clearInputBuffer()
 
 void printError()
 {
+    printf("\033[0;31mERROR: \033[0m");
     printf("Invalid option. Please try again.\n\n");
 }
 
