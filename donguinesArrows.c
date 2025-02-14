@@ -87,7 +87,7 @@ void enterPassengerInfo()
     clearInputBuffer();
 
     printf("Drop-off: ");
-    scanf("%d", passenger.dropOff);
+    scanf("%d", &passenger.dropOff);
     clearInputBuffer();
 
     printf("%d\n%s\n%s\n%d\n%d\n\n\n", passenger.priorityNo, 
