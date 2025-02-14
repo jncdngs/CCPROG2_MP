@@ -15,7 +15,7 @@ typedef struct
     char lastName[51];
     char firstName[51];
     int idNo;
-    int dropOff[5];
+    int dropOff;
 } Card;
 
 #endif
