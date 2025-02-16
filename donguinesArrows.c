@@ -16,7 +16,7 @@ void clearInputBuffer()
 void printError()
 {
     printf("\033[0;31mERROR: \033[0m");
-    printf("Invalid option. Please try again.\n\n");
+    printf("Invalid entry. Please try again.\n\n");
 }
 
 void printTitle()
@@ -78,7 +78,7 @@ void initializePassengers(struct Card passengers[MAX_BUS][MAX_PASS])
     }
 }
 
-void enterPassengerInfo()   // Add parameter (trip number)
+void enterPassengerInfo()
 {
     int priorityNo;
     stringName lastName;
@@ -86,6 +86,21 @@ void enterPassengerInfo()   // Add parameter (trip number)
     int idNo;
     int dropOff;
     char correctInfo;
+
+    // Display disclaimer (can be moved to next trip or removed)
+    printf("\033[0;31mDISCLAIMER: \033[0m\n\n");
+    printf("This system automatically assigns you to a seat on your selected trip.\n");
+    printf("In case trip you selected is full, you will be notified.\n\n");
+    printf("In the event that a trip is full and a higher priority user wants to board,\n");
+    printf("the first lowest priority passenger listed will be moved to the next trip.\n\n");
+
+    // Ask user to acknowledge disclaimer
+    
+    // Ask user for trip number
+
+    // Check if trip number is valid
+
+    // If valid, check if trip is full
 
     do
     {
@@ -204,9 +219,8 @@ void enterPassengerInfo()   // Add parameter (trip number)
         while(correctInfo != 'Y' && correctInfo != 'y' &&
             correctInfo != 'N' && correctInfo != 'n');
     }
-    while(correctInfo != 'Y' && correctInfo != 'y');
-
-    // If incorrect, repeat process
+    while(correctInfo != 'Y' && correctInfo != 'y');    // If incorrect, repeat process
     
     // If correct, pass to struct array (using trip number)
+
 }
