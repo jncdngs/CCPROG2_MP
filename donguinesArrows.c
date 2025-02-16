@@ -85,9 +85,11 @@ void enterPassengerInfo()   // Add parameter (trip number)
     stringName firstName;
     int idNo;
     int dropOff;
+    char correctInfo = '\0';
 
     printPassengerInfoTitle();
     
+    // Ask user for information
     do
     {
         printf("Priority No: ");
@@ -158,16 +160,33 @@ void enterPassengerInfo()   // Add parameter (trip number)
     // Display entered information
     cls();
     printPassengerInfoTitle();
+    printf("Here is the information you entered:\n\n");
     printf("Priority No: %d\n", priorityNo);
     printf("Last Name: %s\n", lastName);
     printf("First Name: %s\n", firstName);
     printf("ID No: %d\n", idNo);
     printf("Drop-off: %d\n\n", dropOff);
-    printf("Is the information correct? (Y/N): ");
-    
+
     // Ask user to check if information is correct
+    do
+    {
+        printf("Is the information correct? (Y/N): ");
+        if(scanf(" %c", &correctInfo) != 1)
+        {
+            clearInputBuffer();
+            printError();
+        }
+        
+        else if(correctInfo != 'Y' && correctInfo != 'y' &&
+                correctInfo != 'N' && correctInfo != 'n')
+        {
+            printError();
+        }
+    }
+    while(correctInfo != 'Y' && correctInfo != 'y' &&
+          correctInfo != 'N' && correctInfo != 'n');
 
     // If incorrect, repeat process
     
-    // If correct, pass to struct array
+    // If correct, pass to struct array (using trip number)
 }
