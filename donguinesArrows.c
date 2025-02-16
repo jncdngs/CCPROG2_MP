@@ -51,48 +51,86 @@ void printDivider()
     printf("\n");
 }
 
-void enterPassengerInfo()
+void enterPassengerInfo()   // Add parameter (trip number)
 {
-    Card passenger;
-    
+    int priorityNo;
+    char lastName[51];
+    char firstName[51];
+    int idNo;
+    int dropOff;
+
     printf("Enter passenger information\n\n");
 
-    printf("Priority No: ");
-    if(scanf("%d", &passenger.priorityNo) != 1)
+    do
     {
-        // Prevent loop when entering char
-        clearInputBuffer();
+        printf("Priority No: ");
+        if(scanf("%d", &priorityNo) != 1)
+        {
+            // Prevent loop when entering char
+            clearInputBuffer();
+            
+            // Display error when option is a char/str
+            printError();
+        }
         
-        // Display error when option is a char/str
-        printError();
+        else if(priorityNo != 1 && priorityNo != 2 && priorityNo != 3
+             && priorityNo != 4 && priorityNo != 5 && priorityNo != 6)
+        {
+            printError();
+        }
     }
-    
-    else if(passenger.priorityNo != 1 && passenger.priorityNo != 2
-         && passenger.priorityNo != 3 && passenger.priorityNo != 4
-         && passenger.priorityNo != 5 && passenger.priorityNo != 6)
+    while(priorityNo != 1 && priorityNo != 2 && priorityNo != 3
+       && priorityNo != 4 && priorityNo != 5 && priorityNo != 6);
+
+    printf("Last Name (No spaces, max 50 characters): ");
+    scanf("%50s", lastName);
+    clearInputBuffer();
+
+    printf("First Name (No spaces, max 50 characters): ");
+    scanf("%50s", firstName);
+    clearInputBuffer();
+
+    do
     {
-        printError();
+        printf("ID No (1xxxxxxx): ");
+        if(scanf("%d", &idNo) != 1)
+        {
+            // Prevent loop when entering char
+            clearInputBuffer();
+            
+            // Display error when option is a char/str
+            printError();
+        }
+        
+        else if(idNo < 10000000 || idNo > 12499999)
+        {
+            printError();
+        }
     }
-
-    printf("Last Name (Do NOT use spaces): ");
-    scanf("%s", passenger.lastName);
-    clearInputBuffer();
-
-    printf("First Name (Do NOT use spaces): ");
-    scanf("%s", passenger.firstName);
-    clearInputBuffer();
+    while(idNo < 10000000 || idNo > 12499999);
     
-    printf("ID No: ");
-    scanf("%d", &passenger.idNo);
-    clearInputBuffer();
+    do
+    {
+        printf("Drop-off: ");
+        if(scanf("%d", &dropOff) != 1)
+        {
+            // Prevent loop when entering char
+            clearInputBuffer();
+            
+            // Display error when option is a char/str
+            printError();
+        }
+        
+        else if(idNo < 1 || idNo > 4)
+        {
+            printError();
+        }
+    }
+    while(idNo < 1 || idNo > 4);
 
-    printf("Drop-off: ");
-    scanf("%d", &passenger.dropOff);
-    clearInputBuffer();
+    // Display entered information
 
-    printf("%d\n%s\n%s\n%d\n%d\n\n\n", passenger.priorityNo, 
-                                       passenger.lastName, 
-                                       passenger.firstName, 
-                                       passenger.idNo, 
-                                       passenger.dropOff);
+    // Ask user to check if information is correct
+
+    // If correct, pass to struct
 }
