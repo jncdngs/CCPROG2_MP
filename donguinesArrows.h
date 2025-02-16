@@ -6,6 +6,7 @@ void clearInputBuffer();
 void printError();
 void printTitle();
 void printPassengerTitle();
+void printPassengerInfoTitle();
 void printDivider();
 void enterPassengerInfo();
 
