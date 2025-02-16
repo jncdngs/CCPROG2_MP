@@ -95,19 +95,22 @@ void enterPassengerInfo()
     printf("the first lowest priority passenger listed will be moved to the next trip.\n\n");
 
     // Ask user to acknowledge disclaimer
+    printf("Press any key to acknowledge and continue...");
+    getch();
     
     // Ask user for trip number
+    
 
     // Check if trip number is valid
 
     // If valid, check if trip is full
 
     do
-    {
+    {       
         // Ask user for information
+        cls();
         do
         {
-            cls();
             printPassengerInfoTitle();
             printf("Please enter the following information\n\n");
 
@@ -118,12 +121,14 @@ void enterPassengerInfo()
                 clearInputBuffer();
                 
                 // Display error when option is a char/str
+                cls();
                 printError();
             }
             
             else if(priorityNo != 1 && priorityNo != 2 && priorityNo != 3
                 && priorityNo != 4 && priorityNo != 5 && priorityNo != 6)
             {
+                cls();
                 printError();
             }
         }
@@ -144,9 +149,9 @@ void enterPassengerInfo()
         scanf("%50s", firstName);
         clearInputBuffer();
 
+        cls();
         do
         {
-            cls();
             printPassengerInfoTitle();
             printf("Please enter the following information\n\n");
 
@@ -157,19 +162,21 @@ void enterPassengerInfo()
                 clearInputBuffer();
                 
                 // Display error when option is a char/str
+                cls();
                 printError();
             }
             
             else if(idNo < 10000000 || idNo > 12499999)
             {
+                cls();
                 printError();
             }
         }
         while(idNo < 10000000 || idNo > 12499999);
         
+        cls();
         do
         {
-            cls();
             printPassengerInfoTitle();
             printf("Please enter the following information\n\n");
 
@@ -180,11 +187,13 @@ void enterPassengerInfo()
                 clearInputBuffer();
                 
                 // Display error when option is a char/str
+                cls();
                 printError();
             }
             
             else if(dropOff != 1 && dropOff != 2 && dropOff != 3 && dropOff != 4)
             {
+                cls();
                 printError();
             }
         }
