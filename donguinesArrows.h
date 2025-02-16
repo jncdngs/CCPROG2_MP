@@ -5,15 +5,6 @@
 #define MAX_PASS 13     // Maximum of 13 passengers per regular shuttle
 #define MAX_BUS 20      // Maximum of 20 regular shuttles
 
-void cls();
-void clearInputBuffer();
-
-void printError();
-void printTitle();
-void printPassengerTitle();
-void printPassengerInfoTitle();
-void printDivider();
-
 typedef struct Card
 {
     int priorityNo;
@@ -22,6 +13,15 @@ typedef struct Card
     int idNo;
     int dropOff;
 };
+
+void cls();
+void clearInputBuffer();
+
+void printError();
+void printTitle();
+void printPassengerTitle();
+void printPassengerInfoTitle();
+void printDivider();
 
 void initializePassengers(struct Card passengers[MAX_BUS][MAX_PASS]);
 void enterPassengerInfo();
