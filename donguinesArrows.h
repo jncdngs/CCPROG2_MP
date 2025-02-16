@@ -1,7 +1,9 @@
 #ifndef DONGUINES_ARROWS_H
 #define DONGUINES_ARROWS_H
 
-#define MAX_CHARS 51
+#define MAX_CHARS 51    // Maximum of 50 chars each for last name and first name
+#define MAX_PASS 13     // Maximum of 13 passengers per regular shuttle
+#define MAX_BUS 20      // Maximum of 20 regular shuttles
 
 void cls();
 void clearInputBuffer();
