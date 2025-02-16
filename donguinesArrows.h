@@ -14,13 +14,13 @@ void printPassengerInfoTitle();
 void printDivider();
 void enterPassengerInfo();
 
-typedef struct
+typedef struct Card
 {
     int priorityNo;
     char lastName[51];
     char firstName[51];
     int idNo;
     int dropOff;
-} Card;
+};
 
 #endif
