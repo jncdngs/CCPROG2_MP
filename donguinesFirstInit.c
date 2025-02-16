@@ -21,6 +21,7 @@ int main()
     struct Card passengers[MAX_BUS][MAX_PASS];
     float mainMenuOption, passengerMenuOption, personnelMenuOption;
     
+    initializePassengers(passengers);
     cls();
 
     do

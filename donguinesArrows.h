@@ -7,12 +7,12 @@
 
 void cls();
 void clearInputBuffer();
+
 void printError();
 void printTitle();
 void printPassengerTitle();
 void printPassengerInfoTitle();
 void printDivider();
-void enterPassengerInfo();
 
 typedef struct Card
 {
@@ -22,5 +22,8 @@ typedef struct Card
     int idNo;
     int dropOff;
 };
+
+void initializePassengers(struct Card passengers[MAX_BUS][MAX_PASS]);
+void enterPassengerInfo();
 
 #endif

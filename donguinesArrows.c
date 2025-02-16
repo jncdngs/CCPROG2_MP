@@ -61,6 +61,23 @@ void printDivider()
     printf("\n");
 }
 
+void initializePassengers(struct Card passengers[MAX_BUS][MAX_PASS])
+{
+    int i, j;
+
+    for(i = 0; i < MAX_BUS; i++)
+    {
+        for(j = 0; j < MAX_PASS; j++)
+        {
+            passengers[i][j].priorityNo = 0;
+            strcpy(passengers[i][j].lastName, "");
+            strcpy(passengers[i][j].firstName, "");
+            passengers[i][j].idNo = 0;
+            passengers[i][j].dropOff = 0;
+        }
+    }
+}
+
 void enterPassengerInfo()   // Add parameter (trip number)
 {
     int priorityNo;
