@@ -121,12 +121,12 @@ void enterPassengerInfo()   // Add parameter (trip number)
             printError();
         }
         
-        else if(idNo < 1 || idNo > 4)
+        else if(dropOff != 1 && dropOff != 2 && dropOff != 3 && dropOff != 4)
         {
             printError();
         }
     }
-    while(idNo < 1 || idNo > 4);
+    while(dropOff != 1 && dropOff != 2 && dropOff != 3 && dropOff != 4);
 
     // Display entered information
 
