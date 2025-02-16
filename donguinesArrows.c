@@ -85,106 +85,126 @@ void enterPassengerInfo()   // Add parameter (trip number)
     stringName firstName;
     int idNo;
     int dropOff;
-    char correctInfo = '\0';
+    char correctInfo;
 
-    printPassengerInfoTitle();
-    
-    // Ask user for information
     do
     {
-        printf("Priority No: ");
-        if(scanf("%d", &priorityNo) != 1)
+        // Ask user for information
+        do
         {
-            // Prevent loop when entering char
-            clearInputBuffer();
+            cls();
+            printPassengerInfoTitle();
+            printf("Please enter the following information\n\n");
+
+            printf("Priority No: ");
+            if(scanf("%d", &priorityNo) != 1)
+            {
+                // Prevent loop when entering char
+                clearInputBuffer();
+                
+                // Display error when option is a char/str
+                printError();
+            }
             
-            // Display error when option is a char/str
-            printError();
+            else if(priorityNo != 1 && priorityNo != 2 && priorityNo != 3
+                && priorityNo != 4 && priorityNo != 5 && priorityNo != 6)
+            {
+                printError();
+            }
         }
-        
-        else if(priorityNo != 1 && priorityNo != 2 && priorityNo != 3
-             && priorityNo != 4 && priorityNo != 5 && priorityNo != 6)
+        while(priorityNo != 1 && priorityNo != 2 && priorityNo != 3
+        && priorityNo != 4 && priorityNo != 5 && priorityNo != 6);
+
+        cls();
+        printPassengerInfoTitle();
+        printf("Please enter the following information\n\n");
+        printf("Last Name (No spaces, max 50 characters): ");
+        scanf("%50s", lastName);
+        clearInputBuffer();
+
+        cls();
+        printPassengerInfoTitle();
+        printf("Please enter the following information\n\n");
+        printf("First Name (No spaces, max 50 characters): ");
+        scanf("%50s", firstName);
+        clearInputBuffer();
+
+        do
         {
-            printError();
-        }
-    }
-    while(priorityNo != 1 && priorityNo != 2 && priorityNo != 3
-       && priorityNo != 4 && priorityNo != 5 && priorityNo != 6);
+            cls();
+            printPassengerInfoTitle();
+            printf("Please enter the following information\n\n");
 
-    printf("Last Name (No spaces, max 50 characters): ");
-    scanf("%50s", lastName);
-    clearInputBuffer();
-
-    printf("First Name (No spaces, max 50 characters): ");
-    scanf("%50s", firstName);
-    clearInputBuffer();
-
-    do
-    {
-        printf("ID No (1xxxxxxx): ");
-        if(scanf("%d", &idNo) != 1)
-        {
-            // Prevent loop when entering char
-            clearInputBuffer();
+            printf("ID No (1xxxxxxx): ");
+            if(scanf("%d", &idNo) != 1)
+            {
+                // Prevent loop when entering char
+                clearInputBuffer();
+                
+                // Display error when option is a char/str
+                printError();
+            }
             
-            // Display error when option is a char/str
-            printError();
+            else if(idNo < 10000000 || idNo > 12499999)
+            {
+                printError();
+            }
         }
+        while(idNo < 10000000 || idNo > 12499999);
         
-        else if(idNo < 10000000 || idNo > 12499999)
+        do
         {
-            printError();
-        }
-    }
-    while(idNo < 10000000 || idNo > 12499999);
-    
-    do
-    {
-        printf("Drop-off: ");
-        if(scanf("%d", &dropOff) != 1)
-        {
-            // Prevent loop when entering char
-            clearInputBuffer();
+            cls();
+            printPassengerInfoTitle();
+            printf("Please enter the following information\n\n");
+
+            printf("Drop-off: ");
+            if(scanf("%d", &dropOff) != 1)
+            {
+                // Prevent loop when entering char
+                clearInputBuffer();
+                
+                // Display error when option is a char/str
+                printError();
+            }
             
-            // Display error when option is a char/str
-            printError();
+            else if(dropOff != 1 && dropOff != 2 && dropOff != 3 && dropOff != 4)
+            {
+                printError();
+            }
         }
-        
-        else if(dropOff != 1 && dropOff != 2 && dropOff != 3 && dropOff != 4)
-        {
-            printError();
-        }
-    }
-    while(dropOff != 1 && dropOff != 2 && dropOff != 3 && dropOff != 4);
+        while(dropOff != 1 && dropOff != 2 && dropOff != 3 && dropOff != 4);
 
-    // Display entered information
-    cls();
-    printPassengerInfoTitle();
-    printf("Here is the information you entered:\n\n");
-    printf("Priority No: %d\n", priorityNo);
-    printf("Last Name: %s\n", lastName);
-    printf("First Name: %s\n", firstName);
-    printf("ID No: %d\n", idNo);
-    printf("Drop-off: %d\n\n", dropOff);
+        // Display entered information
+        cls();
+        printPassengerInfoTitle();
+        printf("Here is the information you entered:\n\n");
+        printf("Priority No: %d\n", priorityNo);
+        printf("Last Name:   %s\n", lastName);
+        printf("First Name:  %s\n", firstName);
+        printf("ID No:       %d\n", idNo);
+        printf("Drop-off:    %d\n\n", dropOff);
 
-    // Ask user to check if information is correct
-    do
-    {
-        printf("Is the information correct? (Y/N): ");
-        if(scanf(" %c", &correctInfo) != 1)
+        // Ask user to check if information is correct
+        do
         {
-            clearInputBuffer();
-            printError();
+            printf("Is the information correct? (Y/N): ");
+            if(scanf(" %c", &correctInfo) != 1)
+            {
+                clearInputBuffer();
+                printError();
+            }
+            
+            else if(correctInfo != 'Y' && correctInfo != 'y' &&
+                    correctInfo != 'N' && correctInfo != 'n')
+            {
+                printError();
+            }
         }
-        
-        else if(correctInfo != 'Y' && correctInfo != 'y' &&
-                correctInfo != 'N' && correctInfo != 'n')
-        {
-            printError();
-        }
+        while(correctInfo != 'Y' && correctInfo != 'y' &&
+            correctInfo != 'N' && correctInfo != 'n');
     }
-    while(correctInfo != 'Y' && correctInfo != 'y' &&
-          correctInfo != 'N' && correctInfo != 'n');
+    while(correctInfo != 'Y' && correctInfo != 'y');
 
     // If incorrect, repeat process
     
