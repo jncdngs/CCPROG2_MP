@@ -19,6 +19,14 @@ students and/or persons.
 int main()
 {
     struct Card passengers[MAX_BUS][MAX_PASS];
+    stringTrip trip[MAX_BUS] = {"AE101", "AE102", "AE103", 
+                                "AE104", "AE105", "AE106", 
+                                "AE107", "AE108", "AE109", 
+                                "AE150", "AE151", "AE152", 
+                                "AE153", "AE154", "AE155", 
+                                "AE156", "AE157", "AE158", 
+                                "AE159", "AE160"};
+
     float mainMenuOption, passengerMenuOption, personnelMenuOption;
     
     initializePassengers(passengers);
