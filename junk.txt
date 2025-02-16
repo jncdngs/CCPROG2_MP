@@ -195,3 +195,7 @@ Enter passenger information
 char trip[21][8] = {"AE101", "AE102", "AE103", "AE104", "AE105", "AE106", "AE107", 
                     "AE108", "AE109", "AE150", "AE151", "AE152", "AE153", "AE154", 
                     "AE155", "AE156", "AE157", "AE158", "AE159", "AE160", "Special"};
+
+char dropOff
+
+Card passenger[20][13]
