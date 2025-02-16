@@ -5,11 +5,15 @@
 #define MAX_PASS 13     // Maximum of 13 passengers per regular shuttle
 #define MAX_BUS 20      // Maximum of 20 regular shuttles
 
-typedef struct Card
+typedef char stringTrip[6];
+typedef char stringDropOff[4];
+typedef char stringName[51];
+
+struct Card
 {
     int priorityNo;
-    char lastName[51];
-    char firstName[51];
+    stringName lastName;
+    stringName firstName;
     int idNo;
     int dropOff;
 };

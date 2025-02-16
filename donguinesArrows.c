@@ -42,10 +42,10 @@ void printPassengerTitle()
 void printPassengerInfoTitle()
 {
 printf(" ______        ____                                              ___        __           __\n");
-printf(" \ \ \ \      |  _ \ __ _ ___ ___  ___ _ __   __ _  ___ _ __    |_ _|_ __  / _| ___      \ \\n");
-printf("  \ \ \ \_____| |_) / _` / __/ __|/ _ \ '_ \ / _` |/ _ \ '__|____| || '_ \| |_ / _ \ _____\ \\n");
-printf("  / / / /_____|  __/ (_| \__ \__ \  __/ | | | (_| |  __/ | |_____| || | | |  _| (_) |_____/ /\n");
-printf(" /_/_/_/      |_|   \__,_|___/___/\___|_| |_|\__, |\___|_|      |___|_| |_|_|  \___/     /_/\n");
+printf(" \\ \\ \\ \\      |  _ \\ __ _ ___ ___  ___ _ __   __ _  ___ _ __    |_ _|_ __  / _| ___      \\ \\\n");
+printf("  \\ \\ \\ \\_____| |_) / _` / __/ __|/ _ \\ '_ \\ / _` |/ _ \\ '__|____| || '_ \\| |_ / _ \\ _____\\ \\\n");
+printf("  / / / /_____|  __/ (_| \\__ \\__ \\  __/ | | | (_| |  __/ | |_____| || | | |  _| (_) |_____/ /\n");
+printf(" /_/_/_/      |_|   \\__,_|___/___/\\___|_| |_|\\__, |\\___|_|      |___|_| |_|_|  \\___/     /_/\n");
 printf("                                             |___/\n\n");
 }
 
@@ -81,8 +81,8 @@ void initializePassengers(struct Card passengers[MAX_BUS][MAX_PASS])
 void enterPassengerInfo()   // Add parameter (trip number)
 {
     int priorityNo;
-    char lastName[MAX_CHARS];
-    char firstName[MAX_CHARS];
+    stringName lastName;
+    stringName firstName;
     int idNo;
     int dropOff;
 
