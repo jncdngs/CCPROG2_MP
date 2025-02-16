@@ -61,7 +61,7 @@ void printDivider()
     printf("\n");
 }
 
-void initializePassengers(struct Card passengers[MAX_BUS][MAX_PASS])
+void initializePassengers(struct Card passengers[][MAX_PASS])
 {
     int i, j;
 
@@ -78,8 +78,49 @@ void initializePassengers(struct Card passengers[MAX_BUS][MAX_PASS])
     }
 }
 
-void enterPassengerInfo()
+int isValidTrip(stringTrip trip[MAX_BUS], stringTrip tripNo)
 {
+    int i;
+    int tripIndex = -1;
+
+    for(i = 0; i < MAX_BUS; i++)
+    {
+        if(strcmp(trip[i], tripNo) == 0)
+        {
+            tripIndex = i;
+        }
+    }
+
+    return tripIndex;
+}
+
+int isFullTrip(int tripIndex, struct Card passengers[][MAX_PASS])
+{
+    int i;
+    int passengerCount = 0;
+    int isFull = 0;
+
+    for(i = 0; i < MAX_PASS; i++)
+    {
+        if(passengers[tripIndex][i].priorityNo != 0)
+        {
+            passengerCount++;
+        }
+    }
+
+    if(passengerCount == MAX_PASS)
+    {
+        isFull = 1;
+    }
+
+    return isFull;
+}
+
+void enterPassengerInfo(stringTrip trip[MAX_BUS], struct Card passengers[][MAX_PASS])
+{
+    stringTrip tripNo;
+    int tripIndex;
+
     int priorityNo;
     stringName lastName;
     stringName firstName;
@@ -98,138 +139,163 @@ void enterPassengerInfo()
     printf("Press any key to acknowledge and continue...");
     getch();
     
-    // Ask user for trip number
-    
+    cls();
+    do
+    {
+        // Ask user for trip number
+        printPassengerInfoTitle();
+        printf("Please enter the trip number (AE1xx): ");
+        scanf("%5s", tripNo);
 
-    // Check if trip number is valid
+        // Check if trip number is valid
+        tripIndex = isValidTrip(trip, tripNo);
+
+        if(tripIndex == -1)
+        {
+            cls();
+            printf("\033[0;31mERROR:\033[0m Trip not found or invalid. Please try again.\n\n");
+        }
+    }
+    while(tripIndex == -1);
 
     // If valid, check if trip is full
-
-    do
-    {       
-        // Ask user for information
-        cls();
-        do
-        {
-            printPassengerInfoTitle();
-            printf("Please enter the following information\n\n");
-
-            printf("Priority No: ");
-            if(scanf("%d", &priorityNo) != 1)
-            {
-                // Prevent loop when entering char
-                clearInputBuffer();
-                
-                // Display error when option is a char/str
-                cls();
-                printError();
-            }
-            
-            else if(priorityNo != 1 && priorityNo != 2 && priorityNo != 3
-                && priorityNo != 4 && priorityNo != 5 && priorityNo != 6)
-            {
-                cls();
-                printError();
-            }
-        }
-        while(priorityNo != 1 && priorityNo != 2 && priorityNo != 3
-        && priorityNo != 4 && priorityNo != 5 && priorityNo != 6);
-
+    if(isFullTrip(tripIndex, passengers))
+    {
         cls();
         printPassengerInfoTitle();
-        printf("Please enter the following information\n\n");
-        printf("Last Name (No spaces, max 50 characters): ");
-        scanf("%50s", lastName);
-        clearInputBuffer();
-
-        cls();
-        printPassengerInfoTitle();
-        printf("Please enter the following information\n\n");
-        printf("First Name (No spaces, max 50 characters): ");
-        scanf("%50s", firstName);
-        clearInputBuffer();
-
-        cls();
-        do
-        {
-            printPassengerInfoTitle();
-            printf("Please enter the following information\n\n");
-
-            printf("ID No (1xxxxxxx): ");
-            if(scanf("%d", &idNo) != 1)
-            {
-                // Prevent loop when entering char
-                clearInputBuffer();
-                
-                // Display error when option is a char/str
-                cls();
-                printError();
-            }
-            
-            else if(idNo < 10000000 || idNo > 12499999)
-            {
-                cls();
-                printError();
-            }
-        }
-        while(idNo < 10000000 || idNo > 12499999);
-        
-        cls();
-        do
-        {
-            printPassengerInfoTitle();
-            printf("Please enter the following information\n\n");
-
-            printf("Drop-off: ");
-            if(scanf("%d", &dropOff) != 1)
-            {
-                // Prevent loop when entering char
-                clearInputBuffer();
-                
-                // Display error when option is a char/str
-                cls();
-                printError();
-            }
-            
-            else if(dropOff != 1 && dropOff != 2 && dropOff != 3 && dropOff != 4)
-            {
-                cls();
-                printError();
-            }
-        }
-        while(dropOff != 1 && dropOff != 2 && dropOff != 3 && dropOff != 4);
-
-        // Display entered information
-        cls();
-        printPassengerInfoTitle();
-        printf("Here is the information you entered:\n\n");
-        printf("Priority No: %d\n", priorityNo);
-        printf("Last Name:   %s\n", lastName);
-        printf("First Name:  %s\n", firstName);
-        printf("ID No:       %d\n", idNo);
-        printf("Drop-off:    %d\n\n", dropOff);
-
-        // Ask user to check if information is correct
-        do
-        {
-            printf("Is the information correct? (Y/N): ");
-            if(scanf(" %c", &correctInfo) != 1)
-            {
-                clearInputBuffer();
-                printError();
-            }
-            
-            else if(correctInfo != 'Y' && correctInfo != 'y' &&
-                    correctInfo != 'N' && correctInfo != 'n')
-            {
-                printError();
-            }
-        }
-        while(correctInfo != 'Y' && correctInfo != 'y' &&
-            correctInfo != 'N' && correctInfo != 'n');
+        printf("The selected trip is full.\n\n");
+        printf("Press any key to return to the main menu...");
+        tripIndex = -1;
     }
-    while(correctInfo != 'Y' && correctInfo != 'y');    // If incorrect, repeat process
+    else
+    {
+        do
+        {       
+            // Ask user for information
+            cls();
+            do
+            {
+                printPassengerInfoTitle();
+                printf("Please enter the following information\n\n");
     
-    // If correct, pass to struct array (using trip number)
+                printf("Priority No: ");
+                if(scanf("%d", &priorityNo) != 1)
+                {
+                    // Prevent loop when entering char
+                    clearInputBuffer();
+                    
+                    // Display error when option is a char/str
+                    cls();
+                    printError();
+                }
+                
+                else if(priorityNo != 1 && priorityNo != 2 && priorityNo != 3
+                    && priorityNo != 4 && priorityNo != 5 && priorityNo != 6)
+                {
+                    cls();
+                    printError();
+                }
+            }
+            while(priorityNo != 1 && priorityNo != 2 && priorityNo != 3
+            && priorityNo != 4 && priorityNo != 5 && priorityNo != 6);
+    
+            cls();
+            printPassengerInfoTitle();
+            printf("Please enter the following information\n\n");
+            printf("Last Name (No spaces, max 50 characters): ");
+            scanf("%50s", lastName);
+            clearInputBuffer();
+    
+            cls();
+            printPassengerInfoTitle();
+            printf("Please enter the following information\n\n");
+            printf("First Name (No spaces, max 50 characters): ");
+            scanf("%50s", firstName);
+            clearInputBuffer();
+    
+            cls();
+            do
+            {
+                printPassengerInfoTitle();
+                printf("Please enter the following information\n\n");
+    
+                printf("ID No (1xxxxxxx): ");
+                if(scanf("%d", &idNo) != 1)
+                {
+                    // Prevent loop when entering char
+                    clearInputBuffer();
+                    
+                    // Display error when option is a char/str
+                    cls();
+                    printError();
+                }
+                
+                else if(idNo < 10000000 || idNo > 12499999)
+                {
+                    cls();
+                    printError();
+                }
+            }
+            while(idNo < 10000000 || idNo > 12499999);
+            
+            cls();
+            do
+            {
+                printPassengerInfoTitle();
+                printf("Please enter the following information\n\n");
+    
+                printf("Drop-off: ");
+                if(scanf("%d", &dropOff) != 1)
+                {
+                    // Prevent loop when entering char
+                    clearInputBuffer();
+                    
+                    // Display error when option is a char/str
+                    cls();
+                    printError();
+                }
+                
+                else if(dropOff != 1 && dropOff != 2 && dropOff != 3 && dropOff != 4)
+                {
+                    cls();
+                    printError();
+                }
+            }
+            while(dropOff != 1 && dropOff != 2 && dropOff != 3 && dropOff != 4);
+    
+            // Display entered information
+            cls();
+            printPassengerInfoTitle();
+            printf("Here is the information you entered:\n\n");
+            printf("Priority No: %d\n", priorityNo);
+            printf("Last Name:   %s\n", lastName);
+            printf("First Name:  %s\n", firstName);
+            printf("ID No:       %d\n", idNo);
+            printf("Drop-off:    %d\n\n", dropOff);
+    
+            // Ask user to check if information is correct
+            do
+            {
+                printf("Is the information correct? (Y/N): ");
+                if(scanf(" %c", &correctInfo) != 1)
+                {
+                    clearInputBuffer();
+                    printError();
+                }
+                
+                else if(correctInfo != 'Y' && correctInfo != 'y' &&
+                        correctInfo != 'N' && correctInfo != 'n')
+                {
+                    printError();
+                }
+            }
+            while(correctInfo != 'Y' && correctInfo != 'y' &&
+                correctInfo != 'N' && correctInfo != 'n');
+        }
+        while(correctInfo != 'Y' && correctInfo != 'y');    // If incorrect, repeat process
+        
+        // If correct, pass to struct array (using trip number)
+    
+    }
 
 }
