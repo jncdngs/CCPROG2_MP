@@ -156,8 +156,18 @@ void enterPassengerInfo()   // Add parameter (trip number)
     while(dropOff != 1 && dropOff != 2 && dropOff != 3 && dropOff != 4);
 
     // Display entered information
-
+    cls();
+    printPassengerInfoTitle();
+    printf("Priority No: %d\n", priorityNo);
+    printf("Last Name: %s\n", lastName);
+    printf("First Name: %s\n", firstName);
+    printf("ID No: %d\n", idNo);
+    printf("Drop-off: %d\n\n", dropOff);
+    printf("Is the information correct? (Y/N): ");
+    
     // Ask user to check if information is correct
 
-    // If correct, pass to struct
+    // If incorrect, repeat process
+    
+    // If correct, pass to struct array
 }
