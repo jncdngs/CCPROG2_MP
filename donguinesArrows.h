@@ -1,6 +1,8 @@
 #ifndef DONGUINES_ARROWS_H
 #define DONGUINES_ARROWS_H
 
+#define MAX_CHARS 51
+
 void cls();
 void clearInputBuffer();
 void printError();

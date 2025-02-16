@@ -64,8 +64,8 @@ void printDivider()
 void enterPassengerInfo()   // Add parameter (trip number)
 {
     int priorityNo;
-    char lastName[51];
-    char firstName[51];
+    char lastName[MAX_CHARS];
+    char firstName[MAX_CHARS];
     int idNo;
     int dropOff;
 
