@@ -78,7 +78,7 @@ void initializePassengers(struct Card passengers[][MAX_PASS])
     }
 }
 
-int isValidTrip(stringTrip trip[MAX_BUS], stringTrip tripNo)
+int isValidTrip(stringTrip trip[], stringTrip tripNo)
 {
     int i;
     int tripIndex = -1;
@@ -116,7 +116,7 @@ int isFullTrip(int tripIndex, struct Card passengers[][MAX_PASS])
     return isFull;
 }
 
-void enterPassengerInfo(stringTrip trip[MAX_BUS], struct Card passengers[][MAX_PASS])
+void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
 {
     stringTrip tripNo;
     int tripIndex;
