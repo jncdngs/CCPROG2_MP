@@ -331,6 +331,7 @@ void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
         printPassengerInfoTitle();
         printf("Information has been saved.\n\n");
         printf("Press any key to return to the main menu...");
+        getch();
     }
 
     cls();
