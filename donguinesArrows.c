@@ -336,3 +336,8 @@ void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
 
     cls();
 }
+
+void viewPassengerCount(struct Card passengers[][MAX_PASS])
+{
+    
+}
