@@ -147,7 +147,7 @@ int main()
                 if (personnelMenuOption == 1)       // [1] View passenger count
                 {
                     cls();
-                    viewPassengerCount(passengers);
+                    viewPassengerCount(trip, passengers);
                 }
                 else if (personnelMenuOption == 2)  // [2] View drop-off count
                 {
