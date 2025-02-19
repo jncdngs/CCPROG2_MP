@@ -27,9 +27,9 @@ void printPassengerTitle();
 void printPassengerInfoTitle();
 void printDivider();
 
-void initializePassengers(struct Card passengers[][MAX_PASS]);
-int isValidTrip(stringTrip trip[], stringTrip tripNo);
-int isFullTrip(int tripIndex, struct Card passengers[][MAX_PASS]);
-void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS]);
+void initializePassengers(struct Card[][MAX_PASS]);
+int isValidTrip(stringTrip[], stringTrip);
+int isFullTrip(int, struct Card[][MAX_PASS]);
+void enterPassengerInfo(stringTrip[], struct Card[][MAX_PASS]);
 
 #endif
