@@ -116,6 +116,24 @@ int isFullTrip(int tripIndex, struct Card passengers[][MAX_PASS])
     return isFull;
 }
 
+int getEmptySeat(int tripIndex, struct Card passengers[][MAX_PASS])
+{
+    int i;
+    int found = 0;
+    int emptySeat = -1;
+
+    for(i = 0; i < MAX_PASS; i++)
+    {
+        if(passengers[tripIndex][i].priorityNo == 0 && !found)
+        {
+            emptySeat = i;
+            found = 1;
+        }
+    }
+
+    return emptySeat;
+}
+
 void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
 {
     stringTrip tripNo;
@@ -174,6 +192,8 @@ void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
     }
     else
     {
+        seatIndex = getEmptySeat(tripIndex, passengers);
+        
         do
         {       
             // Ask user for information

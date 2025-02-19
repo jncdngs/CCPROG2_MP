@@ -30,6 +30,7 @@ void printDivider();
 void initializePassengers(struct Card[][MAX_PASS]);
 int isValidTrip(stringTrip[], stringTrip);
 int isFullTrip(int, struct Card[][MAX_PASS]);
+int getEmptySeat(int, struct Card[][MAX_PASS]);
 void enterPassengerInfo(stringTrip[], struct Card[][MAX_PASS]);
 
 #endif
