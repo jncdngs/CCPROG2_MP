@@ -325,6 +325,12 @@ void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
         strcpy(passengers[tripIndex][seatIndex].firstName, firstName);
         passengers[tripIndex][seatIndex].idNo = idNo;
         passengers[tripIndex][seatIndex].dropOff = dropOff;
+
+        // Tell user that information has been saved
+        cls();
+        printPassengerInfoTitle();
+        printf("Information has been saved.\n\n");
+        printf("Press any key to return to the main menu...");
     }
 
     cls();
