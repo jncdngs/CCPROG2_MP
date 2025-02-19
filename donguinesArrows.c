@@ -119,14 +119,19 @@ int isFullTrip(int tripIndex, struct Card passengers[][MAX_PASS])
 void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
 {
     stringTrip tripNo;
-    int tripIndex;
-
-    int priorityNo;
     stringName lastName;
     stringName firstName;
-    int idNo;
-    int dropOff;
-    char correctInfo;
+    
+    int tripIndex = -1;
+    int seatIndex = -1;
+
+    int priorityNo = 0;
+    int idNo = 0;
+    int dropOff = 0;
+    char correctInfo = '\0';
+
+    strcpy(lastName, "");
+    strcpy(firstName, "");
 
     // Display disclaimer (can be moved to next trip or removed)
     printf("\033[0;31mDISCLAIMER: \033[0m\n\n");
@@ -295,7 +300,10 @@ void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
         while(correctInfo != 'Y' && correctInfo != 'y');    // If incorrect, repeat process
         
         // If correct, pass to struct array (using trip number)
-    
+        passengers[tripIndex][seatIndex].priorityNo = priorityNo;
+        strcpy(passengers[tripIndex][seatIndex].lastName, lastName);
+        strcpy(passengers[tripIndex][seatIndex].firstName, firstName);
+        passengers[tripIndex][seatIndex].idNo = idNo;
+        passengers[tripIndex][seatIndex].dropOff = dropOff;
     }
-
 }
