@@ -326,4 +326,6 @@ void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
         passengers[tripIndex][seatIndex].idNo = idNo;
         passengers[tripIndex][seatIndex].dropOff = dropOff;
     }
+
+    cls();
 }
