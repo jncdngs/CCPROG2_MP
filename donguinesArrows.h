@@ -34,6 +34,6 @@ int isFullTrip(int, struct Card[][MAX_PASS]);
 int getEmptySeat(int, struct Card[][MAX_PASS]);
 void enterPassengerInfo(stringTrip[], struct Card[][MAX_PASS]);
 
-void viewPassengerCount(struct Card[][MAX_PASS]);
+void viewPassengerCount(stringTrip[], struct Card[][MAX_PASS]);
 
 #endif

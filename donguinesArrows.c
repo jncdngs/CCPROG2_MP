@@ -41,12 +41,22 @@ void printPassengerTitle()
 
 void printPassengerInfoTitle()
 {
-printf(" ______        ____                                              ___        __           __\n");
-printf(" \\ \\ \\ \\      |  _ \\ __ _ ___ ___  ___ _ __   __ _  ___ _ __    |_ _|_ __  / _| ___      \\ \\\n");
-printf("  \\ \\ \\ \\_____| |_) / _` / __/ __|/ _ \\ '_ \\ / _` |/ _ \\ '__|____| || '_ \\| |_ / _ \\ _____\\ \\\n");
-printf("  / / / /_____|  __/ (_| \\__ \\__ \\  __/ | | | (_| |  __/ | |_____| || | | |  _| (_) |_____/ /\n");
-printf(" /_/_/_/      |_|   \\__,_|___/___/\\___|_| |_|\\__, |\\___|_|      |___|_| |_|_|  \\___/     /_/\n");
-printf("                                             |___/\n\n");
+    printf(" ______        ____                                              ___        __           __\n");
+    printf(" \\ \\ \\ \\      |  _ \\ __ _ ___ ___  ___ _ __   __ _  ___ _ __    |_ _|_ __  / _| ___      \\ \\\n");
+    printf("  \\ \\ \\ \\_____| |_) / _` / __/ __|/ _ \\ '_ \\ / _` |/ _ \\ '__|____| || '_ \\| |_ / _ \\ _____\\ \\\n");
+    printf("  / / / /_____|  __/ (_| \\__ \\__ \\  __/ | | | (_| |  __/ | |_____| || | | |  _| (_) |_____/ /\n");
+    printf(" /_/_/_/      |_|   \\__,_|___/___/\\___|_| |_|\\__, |\\___|_|      |___|_| |_|_|  \\___/     /_/\n");
+    printf("                                             |___/\n\n");
+}
+
+void printPassCountTitle()
+{
+    printf(" ______        ____                                                ____                  _      __\n");
+    printf(" \\ \\ \\ \\      |  _ \\ __ _ ___ ___  ___ _ __   __ _  ___ _ __      / ___|___  _   _ _ __ | |_    \\ \\\n");
+    printf("  \\ \\ \\ \\_____| |_) / _` / __/ __|/ _ \\ '_ \\ / _` |/ _ \\ '__|____| |   / _ \\| | | | '_ \\| __|____\\ \\\n");
+    printf("  / / / /_____|  __/ (_| \\__ \\__ \\  __/ | | | (_| |  __/ | |_____| |__| (_) | |_| | | | | ||_____/ /\n");
+    printf(" /_/_/_/      |_|   \\__,_|___/___/\\___|_| |_|\\__, |\\___|_|        \\____\\___/ \\__,_|_| |_|\\__|   /_/\n");
+    printf("                                             |___/\n\n");
 }
 
 void printDivider()
@@ -337,7 +347,29 @@ void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
     cls();
 }
 
-void viewPassengerCount(struct Card passengers[][MAX_PASS])
+void viewPassengerCount(stringTrip trip[], struct Card passengers[][MAX_PASS])
 {
-    
+    stringTrip tripNo;
+    int tripIndex = -1;
+
+    do
+    {
+        // Ask user for trip number
+        printPassCountTitle();
+        printf("Please enter the trip number (AE1xx): ");
+        scanf("%5s", tripNo);
+
+        // Check if trip number is valid
+        tripIndex = isValidTrip(trip, tripNo);
+
+        if(tripIndex == -1)
+        {
+            cls();
+            printf("\033[0;31mERROR:\033[0m Trip not found or invalid. Please try again.\n\n");
+        }
+    }
+    while(tripIndex == -1);
+
+
+    cls();
 }
