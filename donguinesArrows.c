@@ -199,6 +199,7 @@ void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
         printPassengerInfoTitle();
         printf("The selected trip is full.\n\n");
         printf("Press any key to return to the main menu...");
+        getch();
         tripIndex = -1;
     }
     else
