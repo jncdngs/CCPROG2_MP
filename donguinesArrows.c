@@ -49,7 +49,7 @@ void printPassengerInfoTitle()
     printf("                                             |___/\n\n");
 }
 
-void printPassCountTitle()
+void printPassengerCountTitle()
 {
     printf(" ______        ____                                                ____                  _      __\n");
     printf(" \\ \\ \\ \\      |  _ \\ __ _ ___ ___  ___ _ __   __ _  ___ _ __      / ___|___  _   _ _ __ | |_    \\ \\\n");
@@ -162,6 +162,7 @@ void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
     strcpy(firstName, "");
 
     // Display disclaimer (can be moved to next trip or removed)
+    printPassengerInfoTitle();
     printf("\033[0;31mDISCLAIMER: \033[0m\n\n");
     printf("This system automatically assigns you to a seat on your selected trip.\n");
     printf("In case trip you selected is full, you will be notified.\n\n");
@@ -349,13 +350,25 @@ void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
 
 void viewPassengerCount(stringTrip trip[], struct Card passengers[][MAX_PASS])
 {
+    /*
+    stringTrip trip[MAX_BUS] = {"AE101", "AE102", "AE103", 
+                                "AE104", "AE105", "AE106", 
+                                "AE107", "AE108", "AE109", 
+                                "AE150", "AE151", "AE152", 
+                                "AE153", "AE154", "AE155", 
+                                "AE156", "AE157", "AE158", 
+                                "AE159", "AE160"};
+                                */
     stringTrip tripNo;
     int tripIndex = -1;
+    int passengerCount = 0;
+    char seatStatus[MAX_PASS];
+    int i, j;
 
     do
     {
         // Ask user for trip number
-        printPassCountTitle();
+        printPassengerCountTitle();
         printf("Please enter the trip number (AE1xx): ");
         scanf("%5s", tripNo);
 
@@ -370,6 +383,51 @@ void viewPassengerCount(stringTrip trip[], struct Card passengers[][MAX_PASS])
     }
     while(tripIndex == -1);
 
+    // Count total passengers in trip
+    // Assign X for taken seats and O for empty seats 
+    for(i = 0; i < MAX_PASS; i++)
+    {
+        if(passengers[tripIndex][i].priorityNo != 0)
+        {
+            seatStatus[i] = 'X';
+            passengerCount++;
+        }
+        else
+        {
+            seatStatus[i] = 'O';
+        }
+    }
+
+    // Display seat map
+    cls();
+    printPassengerCountTitle();
+    printf("Seat Map for Trip %s\n\n", trip[tripIndex]);
+    
+    for(i = 0; i < 9; i++)
+    {
+        if(i % 2)
+        {
+            for(j = 0; j < 3; j++)
+            {
+                printf("| %c ", seatStatus[(i / 2 * 3) + j]);
+            }
+            printf("|");
+        }
+        else
+        {
+            printf("+---+---+---+");
+        }
+
+        printf("\n");
+    }
+    printf("| %c |       |\n", seatStatus[12]);
+    printf("+---+---+---+\n\n");
+
+    printf("Seats taken:     %d\n", passengerCount);
+    printf("Seats available: %d\n", MAX_PASS - passengerCount);
+
+    printf("Press any key to return to the main menu...");
+    getch();
 
     cls();
 }
