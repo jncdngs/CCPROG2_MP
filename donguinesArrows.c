@@ -59,6 +59,15 @@ void printPassengerCountTitle()
     printf("                                             |___/\n\n");
 }
 
+void printPersonnelTitle()
+{
+    printf(" ______        ____                                      _     __\n");
+    printf(" \\ \\ \\ \\      |  _ \\ ___ _ __ ___  ___  _ __  _ __   ___| |    \\ \\\n");
+    printf("  \\ \\ \\ \\_____| |_) / _ \\ '__/ __|/ _ \\| '_ \\| '_ \\ / _ \\ |_____\\ \\\n");
+    printf("  / / / /_____|  __/  __/ |  \\__ \\ (_) | | | | | | |  __/ |_____/ /\n");
+    printf(" /_/_/_/      |_|   \\___|_|  |___/\\___/|_| |_|_| |_|\\___|_|    /_/\n\n\n");
+}
+
 void printDivider()
 {
     int i;
@@ -425,7 +434,7 @@ void viewPassengerCount(stringTrip trip[], struct Card passengers[][MAX_PASS])
     printf("+---+---+---+\n\n");
 
     printf("Seats taken:     %d\n", passengerCount);
-    printf("Seats available: %d\n", MAX_PASS - passengerCount);
+    printf("Seats available: %d\n\n", MAX_PASS - passengerCount);
 
     printf("Press any key to return to the main menu...");
     getch();

@@ -114,7 +114,7 @@ int main()
             {
                 personnelMenuOption = 0;    // Initialize to zero (invalid by default)
                 
-                printf("Arrows Express Personnel\n\n");
+                printPersonnelTitle();
                 printf("[1] View passenger count\n");
                 printf("[2] View drop-off count\n");
                 printf("[3] View passenger information\n");

@@ -26,6 +26,7 @@ void printTitle();
 void printPassengerTitle();
 void printPassengerInfoTitle();
 void printPassengerCountTitle();
+void printPersonnelTitle();
 void printDivider();
 
 void initializePassengers(struct Card[][MAX_PASS]);
