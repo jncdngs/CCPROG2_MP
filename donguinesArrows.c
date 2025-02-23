@@ -68,18 +68,6 @@ void printPersonnelTitle()
     printf(" /_/_/_/      |_|   \\___|_|  |___/\\___/|_| |_|_| |_|\\___|_|    /_/\n\n\n");
 }
 
-void printDivider()
-{
-    int i;
-    
-    for(i = 0; i < 100; i++)
-    {
-        printf("-");
-    }
-
-    printf("\n");
-}
-
 void initializePassengers(struct Card passengers[][MAX_PASS])
 {
     int i, j;
@@ -366,7 +354,7 @@ void viewPassengerCount(stringTrip trip[], struct Card passengers[][MAX_PASS])
 
     int passengerCount = 0;
     char seatStatus[MAX_PASS];
-    
+
     int i, j;
 
     do
