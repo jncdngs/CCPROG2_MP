@@ -199,3 +199,33 @@ stringTrip trip[21] = {"AE101", "AE102", "AE103", "AE104", "AE105", "AE106", "AE
 char dropOff
 
 Card passenger[20][13]
+
+Manila-Laguna
+
+Trip    Time
+
+AE101   0600        
+AE102   0730        
+AE103   0930        
+AE104   1100        
+AE105   1300        
+AE106   1430        
+AE107   1530        
+AE108   1700        
+AE109   1815        
+
+Laguna -> Manila
+
+Trip        Time
+
+AE150       0530
+AE151       0545
+AE152       0700
+AE153       0730
+AE154       0900
+AE155       1100
+AE156       1300
+AE157       1430
+AE158       1530
+AE159       1700
+AE160       1815
