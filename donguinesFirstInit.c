@@ -20,28 +20,29 @@ int main()
 {
     struct Card passengers[MAX_BUS][MAX_PASS];
     struct TripInfo trip[MAX_BUS] = {   // Manila-Laguna
-                                        {"AE101", "0600", "MNL-LAG", 1},
-                                        {"AE102", "0730", "MNL-LAG", 2},
-                                        {"AE103", "0930", "MNL-LAG", 1},
-                                        {"AE104", "1100", "MNL-LAG", 2},
-                                        {"AE105", "1300", "MNL-LAG", 1},
-                                        {"AE106", "1430", "MNL-LAG", 2},
-                                        {"AE107", "1530", "MNL-LAG", 1},
-                                        {"AE108", "1700", "MNL-LAG", 2},
-                                        {"AE109", "1815", "MNL-LAG", 1},
+                                        {"AE101", "0600", "MNL-LAG", 0},
+                                        {"AE102", "0730", "MNL-LAG", 1},
+                                        {"AE103", "0930", "MNL-LAG", 0},
+                                        {"AE104", "1100", "MNL-LAG", 1},
+                                        {"AE105", "1300", "MNL-LAG", 0},
+                                        {"AE106", "1430", "MNL-LAG", 1},
+                                        {"AE107", "1530", "MNL-LAG", 0},
+                                        {"AE108", "1700", "MNL-LAG", 1},
+                                        {"AE109", "1815", "MNL-LAG", 0},
                                         
                                         // Laguna-Manila
-                                        {"AE150", "0530", "LAG-MNL", 4},
-                                        {"AE151", "0545", "LAG-MNL", 3},
-                                        {"AE152", "0700", "LAG-MNL", 4},
-                                        {"AE153", "0730", "LAG-MNL", 3},
-                                        {"AE154", "0900", "LAG-MNL", 4},
-                                        {"AE155", "1100", "LAG-MNL", 3},
-                                        {"AE156", "1300", "LAG-MNL", 4},
-                                        {"AE157", "1430", "LAG-MNL", 3},
-                                        {"AE158", "1530", "LAG-MNL", 4},
-                                        {"AE159", "1700", "LAG-MNL", 3},
-                                        {"AE160", "1815", "LAG-MNL", 4} };
+                                        {"AE150", "0530", "LAG-MNL", 3},
+                                        {"AE151", "0545", "LAG-MNL", 2},
+                                        {"AE152", "0700", "LAG-MNL", 3},
+                                        {"AE153", "0730", "LAG-MNL", 2},
+                                        {"AE154", "0900", "LAG-MNL", 3},
+                                        {"AE155", "1100", "LAG-MNL", 2},
+                                        {"AE156", "1300", "LAG-MNL", 3},
+                                        {"AE157", "1430", "LAG-MNL", 2},
+                                        {"AE158", "1530", "LAG-MNL", 3},
+                                        {"AE159", "1700", "LAG-MNL", 2},
+                                        {"AE160", "1815", "LAG-MNL", 3} };
+    
 
     /*stringTrip trip[MAX_BUS] = {"AE101", "AE102", "AE103", 
                                 "AE104", "AE105", "AE106", 
