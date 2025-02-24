@@ -5,7 +5,7 @@
 
 void cls()
 {
-    printf("\033[H\033[J");
+    printf("\033[H\033[J\033[3J");
 }
 
 void clearInputBuffer()
