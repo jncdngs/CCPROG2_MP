@@ -28,22 +28,55 @@ struct Card
     int dropOff;
 };
 
-void cls();
-void clearInputBuffer();
+void
+cls();
 
-void printError();
-void printTitle();
-void printPassengerTitle();
-void printPassengerInfoTitle();
-void printPassengerCountTitle();
-void printPersonnelTitle();
+void
+clearInputBuffer();
 
-void initializePassengers(struct Card[][MAX_PASS]);
-int isValidTrip(struct TripInfo[], stringTrip);
-int isFullTrip(int, struct Card[][MAX_PASS]);
-int getEmptySeat(int, struct Card[][MAX_PASS]);
-void enterPassengerInfo(struct TripInfo[], struct Card[][MAX_PASS]);
 
-void viewPassengerCount(struct TripInfo[], struct Card[][MAX_PASS]);
+
+void
+printError();
+
+void
+printTitle();
+
+void
+printPassengerTitle();
+
+void
+printPassengerInfoTitle();
+
+void
+printPassengerCountTitle();
+
+void
+printPersonnelTitle();
+
+
+
+void
+initializePassengers(struct Card[][MAX_PASS]);
+
+int
+isValidTrip(struct TripInfo[],
+            stringTrip);
+
+int
+isFullTrip(int, struct Card[][MAX_PASS]);
+
+int
+getEmptySeat(int, struct Card[][MAX_PASS]);
+
+void
+enterPassengerInfo(struct TripInfo[],
+                   struct Card[][MAX_PASS]);
+
+
+
+void
+viewPassengerCount(struct TripInfo[],
+                   struct Card[][MAX_PASS]);
 
 #endif

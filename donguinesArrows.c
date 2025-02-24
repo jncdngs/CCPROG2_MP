@@ -3,23 +3,27 @@
 #include <string.h>
 #include "donguinesArrows.h"
 
-void cls()
+void
+cls()
 {
     printf("\033[H\033[J\033[3J");
 }
 
-void clearInputBuffer()
+void
+clearInputBuffer()
 {
     while(getchar() != '\n');
 }
 
-void printError()
+void
+printError()
 {
     printf("\033[0;31mERROR: \033[0m");
     printf("Invalid entry. Please try again.\n\n");
 }
 
-void printTitle()
+void
+printTitle()
 {
     printf(" ______          _                                     _____                                  __\n");
     printf(" \\ \\ \\ \\        / \\   _ __ _ __ _____      _____      | ____|_  ___ __  _ __ ___  ___ ___     \\ \\\n");
@@ -29,7 +33,8 @@ void printTitle()
     printf("                                                                 |_|\n\n");
 }
 
-void printPassengerTitle()
+void
+printPassengerTitle()
 {
     printf(" ______        ____                                             __\n");
     printf(" \\ \\ \\ \\      |  _ \\ __ _ ___ ___  ___ _ __   __ _  ___ _ __    \\ \\\n");
@@ -39,7 +44,8 @@ void printPassengerTitle()
     printf("                                             |___/\n\n");
 }
 
-void printPassengerInfoTitle()
+void
+printPassengerInfoTitle()
 {
     printf(" ______        ____                                              ___        __           __\n");
     printf(" \\ \\ \\ \\      |  _ \\ __ _ ___ ___  ___ _ __   __ _  ___ _ __    |_ _|_ __  / _| ___      \\ \\\n");
@@ -49,7 +55,8 @@ void printPassengerInfoTitle()
     printf("                                             |___/\n\n");
 }
 
-void printPassengerCountTitle()
+void
+printPassengerCountTitle()
 {
     printf(" ______        ____                                                ____                  _      __\n");
     printf(" \\ \\ \\ \\      |  _ \\ __ _ ___ ___  ___ _ __   __ _  ___ _ __      / ___|___  _   _ _ __ | |_    \\ \\\n");
@@ -59,7 +66,8 @@ void printPassengerCountTitle()
     printf("                                             |___/\n\n");
 }
 
-void printPersonnelTitle()
+void
+printPersonnelTitle()
 {
     printf(" ______        ____                                      _     __\n");
     printf(" \\ \\ \\ \\      |  _ \\ ___ _ __ ___  ___  _ __  _ __   ___| |    \\ \\\n");
@@ -68,7 +76,8 @@ void printPersonnelTitle()
     printf(" /_/_/_/      |_|   \\___|_|  |___/\\___/|_| |_|_| |_|\\___|_|    /_/\n\n\n");
 }
 
-void initializePassengers(struct Card passengers[][MAX_PASS])
+void
+initializePassengers(struct Card passengers[][MAX_PASS])
 {
     int i, j;
 
@@ -85,7 +94,9 @@ void initializePassengers(struct Card passengers[][MAX_PASS])
     }
 }
 
-int isValidTrip(struct TripInfo trip[], stringTrip tripNo)
+int
+isValidTrip(struct TripInfo trip[],
+            stringTrip tripNo)
 {
     int i;
     int tripIndex = -1;
@@ -101,7 +112,9 @@ int isValidTrip(struct TripInfo trip[], stringTrip tripNo)
     return tripIndex;
 }
 
-int isFullTrip(int tripIndex, struct Card passengers[][MAX_PASS])
+int
+isFullTrip(int tripIndex,
+           struct Card passengers[][MAX_PASS])
 {
     int i;
     int passengerCount = 0;
@@ -123,7 +136,9 @@ int isFullTrip(int tripIndex, struct Card passengers[][MAX_PASS])
     return isFull;
 }
 
-int getEmptySeat(int tripIndex, struct Card passengers[][MAX_PASS])
+int
+getEmptySeat(int tripIndex,
+             struct Card passengers[][MAX_PASS])
 {
     int i;
     int found = 0;
@@ -141,7 +156,9 @@ int getEmptySeat(int tripIndex, struct Card passengers[][MAX_PASS])
     return emptySeat;
 }
 
-void enterPassengerInfo(struct TripInfo trip[], struct Card passengers[][MAX_PASS])
+void
+enterPassengerInfo(struct TripInfo trip[],
+                   struct Card passengers[][MAX_PASS])
 {
     stringTrip tripNo;
     stringName lastName;
@@ -353,7 +370,9 @@ void enterPassengerInfo(struct TripInfo trip[], struct Card passengers[][MAX_PAS
     cls();
 }
 
-void viewPassengerCount(struct TripInfo trip[], struct Card passengers[][MAX_PASS])
+void
+viewPassengerCount(struct TripInfo trip[],
+                   struct Card passengers[][MAX_PASS])  
 {
     stringTrip tripNo;
 
