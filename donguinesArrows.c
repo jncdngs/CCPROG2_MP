@@ -271,13 +271,13 @@ void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
                     printError();
                 }
                 
-                else if(idNo < 10000000 || idNo > 12499999)
+                else if(idNo < 10000000 || idNo > 19999999)
                 {
                     cls();
                     printError();
                 }
             }
-            while(idNo < 10000000 || idNo > 12499999);
+            while(idNo < 10000000 || idNo > 19999999);
             
             cls();
             do
