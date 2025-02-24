@@ -157,8 +157,30 @@ getEmptySeat(int tripIndex,
 }
 
 void
+displayDropOffs(struct TripInfo trip[],
+                int tripIndex,
+                stringDropOff dropOffs[][4])
+{
+    int i;
+    int dropOffCount = 4;
+
+    for(i = 0; i < dropOffCount; i++)
+    {
+        printf("[%d] %s\n", i + 1, dropOffs[trip[tripIndex].dropOffSet][i]);
+
+        if(strcmp(dropOffs[trip[tripIndex].dropOffSet][i + 1], "") == 0)
+        {
+            i = dropOffCount;
+        }
+    }
+
+    printf("\n");
+}
+
+void
 enterPassengerInfo(struct TripInfo trip[],
-                   struct Card passengers[][MAX_PASS])
+                   struct Card passengers[][MAX_PASS],
+                   stringDropOff dropOffs[][4])
 {
     stringTrip tripNo;
     stringName lastName;
@@ -166,6 +188,7 @@ enterPassengerInfo(struct TripInfo trip[],
     
     int tripIndex = -1;
     int seatIndex = -1;
+    //int dropOffIndex = -1;
 
     int priorityNo = 0;
     int idNo = 0;
@@ -301,6 +324,8 @@ enterPassengerInfo(struct TripInfo trip[],
             {
                 printPassengerInfoTitle();
                 printf("Please enter the following information\n\n");
+
+                displayDropOffs(trip, tripIndex, dropOffs);
     
                 printf("Drop-off: ");
                 if(scanf("%d", &dropOff) != 1)
@@ -329,7 +354,7 @@ enterPassengerInfo(struct TripInfo trip[],
             printf("Last Name:   %s\n", lastName);
             printf("First Name:  %s\n", firstName);
             printf("ID No:       %d\n", idNo);
-            printf("Drop-off:    %d\n\n", dropOff);
+            printf("Drop-off:    %s\n\n", dropOffs[trip[tripIndex].dropOffSet][dropOff - 1]);
     
             // Ask user to check if information is correct
             do

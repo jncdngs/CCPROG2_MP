@@ -16,7 +16,8 @@ students and/or persons.
 #include <string.h>
 #include "donguinesArrows.h"
 
-int main()
+int
+main()
 {
     struct Card passengers[MAX_BUS][MAX_PASS];
 
@@ -135,7 +136,7 @@ int main()
                 if(passengerMenuOption == 1)        // [1] Enter passenger information
                 {
                     cls();
-                    enterPassengerInfo(trip, passengers);
+                    enterPassengerInfo(trip, passengers, dropOffs);
                 }
                 else if(passengerMenuOption == 2)   // [2] Back to main menu
                 {
