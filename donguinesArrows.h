@@ -16,6 +16,7 @@ struct TripInfo
     stringTrip tripNumber;
     stringTime tripTime;
     stringRoute tripRoute;
+    int dropOffSet;
 };
 
 struct Card
