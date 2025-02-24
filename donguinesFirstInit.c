@@ -19,13 +19,37 @@ students and/or persons.
 int main()
 {
     struct Card passengers[MAX_BUS][MAX_PASS];
-    stringTrip trip[MAX_BUS] = {"AE101", "AE102", "AE103", 
+    struct TripInfo trip[MAX_BUS] = {   // Manila-Laguna
+                                        {"AE101", "0600", "MNL-LAG"},
+                                        {"AE102", "0730", "MNL-LAG"},
+                                        {"AE103", "0930", "MNL-LAG"},
+                                        {"AE104", "1100", "MNL-LAG"},
+                                        {"AE105", "1300", "MNL-LAG"},
+                                        {"AE106", "1430", "MNL-LAG"},
+                                        {"AE107", "1530", "MNL-LAG"},
+                                        {"AE108", "1700", "MNL-LAG"},
+                                        {"AE109", "1815", "MNL-LAG"},
+                                        
+                                        // Laguna-Manila
+                                        {"AE150", "0530", "LAG-MNL"},
+                                        {"AE151", "0545", "LAG-MNL"},
+                                        {"AE152", "0700", "LAG-MNL"},
+                                        {"AE153", "0730", "LAG-MNL"},
+                                        {"AE154", "0900", "LAG-MNL"},
+                                        {"AE155", "1100", "LAG-MNL"},
+                                        {"AE156", "1300", "LAG-MNL"},
+                                        {"AE157", "1430", "LAG-MNL"},
+                                        {"AE158", "1530", "LAG-MNL"},
+                                        {"AE159", "1700", "LAG-MNL"},
+                                        {"AE160", "1815", "LAG-MNL"}};
+
+    /*stringTrip trip[MAX_BUS] = {"AE101", "AE102", "AE103", 
                                 "AE104", "AE105", "AE106", 
                                 "AE107", "AE108", "AE109", 
                                 "AE150", "AE151", "AE152", 
                                 "AE153", "AE154", "AE155", 
                                 "AE156", "AE157", "AE158", 
-                                "AE159", "AE160"};
+                                "AE159", "AE160"};*/
 
     float mainMenuOption, passengerMenuOption, personnelMenuOption;
     

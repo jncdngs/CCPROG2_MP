@@ -6,8 +6,17 @@
 #define MAX_BUS 20      // Maximum of 20 regular shuttles
 
 typedef char stringTrip[6];
+typedef char stringTime[5];
+typedef char stringRoute[8];
 typedef char stringDropOff[4];
 typedef char stringName[51];
+
+struct TripInfo
+{
+    stringTrip tripNumber;
+    stringTime tripTime;
+    stringRoute tripRoute;
+};
 
 struct Card
 {
@@ -29,11 +38,11 @@ void printPassengerCountTitle();
 void printPersonnelTitle();
 
 void initializePassengers(struct Card[][MAX_PASS]);
-int isValidTrip(stringTrip[], stringTrip);
+int isValidTrip(struct TripInfo[], stringTrip);
 int isFullTrip(int, struct Card[][MAX_PASS]);
 int getEmptySeat(int, struct Card[][MAX_PASS]);
-void enterPassengerInfo(stringTrip[], struct Card[][MAX_PASS]);
+void enterPassengerInfo(struct TripInfo[], struct Card[][MAX_PASS]);
 
-void viewPassengerCount(stringTrip[], struct Card[][MAX_PASS]);
+void viewPassengerCount(struct TripInfo[], struct Card[][MAX_PASS]);
 
 #endif

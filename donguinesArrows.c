@@ -85,14 +85,14 @@ void initializePassengers(struct Card passengers[][MAX_PASS])
     }
 }
 
-int isValidTrip(stringTrip trip[], stringTrip tripNo)
+int isValidTrip(struct TripInfo trip[], stringTrip tripNo)
 {
     int i;
     int tripIndex = -1;
 
     for(i = 0; i < MAX_BUS; i++)
     {
-        if(strcmp(trip[i], tripNo) == 0)
+        if(strcmp(trip[i].tripNumber, tripNo) == 0)
         {
             tripIndex = i;
         }
@@ -141,7 +141,7 @@ int getEmptySeat(int tripIndex, struct Card passengers[][MAX_PASS])
     return emptySeat;
 }
 
-void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
+void enterPassengerInfo(struct TripInfo trip[], struct Card passengers[][MAX_PASS])
 {
     stringTrip tripNo;
     stringName lastName;
@@ -353,7 +353,7 @@ void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
     cls();
 }
 
-void viewPassengerCount(stringTrip trip[], struct Card passengers[][MAX_PASS])
+void viewPassengerCount(struct TripInfo trip[], struct Card passengers[][MAX_PASS])
 {
     stringTrip tripNo;
 
@@ -400,7 +400,7 @@ void viewPassengerCount(stringTrip trip[], struct Card passengers[][MAX_PASS])
     // Display seat map
     cls();
     printPassengerCountTitle();
-    printf("Seat Map for Trip %s\n\n", trip[tripIndex]);
+    printf("Seat Map for Trip %s\n\n", trip[tripIndex].tripNumber);
     
     for(i = 0; i < 9; i++)
     {
