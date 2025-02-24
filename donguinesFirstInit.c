@@ -19,6 +19,7 @@ students and/or persons.
 int main()
 {
     struct Card passengers[MAX_BUS][MAX_PASS];
+
     struct TripInfo trip[MAX_BUS] = {   // Manila-Laguna
                                         {"AE101", "0600", "MNL-LAG", 0},
                                         {"AE102", "0730", "MNL-LAG", 1},
@@ -41,16 +42,33 @@ int main()
                                         {"AE157", "1430", "LAG-MNL", 2},
                                         {"AE158", "1530", "LAG-MNL", 3},
                                         {"AE159", "1700", "LAG-MNL", 2},
-                                        {"AE160", "1815", "LAG-MNL", 3} };
-    
+                                        {"AE160", "1815", "LAG-MNL", 3}
+                                    };
 
-    /*stringTrip trip[MAX_BUS] = {"AE101", "AE102", "AE103", 
-                                "AE104", "AE105", "AE106", 
-                                "AE107", "AE108", "AE109", 
-                                "AE150", "AE151", "AE152", 
-                                "AE153", "AE154", "AE155", 
-                                "AE156", "AE157", "AE158", 
-                                "AE159", "AE160"};*/
+    stringDropOff dropOffs[4][4] = {{
+                                        "Mamplasan Toll Exit",
+                                        "Phase 5, San Jose Village",
+                                        "Milagros Del Rosario (MRR) Bldg."
+                                    },
+
+                                    {
+                                        "Laguna Blvd. Guard House",
+                                        "Milagros Del Rosario (MRR) Bldg."
+                                    },
+
+                                    {
+                                        "Petron Gasoline Station",
+                                        "Gate 4: Gokongwei",
+                                        "Gate 2: Henry Sy (North)",
+                                        "Gate 1: LS Hall (South)"
+                                    },
+
+                                    {
+                                        "College of St. Benilde (CSB)",
+                                        "Gate 4: Gokongwei",
+                                        "Gate 2: Henry Sy (North)",
+                                        "Gate 1: LS Hall (South)"
+                                    }};
 
     float mainMenuOption, passengerMenuOption, personnelMenuOption;
     

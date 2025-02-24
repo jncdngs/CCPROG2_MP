@@ -8,7 +8,7 @@
 typedef char stringTrip[6];
 typedef char stringTime[5];
 typedef char stringRoute[8];
-typedef char stringDropOff[4];
+typedef char stringDropOff[41];
 typedef char stringName[51];
 
 struct TripInfo

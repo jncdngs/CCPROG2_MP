@@ -229,3 +229,28 @@ AE157       1430
 AE158       1530
 AE159       1700
 AE160       1815
+
+0
+
+[1] Mamplasan Toll Exit
+[2] Phase 5, San Jose Village
+[3] Milagros Del Rosario (MRR) Bldg.
+
+1
+
+[1] Laguna Blvd. Guard House
+[2] Milagros Del Rosario (MRR) Bldg.
+
+2
+
+[1] Petron Gasoline Station
+[2] Gate 4: Gokongwei
+[3] Gate 2: Henry Sy (North)
+[4] Gate 1: LS Hall (South)
+
+3
+
+[1] College of St. Benilde (CSB)
+[2] Gate 4: Gokongwei
+[3] Gate 2: Henry Sy (North)
+[4] Gate 1: LS Hall (South)
