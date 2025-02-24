@@ -212,12 +212,12 @@ void enterPassengerInfo(stringTrip trip[], struct Card passengers[][MAX_PASS])
                 printPassengerInfoTitle();
                 printf("Please enter the following information\n\n");
 
-                printf("1 - Faculty / ASF with Inter-Campus Assignments\n");
-                printf("2 - Student with Inter-Campus Subjects\n");
-                printf("3 - Researcher\n");
-                printf("4 - School Administrator\n");
-                printf("5 - University Fellow\n");
-                printf("6 - Employee / Student with Official Business\n\n");
+                printf("[1] Faculty / ASF with Inter-Campus Assignments\n");
+                printf("[2] Student with Inter-Campus Subjects\n");
+                printf("[3] Researcher\n");
+                printf("[4] School Administrator\n");
+                printf("[5] University Fellow\n");
+                printf("[6] Employee / Student with Official Business\n\n");
     
                 printf("Type of passenger: ");
                 if(scanf("%d", &priorityNo) != 1)
