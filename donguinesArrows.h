@@ -35,8 +35,8 @@ void printError();
 void printTitle();
 void printPassengerTitle();
 void printPassengerInfoTitle();
-void printPassengerCountTitle();
 void printPersonnelTitle();
+void printPassengerCountTitle();
 void printDropOffTitle();
 
 // funcCommon.c
