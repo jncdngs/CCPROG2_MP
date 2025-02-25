@@ -83,7 +83,8 @@ getEmptySeat(int tripIndex,
     return emptySeat;
 }
 
-void displayTrips(struct TripInfo trip[])
+void
+displayTrips(struct TripInfo trip[])
 {
     int i;
     int rowsMax = 11;
@@ -150,7 +151,6 @@ enterPassengerInfo(struct TripInfo trip[],
     
     int tripIndex = -1;
     int seatIndex = -1;
-    //int dropOffIndex = -1;
 
     int priorityNo = 0;
     int idNo = 0;
