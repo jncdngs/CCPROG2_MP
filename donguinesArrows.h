@@ -37,6 +37,7 @@ void printPassengerTitle();
 void printPassengerInfoTitle();
 void printPassengerCountTitle();
 void printPersonnelTitle();
+void printDropOffTitle();
 
 // funcCommon.c
 void initializePassengers(struct Card[][MAX_PASS]);
@@ -51,5 +52,6 @@ void enterPassengerInfo(struct TripInfo[], struct Card[][MAX_PASS], stringDropOf
 
 // funcPersonnel.c
 void viewPassengerCount(struct TripInfo[], struct Card[][MAX_PASS]);
+void viewDropOffCount(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][4]);
 
 #endif
