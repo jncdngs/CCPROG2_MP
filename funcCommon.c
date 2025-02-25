@@ -1,0 +1,141 @@
+#include <stdio.h>
+#include <conio.h>  // for getch()
+#include <string.h>
+#include "donguinesArrows.h"
+
+void
+initializePassengers(struct Card passengers[][MAX_PASS])
+{
+    int i, j;
+
+    for(i = 0; i < MAX_BUS; i++)
+    {
+        for(j = 0; j < MAX_PASS; j++)
+        {
+            passengers[i][j].priorityNo = 0;
+            strcpy(passengers[i][j].lastName, "");
+            strcpy(passengers[i][j].firstName, "");
+            passengers[i][j].idNo = 0;
+            passengers[i][j].dropOff = 0;
+        }
+    }
+}
+
+int
+isValidTrip(struct TripInfo trip[],
+            stringTrip tripNo)
+{
+    int i;
+    int tripIndex = -1;
+
+    for(i = 0; i < MAX_BUS; i++)
+    {
+        if(strcmp(trip[i].tripNumber, tripNo) == 0)
+        {
+            tripIndex = i;
+        }
+    }
+
+    return tripIndex;
+}
+
+int
+isFullTrip(int tripIndex,
+           struct Card passengers[][MAX_PASS])
+{
+    int i;
+    int passengerCount = 0;
+    int isFull = 0;
+
+    for(i = 0; i < MAX_PASS; i++)
+    {
+        if(passengers[tripIndex][i].priorityNo != 0)
+        {
+            passengerCount++;
+        }
+    }
+
+    if(passengerCount == MAX_PASS)
+    {
+        isFull = 1;
+    }
+
+    return isFull;
+}
+
+int
+getEmptySeat(int tripIndex,
+             struct Card passengers[][MAX_PASS])
+{
+    int i;
+    int found = 0;
+    int emptySeat = -1;
+
+    for(i = 0; i < MAX_PASS; i++)
+    {
+        if(passengers[tripIndex][i].priorityNo == 0 && !found)
+        {
+            emptySeat = i;
+            found = 1;
+        }
+    }
+
+    return emptySeat;
+}
+
+void
+displayTrips(struct TripInfo trip[])
+{
+    int i;
+    int rowsMax = 11;
+    int firstRouteCount = 9;
+    
+    printf("%-10s%-9s%-17s", "Trip", "Time", "Route");
+    printf("%-10s%-9s%s\n\n", "Trip", "Time", "Route");
+
+    for(i = 0; i < rowsMax; i++)
+    {
+        // Display trips from first route (first 3 columns)
+        if(trip[i].dropOffSet == 0 || trip[i].dropOffSet == 1)
+        {
+            printf("%-10s%-9s%-17s", trip[i].tripNumber,
+                                     trip[i].tripTime,
+                                     trip[i].tripRoute);
+        }
+        else    // Print spaces if first route has less trips than second route
+        {
+            printf("%36s", "");
+        }
+
+        // Display trips from second route (next 3 columns)
+        if(trip[i + firstRouteCount].dropOffSet == 2 || trip[i + firstRouteCount].dropOffSet == 3)
+        {
+            printf("%-10s%-9s%s\n", trip[i + firstRouteCount].tripNumber,
+                                    trip[i + firstRouteCount].tripTime,
+                                    trip[i + firstRouteCount].tripRoute);
+        }
+    }
+
+    printf("\n");
+}
+
+void
+displayDropOffs(struct TripInfo trip[],
+                int tripIndex,
+                stringDropOff dropOffs[][4])
+{
+    int i;
+    int dropOffCount = 4;
+
+    for(i = 0; i < dropOffCount; i++)
+    {
+        printf("[%d] %s\n", i + 1, dropOffs[trip[tripIndex].dropOffSet][i]);
+
+        if(strcmp(dropOffs[trip[tripIndex].dropOffSet][i + 1], "") == 0)
+        {
+            i = dropOffCount;
+        }
+    }
+
+    printf("\n");
+}
