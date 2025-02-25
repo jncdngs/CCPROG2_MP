@@ -28,64 +28,28 @@ struct Card
     int dropOff;
 };
 
-void
-cls();
+// funcDisplay.c
+void cls();
+void clearInputBuffer();
+void printError();
+void printTitle();
+void printPassengerTitle();
+void printPassengerInfoTitle();
+void printPassengerCountTitle();
+void printPersonnelTitle();
 
-void
-clearInputBuffer();
+// funcCommon.c
+void initializePassengers(struct Card[][MAX_PASS]);
+int isValidTrip(struct TripInfo[], stringTrip);
+int isFullTrip(int, struct Card[][MAX_PASS]);
+int getEmptySeat(int, struct Card[][MAX_PASS]);
+void displayTrips(struct TripInfo[]);
+void displayDropOffs(struct TripInfo[], int, stringDropOff[][4]);
 
+// funcPassenger.c
+void enterPassengerInfo(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][4]);
 
-
-void
-printError();
-
-void
-printTitle();
-
-void
-printPassengerTitle();
-
-void
-printPassengerInfoTitle();
-
-void
-printPassengerCountTitle();
-
-void
-printPersonnelTitle();
-
-
-
-void
-initializePassengers(struct Card[][MAX_PASS]);
-
-int
-isValidTrip(struct TripInfo[],
-            stringTrip);
-
-int
-isFullTrip(int, struct Card[][MAX_PASS]);
-
-int
-getEmptySeat(int, struct Card[][MAX_PASS]);
-
-void
-displayTrips(struct TripInfo[]);
-
-void
-displayDropOffs(struct TripInfo[],
-                int,
-                stringDropOff[][4]);
-
-void
-enterPassengerInfo(struct TripInfo[],
-                   struct Card[][MAX_PASS],
-                   stringDropOff[][4]);
-
-
-
-void
-viewPassengerCount(struct TripInfo[],
-                   struct Card[][MAX_PASS]);
+// funcPersonnel.c
+void viewPassengerCount(struct TripInfo[], struct Card[][MAX_PASS]);
 
 #endif
