@@ -450,6 +450,9 @@ viewPassengerCount(struct TripInfo trip[],
     {
         // Ask user for trip number
         printPassengerCountTitle();
+        
+        displayTrips(trip);
+        
         printf("Please enter the trip number (AE1xx): ");
         scanf("%5s", tripNo);
 
