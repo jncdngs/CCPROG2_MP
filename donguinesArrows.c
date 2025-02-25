@@ -156,6 +156,41 @@ getEmptySeat(int tripIndex,
     return emptySeat;
 }
 
+void displayTrips(struct TripInfo trip[])
+{
+    int i;
+    int rowsMax = 11;
+    int firstRouteCount = 9;
+    
+    printf("%-10s%-9s%-17s", "Trip", "Time", "Route");
+    printf("%-10s%-9s%s\n\n", "Trip", "Time", "Route");
+
+    for(i = 0; i < rowsMax; i++)
+    {
+        // Display trips from first route (first 3 columns)
+        if(trip[i].dropOffSet == 0 || trip[i].dropOffSet == 1)
+        {
+            printf("%-10s%-9s%-17s", trip[i].tripNumber,
+                                     trip[i].tripTime,
+                                     trip[i].tripRoute);
+        }
+        else    // Print spaces if first route has less trips than second route
+        {
+            printf("%36s", "");
+        }
+
+        // Display trips from second route (next 3 columns)
+        if(trip[i + firstRouteCount].dropOffSet == 2 || trip[i + firstRouteCount].dropOffSet == 3)
+        {
+            printf("%-10s%-9s%s\n", trip[i + firstRouteCount].tripNumber,
+                                    trip[i + firstRouteCount].tripTime,
+                                    trip[i + firstRouteCount].tripRoute);
+        }
+    }
+
+    printf("\n");
+}
+
 void
 displayDropOffs(struct TripInfo trip[],
                 int tripIndex,
@@ -215,6 +250,9 @@ enterPassengerInfo(struct TripInfo trip[],
     {
         // Ask user for trip number
         printPassengerInfoTitle();
+
+        displayTrips(trip);
+
         printf("Please enter the trip number (AE1xx): ");
         scanf("%5s", tripNo);
 
@@ -259,7 +297,7 @@ enterPassengerInfo(struct TripInfo trip[],
                 printf("[5] University Fellow\n");
                 printf("[6] Employee / Student with Official Business\n\n");
     
-                printf("Type of passenger: ");
+                printf("Please enter type of passenger: ");
                 if(scanf("%d", &priorityNo) != 1)
                 {
                     // Prevent loop when entering char
@@ -300,7 +338,7 @@ enterPassengerInfo(struct TripInfo trip[],
                 printPassengerInfoTitle();
                 printf("Please enter the following information\n\n");
     
-                printf("ID No (1xxxxxxx): ");
+                printf("Please enter your ID Number (1xxxxxxx): ");
                 if(scanf("%d", &idNo) != 1)
                 {
                     // Prevent loop when entering char
@@ -327,7 +365,7 @@ enterPassengerInfo(struct TripInfo trip[],
 
                 displayDropOffs(trip, tripIndex, dropOffs);
     
-                printf("Drop-off: ");
+                printf("Please select a drop-off point: ");
                 if(scanf("%d", &dropOff) != 1)
                 {
                     // Prevent loop when entering char
@@ -353,7 +391,7 @@ enterPassengerInfo(struct TripInfo trip[],
             printf("Priority No: %d\n", priorityNo);
             printf("Last Name:   %s\n", lastName);
             printf("First Name:  %s\n", firstName);
-            printf("ID No:       %d\n", idNo);
+            printf("ID Number:   %d\n", idNo);
             printf("Drop-off:    %s\n\n", dropOffs[trip[tripIndex].dropOffSet][dropOff - 1]);
     
             // Ask user to check if information is correct
