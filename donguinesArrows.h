@@ -70,6 +70,9 @@ int
 getEmptySeat(int, struct Card[][MAX_PASS]);
 
 void
+displayTrips(struct TripInfo[]);
+
+void
 displayDropOffs(struct TripInfo[],
                 int,
                 stringDropOff[][4]);
