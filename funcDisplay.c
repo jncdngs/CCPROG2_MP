@@ -1,3 +1,11 @@
+/*******************************************************************************
+
+    Acknowledgement/s:
+
+    ASCII art generated using patorjk.com
+
+*******************************************************************************/
+
 #include <stdio.h>
 #include <conio.h>  // for getch()
 #include <string.h>
