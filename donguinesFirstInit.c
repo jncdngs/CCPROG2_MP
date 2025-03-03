@@ -196,7 +196,7 @@ main()
                 else if (personnelMenuOption == 2)  // [2] View drop-off count
                 {
                     cls();
-                    // View drop-off count
+                    viewDropOffCount(trip, passengers, dropOffs);
                 }
                 else if (personnelMenuOption == 3)  // [3] View passenger information
                 {
