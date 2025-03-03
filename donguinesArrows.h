@@ -49,10 +49,10 @@ void displayTrips(struct TripInfo[]);
 void displayDropOffs(struct TripInfo[], int, stringDropOff[][MAX_DROPOFFS]);
 
 // funcPassenger.c
-void enterPassengerInfo(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][4]);
+void enterPassengerInfo(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS]);
 
 // funcPersonnel.c
 void viewPassengerCount(struct TripInfo[], struct Card[][MAX_PASS]);
-void viewDropOffCount(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][4]);
+void viewDropOffCount(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS]);
 
 #endif
