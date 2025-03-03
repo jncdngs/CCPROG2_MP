@@ -6,7 +6,7 @@
 void
 enterPassengerInfo(struct TripInfo trip[],
                    struct Card passengers[][MAX_PASS],
-                   stringDropOff dropOffs[][4])
+                   stringDropOff dropOffs[][MAX_DROPOFFS])
 {
     stringTrip tripNo;
     stringName lastName;

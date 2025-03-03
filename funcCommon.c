@@ -122,7 +122,7 @@ displayTrips(struct TripInfo trip[])
 void
 displayDropOffs(struct TripInfo trip[],
                 int tripIndex,
-                stringDropOff dropOffs[][4])
+                stringDropOff dropOffs[][MAX_DROPOFFS])
 {
     int i;
     int dropOffCount = 4;

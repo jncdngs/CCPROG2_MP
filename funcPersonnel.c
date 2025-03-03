@@ -85,3 +85,11 @@ viewPassengerCount(struct TripInfo trip[],
 
     cls();
 }
+
+void
+viewDropOffCount(struct TripInfo trip[],
+                 struct Card passengers[][MAX_PASS],
+                 stringDropOff dropOffs[][MAX_DROPOFFS])
+{
+    
+}
