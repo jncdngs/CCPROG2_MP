@@ -51,19 +51,16 @@ main()
                                         "Phase 5, San Jose Village",
                                         "Milagros Del Rosario (MRR) Bldg."
                                     },
-
                                     {
                                         "Laguna Blvd. Guard House",
                                         "Milagros Del Rosario (MRR) Bldg."
                                     },
-
                                     {
                                         "Petron Gasoline Station",
                                         "Gate 4: Gokongwei",
                                         "Gate 2: Henry Sy (North)",
                                         "Gate 1: LS Hall (South)"
                                     },
-
                                     {
                                         "College of St. Benilde (CSB)",
                                         "Gate 4: Gokongwei",
