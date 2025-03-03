@@ -125,15 +125,14 @@ displayDropOffs(struct TripInfo trip[],
                 stringDropOff dropOffs[][MAX_DROPOFFS])
 {
     int i;
-    int dropOffCount = 4;
 
-    for(i = 0; i < dropOffCount; i++)
+    for(i = 0; i < MAX_DROPOFFS; i++)
     {
         printf("[%d] %s\n", i + 1, dropOffs[trip[tripIndex].dropOffSet][i]);
 
         if(strcmp(dropOffs[trip[tripIndex].dropOffSet][i + 1], "") == 0)
         {
-            i = dropOffCount;
+            i = MAX_DROPOFFS;
         }
     }
 
