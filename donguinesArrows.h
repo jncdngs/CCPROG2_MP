@@ -6,11 +6,11 @@
 #define MAX_BUS 20      // Maximum of 20 regular shuttles
 #define MAX_DROPOFFS 4  // Maximum of 4 drop-off points per shuttle
 
-typedef char stringTrip[6];
-typedef char stringTime[5];
-typedef char stringRoute[8];
-typedef char stringDropOff[41];
-typedef char stringName[51];
+typedef char stringTrip[6];         // "AE101", etc.
+typedef char stringTime[5];         // "0600", etc.
+typedef char stringRoute[8];        // "MNL-LAG", "LAG-MNL"
+typedef char stringDropOff[41];     // Full drop-off point name
+typedef char stringName[MAX_CHARS]; // Passenger name
 
 struct TripInfo
 {
