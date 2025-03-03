@@ -130,6 +130,7 @@ displayDropOffs(struct TripInfo trip[],
     {
         printf("[%d] %s\n", i + 1, dropOffs[trip[tripIndex].dropOffSet][i]);
 
+        // Break the loop if all available drop-off points have been displayed
         if(strcmp(dropOffs[trip[tripIndex].dropOffSet][i + 1], "") == 0)
         {
             i = MAX_DROPOFFS;
@@ -163,8 +164,10 @@ displayDropOffCount(struct TripInfo trip[],
     // Display list of drop-off points with passenger count
     for(i = 0; i < MAX_DROPOFFS; i++)
     {       
-        printf("%-36s%d\n", dropOffs[trip[tripIndex].dropOffSet][i], passengerCount[i]);
+        printf("%-36s%d\n", dropOffs[trip[tripIndex].dropOffSet][i],
+                            passengerCount[i]);
 
+        // Break the loop if all available drop-off points have been displayed
         if(strcmp(dropOffs[trip[tripIndex].dropOffSet][i + 1], "") == 0)
         {
             i = MAX_DROPOFFS;
