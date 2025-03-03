@@ -91,5 +91,43 @@ viewDropOffCount(struct TripInfo trip[],
                  struct Card passengers[][MAX_PASS],
                  stringDropOff dropOffs[][MAX_DROPOFFS])
 {
+    stringTrip tripNo;
     
+    int tripIndex = -1;
+
+    int passengerCount[MAX_DROPOFFS] = {0};
+    
+    do
+    {
+        // Ask user for trip number
+        printDropOffTitle();
+        
+        displayTrips(trip);
+        
+        printf("Please enter the trip number (AE1xx): ");
+        scanf("%5s", tripNo);
+
+        // Check if trip number is valid
+        tripIndex = isValidTrip(trip, tripNo);
+
+        if(tripIndex == -1)
+        {
+            cls();
+            printf("\033[0;31mERROR:\033[0m Trip not found or invalid. Please try again.\n\n");
+        }
+    }
+    while(tripIndex == -1);
+
+    cls();
+    printDropOffTitle();
+    printf("Drop-off Count for Trip %s\n\n\n", trip[tripIndex].tripNumber);
+
+    printf("%-36s%s\n\n", "Drop-off Point", "Passenger Count");
+
+    displayDropOffCount(trip, tripIndex, passengers, dropOffs, passengerCount);
+    
+    printf("Press any key to return to the main menu...");
+    getch();
+
+    cls();
 }

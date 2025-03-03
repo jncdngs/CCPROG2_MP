@@ -47,6 +47,7 @@ int isFullTrip(int, struct Card[][MAX_PASS]);
 int getEmptySeat(int, struct Card[][MAX_PASS]);
 void displayTrips(struct TripInfo[]);
 void displayDropOffs(struct TripInfo[], int, stringDropOff[][MAX_DROPOFFS]);
+void displayDropOffCount(struct TripInfo[], int, struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS], int[]);
 
 // funcPassenger.c
 void enterPassengerInfo(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS]);

@@ -16,7 +16,7 @@ initializePassengers(struct Card passengers[][MAX_PASS])
             strcpy(passengers[i][j].lastName, "");
             strcpy(passengers[i][j].firstName, "");
             passengers[i][j].idNo = 0;
-            passengers[i][j].dropOff = 0;
+            passengers[i][j].dropOff = -1;
         }
     }
 }
@@ -129,6 +129,41 @@ displayDropOffs(struct TripInfo trip[],
     for(i = 0; i < MAX_DROPOFFS; i++)
     {
         printf("[%d] %s\n", i + 1, dropOffs[trip[tripIndex].dropOffSet][i]);
+
+        if(strcmp(dropOffs[trip[tripIndex].dropOffSet][i + 1], "") == 0)
+        {
+            i = MAX_DROPOFFS;
+        }
+    }
+
+    printf("\n");
+}
+
+void
+displayDropOffCount(struct TripInfo trip[],
+                    int tripIndex,
+                    struct Card passengers[][MAX_PASS],
+                    stringDropOff dropOffs[][MAX_DROPOFFS],
+                    int passengerCount[])
+{
+    int i, j;
+
+    // Count number of passengers for each drop-off point
+    for(i = 0; i < MAX_PASS; i++)
+    {      
+        for(j = 0; j < MAX_DROPOFFS; j++)
+        {
+            if(passengers[tripIndex][i].dropOff - 1 == j)
+            {
+                passengerCount[j]++;
+            }
+        }
+    }
+
+    // Display list of drop-off points with passenger count
+    for(i = 0; i < MAX_DROPOFFS; i++)
+    {       
+        printf("%-36s%d\n", dropOffs[trip[tripIndex].dropOffSet][i], passengerCount[i]);
 
         if(strcmp(dropOffs[trip[tripIndex].dropOffSet][i + 1], "") == 0)
         {
