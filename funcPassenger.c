@@ -111,14 +111,14 @@ enterPassengerInfo(struct TripInfo trip[],
             cls();
             printPassengerInfoTitle();
             printf("Please enter the following information\n\n");
-            printf("Last Name (No spaces, max 50 characters): ");
+            printf("Last Name (No spaces, max 20 characters): ");
             scanf("%50s", lastName);
             clearInputBuffer();
     
             cls();
             printPassengerInfoTitle();
             printf("Please enter the following information\n\n");
-            printf("First Name (No spaces, max 50 characters): ");
+            printf("First Name (No spaces, max 20 characters): ");
             scanf("%50s", firstName);
             clearInputBuffer();
     
