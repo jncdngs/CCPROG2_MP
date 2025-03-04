@@ -24,6 +24,13 @@ clearInputBuffer()
 }
 
 void
+pressAnyKey()
+{
+    printf("Press any key to return to the main menu...");
+    getch();
+}
+
+void
 printError()
 {
     printf("\033[0;31mERROR: \033[0m");

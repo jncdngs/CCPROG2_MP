@@ -237,7 +237,9 @@ main()
     
     cls();
     printTitle();
+    
     printf("Thank you for using the Arrows Express Embarkation System!\n\n");
+    
     printf("Press any key to exit...");
     getch();
 

@@ -63,8 +63,9 @@ enterPassengerInfo(struct TripInfo trip[],
         cls();
         printPassengerInfoTitle();
         printf("The selected trip is full.\n\n");
-        printf("Press any key to return to the main menu...");
-        getch();
+
+        pressAnyKey();
+
         tripIndex = -1;
     }
     else
@@ -217,8 +218,8 @@ enterPassengerInfo(struct TripInfo trip[],
         cls();
         printPassengerInfoTitle();
         printf("Information has been saved.\n\n");
-        printf("Press any key to return to the main menu...");
-        getch();
+        
+        pressAnyKey();
     }
 
     cls();

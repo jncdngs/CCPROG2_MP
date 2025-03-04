@@ -80,8 +80,7 @@ viewPassengerCount(struct TripInfo trip[],
     printf("Seats taken:     %d\n", passengerCount);
     printf("Seats available: %d\n\n", MAX_PASS - passengerCount);
 
-    printf("Press any key to return to the main menu...");
-    getch();
+    pressAnyKey();
 
     cls();
 }
@@ -127,8 +126,7 @@ viewDropOffCount(struct TripInfo trip[],
 
     displayDropOffCount(trip, tripIndex, passengers, dropOffs, passengerCount);
     
-    printf("Press any key to return to the main menu...");
-    getch();
+    pressAnyKey();
 
     cls();
 }
@@ -187,8 +185,7 @@ viewPassengerInfo(struct TripInfo trip[],
 
     printf("\n");
 
-    printf("Press any key to return to the main menu...");
-    getch();
+    pressAnyKey();
 
     cls();
 }

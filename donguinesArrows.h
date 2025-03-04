@@ -33,6 +33,7 @@ struct Card
 // funcDisplay.c
 void cls();
 void clearInputBuffer();
+void pressAnyKey();
 void printError();
 void printTitle();
 void printPassengerTitle();
