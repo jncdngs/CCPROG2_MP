@@ -9,20 +9,11 @@ enterPassengerInfo(struct TripInfo trip[],
                    stringDropOff dropOffs[][MAX_DROPOFFS])
 {
     stringTrip tripNo;
-    /* stringName lastName;
-    stringName firstName; */
     
     int tripIndex = -1;
-    /* int seatIndex = -1; */
     char correctInfo = '\0';
 
     struct Card temp = {99, "", "", 0, 0};
-    /* int priorityNo = 0;
-    int idNo = 0;
-    int dropOff = 0;
-
-    strcpy(lastName, "");
-    strcpy(firstName, ""); */
 
     // Display disclaimer (can be moved to next trip or removed)
     printPassengerInfoTitle();
@@ -70,9 +61,7 @@ enterPassengerInfo(struct TripInfo trip[],
         tripIndex = -1;
     }
     else
-    {
-        /* seatIndex = getEmptySeat(tripIndex, passengers); */
-        
+    {        
         do
         {       
             // Ask user for information
@@ -211,12 +200,6 @@ enterPassengerInfo(struct TripInfo trip[],
         // Insert based on priority number
         insertPassenger(passengers, tripIndex, temp);
         getch();
-        
-        /* passengers[tripIndex][seatIndex].priorityNo = temp.priorityNo;
-        strcpy(passengers[tripIndex][seatIndex].lastName, temp.lastName);
-        strcpy(passengers[tripIndex][seatIndex].firstName, temp.firstName);
-        passengers[tripIndex][seatIndex].idNo = temp.idNo;
-        passengers[tripIndex][seatIndex].dropOff = temp.dropOff; */
 
         // Tell user that information has been saved
         cls();
