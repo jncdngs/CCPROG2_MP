@@ -118,6 +118,7 @@ viewDropOffCount(struct TripInfo trip[],
     }
     while(tripIndex == -1);
 
+    // Display the drop-off list and count
     cls();
     printDropOffTitle();
     printf("Drop-off Count for Trip %s\n\n\n", trip[tripIndex].tripNumber);
@@ -126,6 +127,66 @@ viewDropOffCount(struct TripInfo trip[],
 
     displayDropOffCount(trip, tripIndex, passengers, dropOffs, passengerCount);
     
+    printf("Press any key to return to the main menu...");
+    getch();
+
+    cls();
+}
+
+void
+viewPassengerInfo(struct TripInfo trip[],
+                  struct Card passengers[][MAX_PASS])
+{
+    stringTrip tripNo;
+    stringFullName fullName;
+
+    int tripIndex = -1;
+
+    int i;
+
+    do
+    {
+        // Ask user for trip number
+        printPassengerCountTitle();
+        
+        displayTrips(trip);
+        
+        printf("Please enter the trip number (AE1xx): ");
+        scanf("%5s", tripNo);
+
+        // Check if trip number is valid
+        tripIndex = isValidTrip(trip, tripNo);
+
+        if(tripIndex == -1)
+        {
+            cls();
+            printf("\033[0;31mERROR:\033[0m Trip not found or invalid. Please try again.\n\n");
+        }
+    }
+    while(tripIndex == -1);
+
+    // Display information of passengers from selected trip
+    cls();
+    printPassengerCountTitle();
+    printf("Passengers for Trip %s\n\n", trip[tripIndex].tripNumber);
+
+    printf("%-46s%-12s%s\n\n", "Name", "Priority", "ID Number");
+
+    for(i = 0; i < MAX_PASS; i++)
+    {
+        if(passengers[tripIndex][i].priorityNo != 0)
+        {
+            // Combine first name and last name
+            strcat(strcat(strcpy(fullName, passengers[tripIndex][i].lastName), ", "), passengers[tripIndex][i].firstName);
+
+            printf("%-46s%-12d%d\n", fullName,
+                                   passengers[tripIndex][i].priorityNo,
+                                   passengers[tripIndex][i].idNo);
+        }
+    }
+
+    printf("\n");
+
     printf("Press any key to return to the main menu...");
     getch();
 

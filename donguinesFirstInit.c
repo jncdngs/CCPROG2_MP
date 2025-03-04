@@ -198,7 +198,7 @@ main()
                 else if (personnelMenuOption == 3)  // [3] View passenger information
                 {
                     cls();
-                    // View passenger information
+                    viewPassengerInfo(trip, passengers);
                 }
                 else if (personnelMenuOption == 4)  // [4] Load passenger
                 {
