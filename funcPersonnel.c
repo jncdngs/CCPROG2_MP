@@ -41,7 +41,7 @@ viewPassengerCount(struct TripInfo trip[],
     // Assign X for taken seats and O for empty seats 
     for(i = 0; i < MAX_PASS; i++)
     {
-        if(passengers[tripIndex][i].priorityNo != 0)
+        if(passengers[tripIndex][i].priorityNo != 99)
         {
             seatStatus[i] = 'X';
             passengerCount++;
@@ -145,7 +145,7 @@ viewPassengerInfo(struct TripInfo trip[],
     do
     {
         // Ask user for trip number
-        printPassengerCountTitle();
+        printPassengerInfoTitle();
         
         displayTrips(trip);
         
@@ -165,14 +165,14 @@ viewPassengerInfo(struct TripInfo trip[],
 
     // Display information of passengers from selected trip
     cls();
-    printPassengerCountTitle();
+    printPassengerInfoTitle();
     printf("Passengers for Trip %s\n\n", trip[tripIndex].tripNumber);
 
     printf("%-46s%-12s%s\n\n", "Name", "Priority", "ID Number");
 
     for(i = 0; i < MAX_PASS; i++)
     {
-        if(passengers[tripIndex][i].priorityNo != 0)
+        if(passengers[tripIndex][i].priorityNo != 99)
         {
             // Combine first name and last name
             strcat(strcat(strcpy(fullName, passengers[tripIndex][i].lastName), ", "), passengers[tripIndex][i].firstName);

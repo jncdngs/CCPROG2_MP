@@ -12,11 +12,11 @@ initializePassengers(struct Card passengers[][MAX_PASS])
     {
         for(j = 0; j < MAX_PASS; j++)
         {
-            passengers[i][j].priorityNo = 0;
+            passengers[i][j].priorityNo = 99;
             strcpy(passengers[i][j].lastName, "");
             strcpy(passengers[i][j].firstName, "");
             passengers[i][j].idNo = 0;
-            passengers[i][j].dropOff = -1;
+            passengers[i][j].dropOff = 0;
         }
     }
 }
@@ -49,7 +49,7 @@ isFullTrip(int tripIndex,
 
     for(i = 0; i < MAX_PASS; i++)
     {
-        if(passengers[tripIndex][i].priorityNo != 0)
+        if(passengers[tripIndex][i].priorityNo != 99)
         {
             passengerCount++;
         }
@@ -68,15 +68,14 @@ getEmptySeat(int tripIndex,
              struct Card passengers[][MAX_PASS])
 {
     int i;
-    int found = 0;
     int emptySeat = -1;
 
     for(i = 0; i < MAX_PASS; i++)
     {
-        if(passengers[tripIndex][i].priorityNo == 0 && !found)
+        if(passengers[tripIndex][i].priorityNo == 99)
         {
             emptySeat = i;
-            found = 1;
+            i = MAX_PASS;
         }
     }
 
@@ -95,9 +94,37 @@ swapStruct(struct Card *passenger1,
 }
 
 void
-insertPassenger()
+copyStruct(struct Card *dest,
+           struct Card *src)
 {
+    *dest = *src;
+}
+
+void
+insertPassenger(struct Card passengers[][MAX_PASS],
+                int tripIndex,
+                struct Card temp)
+{
+    int i;
     
+    for(i = MAX_PASS - 1; i >= 0; i--)
+    {
+        if(temp.priorityNo < passengers[tripIndex][i].priorityNo)
+        {
+            printf("i = %d\n", i);
+            printf("temp = %d\n", temp.priorityNo);
+            printf("[i + 1] = %d, [i] %d", passengers[tripIndex][i + 1].priorityNo, passengers[tripIndex][i].priorityNo);
+            if(i == MAX_PASS - 1)
+            {
+                copyStruct(&passengers[tripIndex][i], &temp);
+            }
+            else
+            {
+                copyStruct(&passengers[tripIndex][i + 1], &passengers[tripIndex][i]);
+                copyStruct(&passengers[tripIndex][i], &temp);
+            }
+        }
+    }
 }
 
 void
