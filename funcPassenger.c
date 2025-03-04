@@ -206,6 +206,7 @@ enterPassengerInfo(struct TripInfo trip[],
         while(correctInfo != 'Y' && correctInfo != 'y');    // If incorrect, repeat process
         
         // If correct, pass to struct array (using trip number)
+        // Insert based on priority number
         passengers[tripIndex][seatIndex].priorityNo = priorityNo;
         strcpy(passengers[tripIndex][seatIndex].lastName, lastName);
         strcpy(passengers[tripIndex][seatIndex].firstName, firstName);

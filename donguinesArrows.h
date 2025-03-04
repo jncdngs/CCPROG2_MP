@@ -45,6 +45,8 @@ void initializePassengers(struct Card[][MAX_PASS]);
 int isValidTrip(struct TripInfo[], stringTrip);
 int isFullTrip(int, struct Card[][MAX_PASS]);
 int getEmptySeat(int, struct Card[][MAX_PASS]);
+void swapStruct(struct Card, struct Card);
+void insertPassenger();
 void displayTrips(struct TripInfo[]);
 void displayDropOffs(struct TripInfo[], int, stringDropOff[][MAX_DROPOFFS]);
 void displayDropOffCount(struct TripInfo[], int, struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS], int[]);
@@ -55,5 +57,6 @@ void enterPassengerInfo(struct TripInfo[], struct Card[][MAX_PASS], stringDropOf
 // funcPersonnel.c
 void viewPassengerCount(struct TripInfo[], struct Card[][MAX_PASS]);
 void viewDropOffCount(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS]);
+
 
 #endif
