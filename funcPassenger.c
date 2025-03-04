@@ -9,19 +9,20 @@ enterPassengerInfo(struct TripInfo trip[],
                    stringDropOff dropOffs[][MAX_DROPOFFS])
 {
     stringTrip tripNo;
-    stringName lastName;
-    stringName firstName;
+    /* stringName lastName;
+    stringName firstName; */
     
     int tripIndex = -1;
-    int seatIndex = -1;
-
-    int priorityNo = 0;
-    int idNo = 0;
-    int dropOff = 0;
+    /* int seatIndex = -1; */
     char correctInfo = '\0';
 
+    struct Card temp = {99, "", "", 0, 0};
+    /* int priorityNo = 0;
+    int idNo = 0;
+    int dropOff = 0;
+
     strcpy(lastName, "");
-    strcpy(firstName, "");
+    strcpy(firstName, ""); */
 
     // Display disclaimer (can be moved to next trip or removed)
     printPassengerInfoTitle();
@@ -70,7 +71,7 @@ enterPassengerInfo(struct TripInfo trip[],
     }
     else
     {
-        seatIndex = getEmptySeat(tripIndex, passengers);
+        /* seatIndex = getEmptySeat(tripIndex, passengers); */
         
         do
         {       
@@ -89,7 +90,7 @@ enterPassengerInfo(struct TripInfo trip[],
                 printf("[6] Employee / Student with Official Business\n\n");
     
                 printf("Please enter type of passenger: ");
-                if(scanf("%d", &priorityNo) != 1)
+                if(scanf("%d", &temp.priorityNo) != 1)
                 {
                     // Prevent loop when entering char
                     clearInputBuffer();
@@ -99,28 +100,28 @@ enterPassengerInfo(struct TripInfo trip[],
                     printError();
                 }
                 
-                else if(priorityNo != 1 && priorityNo != 2 && priorityNo != 3
-                    && priorityNo != 4 && priorityNo != 5 && priorityNo != 6)
+                else if(temp.priorityNo != 1 && temp.priorityNo != 2 && temp.priorityNo != 3
+                     && temp.priorityNo != 4 && temp.priorityNo != 5 && temp.priorityNo != 6)
                 {
                     cls();
                     printError();
                 }
             }
-            while(priorityNo != 1 && priorityNo != 2 && priorityNo != 3
-            && priorityNo != 4 && priorityNo != 5 && priorityNo != 6);
+            while(temp.priorityNo != 1 && temp.priorityNo != 2 && temp.priorityNo != 3
+               && temp.priorityNo != 4 && temp.priorityNo != 5 && temp.priorityNo != 6);
     
             cls();
             printPassengerInfoTitle();
             printf("Please enter the following information\n\n");
             printf("Last Name (No spaces, max 20 characters): ");
-            scanf("%50s", lastName);
+            scanf("%50s", temp.lastName);
             clearInputBuffer();
     
             cls();
             printPassengerInfoTitle();
             printf("Please enter the following information\n\n");
             printf("First Name (No spaces, max 20 characters): ");
-            scanf("%50s", firstName);
+            scanf("%50s", temp.firstName);
             clearInputBuffer();
     
             cls();
@@ -130,7 +131,7 @@ enterPassengerInfo(struct TripInfo trip[],
                 printf("Please enter the following information\n\n");
     
                 printf("Please enter your ID Number (1xxxxxxx): ");
-                if(scanf("%d", &idNo) != 1)
+                if(scanf("%d", &temp.idNo) != 1)
                 {
                     // Prevent loop when entering char
                     clearInputBuffer();
@@ -140,13 +141,13 @@ enterPassengerInfo(struct TripInfo trip[],
                     printError();
                 }
                 
-                else if(idNo < 10000000 || idNo > 19999999)
+                else if(temp.idNo < 10000000 || temp.idNo > 19999999)
                 {
                     cls();
                     printError();
                 }
             }
-            while(idNo < 10000000 || idNo > 19999999);
+            while(temp.idNo < 10000000 || temp.idNo > 19999999);
             
             cls();
             do
@@ -157,7 +158,7 @@ enterPassengerInfo(struct TripInfo trip[],
                 displayDropOffs(trip, tripIndex, dropOffs);
     
                 printf("Please select a drop-off point: ");
-                if(scanf("%d", &dropOff) != 1)
+                if(scanf("%d", &temp.dropOff) != 1)
                 {
                     // Prevent loop when entering char
                     clearInputBuffer();
@@ -167,23 +168,23 @@ enterPassengerInfo(struct TripInfo trip[],
                     printError();
                 }
                 
-                else if(dropOff != 1 && dropOff != 2 && dropOff != 3 && dropOff != 4)
+                else if(temp.dropOff != 1 && temp.dropOff != 2 && temp.dropOff != 3 && temp.dropOff != 4)
                 {
                     cls();
                     printError();
                 }
             }
-            while(dropOff != 1 && dropOff != 2 && dropOff != 3 && dropOff != 4);
+            while(temp.dropOff != 1 && temp.dropOff != 2 && temp.dropOff != 3 && temp.dropOff != 4);
     
             // Display entered information
             cls();
             printPassengerInfoTitle();
             printf("Here is the information you entered:\n\n");
-            printf("Priority No: %d\n", priorityNo);
-            printf("Last Name:   %s\n", lastName);
-            printf("First Name:  %s\n", firstName);
-            printf("ID Number:   %d\n", idNo);
-            printf("Drop-off:    %s\n\n", dropOffs[trip[tripIndex].dropOffSet][dropOff - 1]);
+            printf("Priority No: %d\n", temp.priorityNo);
+            printf("Last Name:   %s\n", temp.lastName);
+            printf("First Name:  %s\n", temp.firstName);
+            printf("ID Number:   %d\n", temp.idNo);
+            printf("Drop-off:    %s\n\n", dropOffs[trip[tripIndex].dropOffSet][temp.dropOff - 1]);
     
             // Ask user to check if information is correct
             do
@@ -202,21 +203,25 @@ enterPassengerInfo(struct TripInfo trip[],
                 }
             }
             while(correctInfo != 'Y' && correctInfo != 'y' &&
-                correctInfo != 'N' && correctInfo != 'n');
+                  correctInfo != 'N' && correctInfo != 'n');
         }
         while(correctInfo != 'Y' && correctInfo != 'y');    // If incorrect, repeat process
         
         // If correct, pass to struct array (using trip number)
         // Insert based on priority number
-        passengers[tripIndex][seatIndex].priorityNo = priorityNo;
-        strcpy(passengers[tripIndex][seatIndex].lastName, lastName);
-        strcpy(passengers[tripIndex][seatIndex].firstName, firstName);
-        passengers[tripIndex][seatIndex].idNo = idNo;
-        passengers[tripIndex][seatIndex].dropOff = dropOff;
+        insertPassenger(passengers, tripIndex, temp);
+        getch();
+        
+        /* passengers[tripIndex][seatIndex].priorityNo = temp.priorityNo;
+        strcpy(passengers[tripIndex][seatIndex].lastName, temp.lastName);
+        strcpy(passengers[tripIndex][seatIndex].firstName, temp.firstName);
+        passengers[tripIndex][seatIndex].idNo = temp.idNo;
+        passengers[tripIndex][seatIndex].dropOff = temp.dropOff; */
 
         // Tell user that information has been saved
         cls();
         printPassengerInfoTitle();
+        
         printf("Information has been saved.\n\n");
         
         pressAnyKey();
