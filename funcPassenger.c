@@ -61,7 +61,7 @@ enterPassengerInfo(struct TripInfo trip[],
         tripIndex = -1;
     }
     else
-    {        
+    {
         do
         {       
             // Ask user for information
