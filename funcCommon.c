@@ -111,9 +111,6 @@ insertPassenger(struct Card passengers[][MAX_PASS],
     {
         if(temp.priorityNo < passengers[tripIndex][i].priorityNo)
         {
-            printf("i = %d\n", i);
-            printf("temp = %d\n", temp.priorityNo);
-            printf("[i + 1] = %d, [i] %d", passengers[tripIndex][i + 1].priorityNo, passengers[tripIndex][i].priorityNo);
             if(i == MAX_PASS - 1)
             {
                 copyStruct(&passengers[tripIndex][i], &temp);
