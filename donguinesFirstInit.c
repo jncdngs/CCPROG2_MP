@@ -46,7 +46,8 @@ main()
                                         {"AE160", "1815", "LAG-MNL", 3}
                                     };
 
-    stringDropOff dropOffs[4][4] = {{
+    stringDropOff dropOffs[MAX_DROPOFFS][MAX_DROPOFFS] = 
+                                   {{
                                         "Mamplasan Toll Exit",
                                         "Phase 5, San Jose Village",
                                         "Milagros Del Rosario (MRR) Bldg."
@@ -234,6 +235,8 @@ main()
         }
     }
     while(mainMenuOption != 3);
+
+    // Save information to file
     
     cls();
     printTitle();
