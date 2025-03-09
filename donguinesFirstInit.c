@@ -265,6 +265,7 @@ main()
     while(exit != 'Y' && exit != 'y');
 
     // Save information to file
+    savePassengerInfo(trip, passengers, dropOffs);
     
     cls();
     printTitle();
