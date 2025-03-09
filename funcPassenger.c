@@ -4,8 +4,8 @@
 #include "donguinesArrows.h"
 
 /*
-Asks for trip number and passenger information and
-assigns user a seat if the trip is not full.
+Asks for trip number and passenger information and assigns user a seat if the 
+trip is not full.
 
 @param trip[]           array containing trip information (trip number, etc.)
 @param passengers[][]   array where the passenger information is stored
@@ -207,7 +207,6 @@ enterPassengerInfo(struct TripInfo trip[],
         // If correct, pass to struct array (using trip number)
         // Insert based on priority number
         insertPassenger(passengers, tripIndex, temp);
-        getch();
 
         // Tell user that information has been saved
         cls();
