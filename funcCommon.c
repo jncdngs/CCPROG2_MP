@@ -217,3 +217,52 @@ displayDropOffCount(struct TripInfo trip[],
 
     printf("\n");
 }
+
+void
+savePassengerInfo(struct TripInfo trip[],
+                  struct Card passengers[][MAX_PASS],
+                  stringDropOff dropOffs[][MAX_DROPOFFS])
+{
+    FILE *file;
+    int i, j;
+    stringFullName fullName;
+
+    file = fopen("test.txt", "w");
+
+    for(i = 0; i < MAX_BUS; i++)
+    {
+        for(j = 0; j < MAX_PASS; j++)
+        {
+            if(passengers[i][j].priorityNo != 99)
+            {
+                // Trip number
+                fprintf(file, "%s\n", trip[i].tripNumber);
+
+                // Embarkation point
+                if(trip[i].dropOffSet == 0 || trip[i].dropOffSet == 1)
+                {
+                    fprintf(file, "DLSU Manila Campus\n");
+                }
+                else if(trip[i].dropOffSet == 2 || trip[i].dropOffSet == 3)
+                {
+                    fprintf(file, "DLSU Laguna Campus\n");
+                }
+
+                // Passenger name
+                strcat(strcat(strcpy(fullName, passengers[i][j].lastName), ", "), passengers[i][j].firstName);
+                fprintf(file, "%s\n", fullName);
+
+                // ID number
+                fprintf(file, "%d\n", passengers[i][j].idNo);
+
+                // Priority number
+                fprintf(file, "%d\n", passengers[i][j].priorityNo);
+
+                // Drop-off point
+                fprintf(file, "%d - %s\n\n", passengers[i][j].dropOff, dropOffs[trip[i].dropOffSet][passengers[i][j].dropOff - 1]);
+            }
+        }
+    }
+
+    fclose(file);
+}
