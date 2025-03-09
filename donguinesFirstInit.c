@@ -70,6 +70,7 @@ main()
                                     }};
 
     float mainMenuOption, passengerMenuOption, personnelMenuOption;
+    char exit = '\0';
     
     initializePassengers(passengers);
     cls();
@@ -228,13 +229,40 @@ main()
             }
             while(personnelMenuOption != 7);
         }
+        else if(mainMenuOption == 3)
+        {
+            cls();
+
+            do
+            {
+                printTitle();
+                printf("Are you sure you want to exit? (Y/N): ");
+                if(scanf(" %c", &exit) != 1)
+                {
+                    cls();
+                    clearInputBuffer();
+                    printError();
+                }
+                
+                else if(exit != 'Y' && exit != 'y' &&
+                        exit != 'N' && exit != 'n')
+                {
+                    cls();
+                    printError();
+                }
+            }
+            while(exit != 'Y' && exit != 'y' &&
+                  exit != 'N' && exit != 'n');
+            
+            cls();
+        }
         else // Invalid option
         {
             cls();
             printError();
         }
     }
-    while(mainMenuOption != 3);
+    while(exit != 'Y' && exit != 'y');
 
     // Save information to file
     
