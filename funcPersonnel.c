@@ -3,6 +3,12 @@
 #include <string.h>
 #include "donguinesArrows.h"
 
+/*
+Asks for trip number and displays the seat map and passenger count for the trip.
+
+@param trip[]           array containing trip information (trip number, etc.)
+@param passengers[][]   array where the passenger information is stored
+*/
 void
 viewPassengerCount(struct TripInfo trip[],
                    struct Card passengers[][MAX_PASS])  
@@ -85,6 +91,14 @@ viewPassengerCount(struct TripInfo trip[],
     cls();
 }
 
+/*
+Asks for trip number and displays drop-off points for the trip with 
+corresponding passenger counts
+
+@param trip[]           array containing trip information (trip number, etc.)
+@param passengers[][]   array where the passenger information is stored
+@param dropOffs[][]     array containing full names of drop-off points
+*/
 void
 viewDropOffCount(struct TripInfo trip[],
                  struct Card passengers[][MAX_PASS],
@@ -168,7 +182,7 @@ viewPassengerInfo(struct TripInfo trip[],
     printPassengerInfoTitle();
     printf("Passengers for Trip %s\n\n", trip[tripIndex].tripNumber);
 
-    printf("%-46s%-12s%s\n\n", "Name", "Priority", "ID Number");
+    printf("%-8s%-46s%-12s%s\n\n", "Seat","Name", "Priority", "ID Number");
 
     for(i = 0; i < MAX_PASS; i++)
     {
@@ -177,9 +191,10 @@ viewPassengerInfo(struct TripInfo trip[],
             // Combine first name and last name
             strcat(strcat(strcpy(fullName, passengers[tripIndex][i].lastName), ", "), passengers[tripIndex][i].firstName);
 
-            printf("%-46s%-12d%d\n", fullName,
-                                   passengers[tripIndex][i].priorityNo,
-                                   passengers[tripIndex][i].idNo);
+            printf("%-08d%-46s%-12d%d\n", i + 1,
+                                         fullName,
+                                         passengers[tripIndex][i].priorityNo,
+                                         passengers[tripIndex][i].idNo);
         }
     }
 
