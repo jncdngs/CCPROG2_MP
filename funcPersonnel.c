@@ -228,17 +228,17 @@ searchPassenger(struct TripInfo trip[],
             if(strcmp(passengers[i][j].lastName, searchName) == 0)
             {
                 // Trip number
-                printf("%-16s%s\n", "Trip No:", trip[i].tripNumber);
+                printf("Trip No:        %s\n", trip[i].tripNumber);
 
                 // Priority number
-                printf("%-16s%d\n", "Priority No:", passengers[i][j].priorityNo);
+                printf("Priority No:    %d\n", passengers[i][j].priorityNo);
 
                 // Full name
                 strcat(strcat(strcpy(fullName, passengers[i][j].lastName), ", "), passengers[i][j].firstName);
-                printf("%-16s%s\n", "Full Name:", fullName);
+                printf("Full Name:      %s\n", fullName);
 
                 // ID number
-                printf("%-16s%d\n", "ID Number:", passengers[i][j].idNo);
+                printf("ID Number:      %d\n", passengers[i][j].idNo);
 
                 // Embarkation point
                 if(trip[i].dropOffSet == 0 || trip[i].dropOffSet == 1)
@@ -250,10 +250,10 @@ searchPassenger(struct TripInfo trip[],
                     strcpy(origin, "DLSU Laguna Campus");
                 }
                 
-                printf("%-16s%s\n", "From:", origin);
+                printf("From:           %s\n", origin);
 
                 // Drop-off point
-                printf("%-16s%s\n\n", "To:", dropOffs[trip[i].dropOffSet][passengers[i][j].dropOff - 1]);
+                printf("To:             %s\n\n", dropOffs[trip[i].dropOffSet][passengers[i][j].dropOff - 1]);
 
                 found = 1;
             }
