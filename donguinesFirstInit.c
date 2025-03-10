@@ -210,7 +210,7 @@ main()
                 else if (personnelMenuOption == 5)  // [5] Search passenger
                 {
                     cls();
-                    // Search passenger
+                    searchPassenger(trip, passengers, dropOffs);
                 }
                 else if (personnelMenuOption == 6)  // [6] Load recent trip file
                 {

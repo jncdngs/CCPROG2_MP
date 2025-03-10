@@ -200,3 +200,72 @@ viewPassengerInfo(struct TripInfo trip[],
 
     cls();
 }
+
+// 
+void
+searchPassenger(struct TripInfo trip[],
+                struct Card passengers[][MAX_PASS],
+                stringDropOff dropOffs[][MAX_DROPOFFS])
+{
+    int i, j;
+    int found = 0;
+    stringName searchName;
+    stringFullName fullName;
+    stringDropOff origin = "\0";
+    
+    printSearchPassengerTitle();
+    printf("Please enter the last name (No spaces, max 20 characters): ");
+    scanf("%20s", searchName);
+    clearInputBuffer();
+
+    cls();
+    printSearchPassengerTitle();
+
+    for(i = 0; i < MAX_BUS; i++)
+    {
+        for(j = 0; j < MAX_PASS; j++)
+        {
+            if(strcmp(passengers[i][j].lastName, searchName) == 0)
+            {
+                // Trip number
+                printf("%-16s%s\n", "Trip No:", trip[i].tripNumber);
+
+                // Priority number
+                printf("%-16s%d\n", "Priority No:", passengers[i][j].priorityNo);
+
+                // Full name
+                strcat(strcat(strcpy(fullName, passengers[i][j].lastName), ", "), passengers[i][j].firstName);
+                printf("%-16s%s\n", "Full Name:", fullName);
+
+                // ID number
+                printf("%-16s%d\n", "ID Number:", passengers[i][j].idNo);
+
+                // Embarkation point
+                if(trip[i].dropOffSet == 0 || trip[i].dropOffSet == 1)
+                {
+                    strcpy(origin, "DLSU Manila Campus");
+                }
+                else if(trip[i].dropOffSet == 2 || trip[i].dropOffSet == 3)
+                {
+                    strcpy(origin, "DLSU Laguna Campus");
+                }
+                
+                printf("%-16s%s\n", "From:", origin);
+
+                // Drop-off point
+                printf("%-16s%s\n\n", "To:", dropOffs[trip[i].dropOffSet][passengers[i][j].dropOff - 1]);
+
+                found = 1;
+            }
+        }
+    }
+
+    if(!found)
+    {
+        printf("Passenger \"%s\" not found\n\n");
+    }
+
+    pressAnyKey();
+
+    cls();
+}
