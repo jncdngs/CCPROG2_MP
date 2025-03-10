@@ -3,9 +3,12 @@
 #include <string.h>
 #include "donguinesArrows.h"
 
-// Asks for trip number and displays the seat map and passenger count for the trip.
-// @param trip[]           array containing trip information (trip number, etc.)
-// @param passengers[][]   array where the passenger information is stored
+/**
+ * Asks for trip number and displays the seat map and passenger count for the trip.
+ * 
+ * @param trip[]           array containing trip information (trip number, etc.)
+ * @param passengers[][]   array where the passenger information is stored
+ */
 void
 viewPassengerCount(struct TripInfo trip[],
                    struct Card passengers[][MAX_PASS])  
@@ -88,10 +91,13 @@ viewPassengerCount(struct TripInfo trip[],
     cls();
 }
 
-// Asks for trip number and displays drop-off points for the trip with corresponding passenger counts
-// @param trip[]           array containing trip information (trip number, etc.)
-// @param passengers[][]   array where the passenger information is stored
-// @param dropOffs[][]     array containing full names of drop-off points
+/**
+ * Asks for trip number and displays drop-off points for the trip with corresponding passenger counts
+ * 
+ * @param trip[]           array containing trip information (trip number, etc.)
+ * @param passengers[][]   array where the passenger information is stored
+ * @param dropOffs[][]     array containing full names of drop-off points
+ */
 void
 viewDropOffCount(struct TripInfo trip[],
                  struct Card passengers[][MAX_PASS],
@@ -138,9 +144,12 @@ viewDropOffCount(struct TripInfo trip[],
     cls();
 }
 
-// Asks for trip number and displays information of all passengers in the trip sorted by priority number
-// @param trip[]           array containing trip information (trip number, etc.)
-// @param passengers[][]   array where the passenger information is stored
+/**
+ * Asks for trip number and displays information of all passengers in the trip sorted by priority number
+ * 
+ * @param trip[]           array containing trip information (trip number, etc.)
+ * @param passengers[][]   array where the passenger information is stored
+ */
 void
 viewPassengerInfo(struct TripInfo trip[],
                   struct Card passengers[][MAX_PASS])
@@ -201,7 +210,13 @@ viewPassengerInfo(struct TripInfo trip[],
     cls();
 }
 
-// 
+/**
+ * Asks for last name and displays information of passengers with that last name
+ * 
+ * @param trip[]           array containing trip information (trip number, etc.)
+ * @param passengers[][]   array where the passenger information is stored
+ * @param dropOffs[][]     array containing full names of drop-off points
+ */
 void
 searchPassenger(struct TripInfo trip[],
                 struct Card passengers[][MAX_PASS],
@@ -262,7 +277,7 @@ searchPassenger(struct TripInfo trip[],
 
     if(!found)
     {
-        printf("Passenger \"%s\" not found\n\n");
+        printf("Passenger \"%s\" was not found\n\n");
     }
 
     pressAnyKey();

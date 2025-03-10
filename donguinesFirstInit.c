@@ -229,7 +229,7 @@ main()
             }
             while(personnelMenuOption != 7);
         }
-        else if(mainMenuOption == 3)
+        else if(mainMenuOption == 3) // Exit
         {
             cls();
 

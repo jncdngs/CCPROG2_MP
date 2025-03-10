@@ -11,32 +11,42 @@
 #include <string.h>
 #include "donguinesArrows.h"
 
-// Clears the screen by using ANSI escape codes.
-// \033[H	Moves cursor to top-left (home)
-// \033[J	Erases everything below the cursor
-// \033[3J	Erases everything, including scrolled-up text
+
+/**
+ * Clears the screen by using ANSI escape codes.
+ * 
+ * \033[H	Moves cursor to top-left (home)
+ * \033[J	Erases everything below the cursor
+ * \033[3J	Erases everything, including scrolled-up text
+ */
 void
 cls()
 {
     printf("\033[H\033[J\033[3J");
 }
 
-// Discards characters until \n is encountered.
+/**
+ * Discards characters until \n is encountered.
+ */
 void
 clearInputBuffer()
 {
     while(getchar() != '\n');
 }
 
-// Displays a message and waits for a key press before continuing
-void
+/**
+ * Displays a message and waits for a key press before continuing
+ */
+ void
 pressAnyKey()
 {
     printf("Press any key to return to the main menu...");
     getch();
 }
 
-// Displays error message for invalid input
+/**
+ * Displays error message for invalid input
+ */
 void
 printError()
 {
@@ -44,7 +54,9 @@ printError()
     printf("Invalid entry. Please try again.\n\n");
 }
 
-// Displays ASCII art for main menu
+/**
+ * Displays ASCII art for main menu
+ */
 void
 printTitle()
 {
@@ -56,7 +68,9 @@ printTitle()
     printf("                                                                 |_|\n\n");
 }
 
-// Displays ASCII art for passenger menu
+/**
+ * Displays ASCII art for passenger menu
+ */
 void
 printPassengerTitle()
 {
@@ -68,7 +82,9 @@ printPassengerTitle()
     printf("                                             |___/\n\n");
 }
 
-// Displays ASCII art for passenger information menu
+/**
+ * Displays ASCII art for passenger information menu
+ */
 void
 printPassengerInfoTitle()
 {
@@ -80,7 +96,9 @@ printPassengerInfoTitle()
     printf("                                             |___/\n\n");
 }
 
-// Displays ASCII art for personnel menu
+/**
+ * Displays ASCII art for personnel menu
+ */
 void
 printPersonnelTitle()
 {
@@ -91,7 +109,9 @@ printPersonnelTitle()
     printf(" /_/_/_/      |_|   \\___|_|  |___/\\___/|_| |_|_| |_|\\___|_|    /_/\n\n\n");
 }
 
-// Displays ASCII art for passenger count menu
+/**
+ * Displays ASCII art for passenger count menu
+ */
 void
 printPassengerCountTitle()
 {
@@ -103,7 +123,9 @@ printPassengerCountTitle()
     printf("                                             |___/\n\n");
 }
 
-// Displays ASCII art for drop-off menu
+/**
+ * Displays ASCII art for drop-off menu
+ */
 void
 printDropOffTitle()
 {
@@ -115,7 +137,9 @@ printDropOffTitle()
     printf("                              |_|\n\n");
 }
 
-// Displays ASCII art for search passenger menu
+/**
+ * Displays ASCII art for search passenger menu
+ */
 void
 printSearchPassengerTitle()
 {
