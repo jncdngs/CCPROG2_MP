@@ -82,17 +82,6 @@ getEmptySeat(int tripIndex,
     return emptySeat;
 }
 
-/* void
-swapStruct(struct Card *passenger1,
-           struct Card *passenger2)
-{
-    struct Card temp;
-
-    temp = *passenger1;
-    *passenger1 = *passenger2;
-    *passenger2 = temp;
-} */
-
 void
 copyStruct(struct Card *dest,
            struct Card *src)

@@ -47,7 +47,6 @@ void initializePassengers(struct Card[][MAX_PASS]);
 int isValidTrip(struct TripInfo[], stringTrip);
 int isFullTrip(int, struct Card[][MAX_PASS]);
 int getEmptySeat(int, struct Card[][MAX_PASS]);
-/* void swapStruct(struct Card*, struct Card*); */
 void copyStruct(struct Card*, struct Card*);
 void insertPassenger(struct Card[][MAX_PASS], int, struct Card);
 void displayTrips(struct TripInfo[]);
