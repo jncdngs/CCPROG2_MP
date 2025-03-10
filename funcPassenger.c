@@ -102,18 +102,18 @@ enterPassengerInfo(struct TripInfo trip[],
             }
             while(temp.priorityNo != 1 && temp.priorityNo != 2 && temp.priorityNo != 3
                && temp.priorityNo != 4 && temp.priorityNo != 5 && temp.priorityNo != 6);
-    
+
             cls();
             printPassengerInfoTitle();
             printf("Please enter the following information\n\n");
-            printf("Last Name (No spaces, max 20 characters): ");
+            printf("Last Name (No spaces, max %d characters): ", MAX_CHARS - 1);
             scanf("%20s", temp.lastName);
             clearInputBuffer();
     
             cls();
             printPassengerInfoTitle();
             printf("Please enter the following information\n\n");
-            printf("First Name (No spaces, max 20 characters): ");
+            printf("First Name (No spaces, max %d characters): ", MAX_CHARS - 1);
             scanf("%20s", temp.firstName);
             clearInputBuffer();
     
