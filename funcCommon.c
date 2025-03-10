@@ -259,7 +259,8 @@ savePassengerInfo(struct TripInfo trip[],
                 fprintf(file, "%d\n", passengers[i][j].priorityNo);
 
                 // Drop-off point
-                fprintf(file, "%d - %s\n\n", passengers[i][j].dropOff, dropOffs[trip[i].dropOffSet][passengers[i][j].dropOff - 1]);
+                fprintf(file, "%d - %s\n\n", passengers[i][j].dropOff, 
+                                             dropOffs[trip[i].dropOffSet][passengers[i][j].dropOff - 1]);
             }
         }
     }
