@@ -185,9 +185,16 @@ viewPassengerInfo(struct TripInfo trip[],
     // Display information of passengers from selected trip
     cls();
     printPassengerInfoTitle();
-    printf("Passengers for Trip %s\n\n", trip[tripIndex].tripNumber);
 
-    printf("%-8s%-46s%-12s%s\n\n", "Seat","Name", "Priority", "ID Number");
+    if(passengers[tripIndex][0].priorityNo != 99)
+    {
+        printf("Passengers for Trip %s\n\n", trip[tripIndex].tripNumber);
+        printf("%-8s%-46s%-12s%s\n\n", "Seat","Name", "Priority", "ID Number");
+    }
+    else
+    {
+        printf("Trip %s has no passengers.\n", trip[tripIndex].tripNumber);
+    }
 
     for(i = 0; i < MAX_PASS; i++)
     {
