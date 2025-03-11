@@ -41,7 +41,9 @@ void printPassengerInfoTitle();
 void printPersonnelTitle();
 void printPassengerCountTitle();
 void printDropOffTitle();
+void printLoadPassengerTitle();
 void printSearchPassengerTitle();
+void printLoadRecentTripTitle();
 
 // funcCommon.c
 void initializePassengers(struct Card[][MAX_PASS]);

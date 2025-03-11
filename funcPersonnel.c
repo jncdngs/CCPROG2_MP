@@ -270,14 +270,18 @@ searchPassenger(struct TripInfo trip[],
                 // Drop-off point
                 printf("To:             %s\n\n", dropOffs[trip[i].dropOffSet][passengers[i][j].dropOff - 1]);
 
-                found = 1;
+                found++;
             }
         }
     }
 
-    if(!found)
+    if(found > 0)
     {
-        printf("Passenger \"%s\" was not found\n\n");
+        printf("%d passenger/s with last name \"%s\" found.\n\n", found, searchName);
+    }
+    else
+    {
+        printf("Passenger \"%s\" was not found.\n\n");
     }
 
     pressAnyKey();

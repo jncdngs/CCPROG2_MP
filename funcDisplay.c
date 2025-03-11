@@ -26,7 +26,7 @@ cls()
 }
 
 /**
- * Discards characters until \n is encountered.
+ * Discards characters in the input buffer until a '\n' is encountered.
  */
 void
 clearInputBuffer()
@@ -138,6 +138,20 @@ printDropOffTitle()
 }
 
 /**
+ * Displays ASCII art for load passenger menu
+ */
+void
+printLoadPassengerTitle()
+{
+    printf(" ______        _                    _       ____                                             __\n");
+    printf(" \\ \\ \\ \\      | |    ___   __ _  __| |     |  _ \\ __ _ ___ ___  ___ _ __   __ _  ___ _ __    \\ \\\n");
+    printf("  \\ \\ \\ \\_____| |   / _ \\ / _` |/ _` |_____| |_) / _` / __/ __|/ _ \\ '_ \\ / _` |/ _ \\ '__|____\\ \\\n");
+    printf("  / / / /_____| |__| (_) | (_| | (_| |_____|  __/ (_| \\__ \\__ \\  __/ | | | (_| |  __/ | |_____/ /\n");
+    printf(" /_/_/_/      |_____\\___/ \\__,_|\\__,_|     |_|   \\__,_|___/___/\\___|_| |_|\\__, |\\___|_|      /_/\n");
+    printf("                                                                          |___/\n\n");
+}
+
+/**
  * Displays ASCII art for search passenger menu
  */
 void
@@ -149,4 +163,18 @@ printSearchPassengerTitle()
     printf("  / / / /_____|__) |  __/ (_| | | | (__| | | |_____|  __/ (_| \\__ \\__ \\  __/ | | | (_| |  __/ | |_____/ /\n");
     printf(" /_/_/_/     |____/ \\___|\\__,_|_|  \\___|_| |_|     |_|   \\__,_|___/___/\\___|_| |_|\\__, |\\___|_|      /_/\n");
     printf("                                                                                  |___/\n\n");
+}
+
+/**
+ * Displays ASCII art for load recent trip menu
+ */
+void
+printLoadRecentTripTitle()
+{
+    printf(" ______        _                    _     _____     _           __\n");
+    printf(" \\ \\ \\ \\      | |    ___   __ _  __| |   |_   _| __(_)_ __      \\ \\\n");
+    printf("  \\ \\ \\ \\_____| |   / _ \\ / _` |/ _` |_____| || '__| | '_ \\ _____\\ \\\n");
+    printf("  / / / /_____| |__| (_) | (_| | (_| |_____| || |  | | |_) |_____/ /\n");
+    printf(" /_/_/_/      |_____\\___/ \\__,_|\\__,_|     |_||_|  |_| .__/     /_/\n");
+    printf("                                                        |_|\n\n");
 }
