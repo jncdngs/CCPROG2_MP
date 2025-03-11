@@ -240,7 +240,7 @@ searchPassenger(struct TripInfo trip[],
     {
         for(j = 0; j < MAX_PASS; j++)
         {
-            if(strcmp(passengers[i][j].lastName, searchName) == 0)
+            if(compareStrings(passengers[i][j].lastName, searchName) == 0)
             {
                 // Trip number
                 printf("Trip No:        %s\n", trip[i].tripNumber);

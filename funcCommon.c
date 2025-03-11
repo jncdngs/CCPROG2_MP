@@ -30,7 +30,7 @@ isValidTrip(struct TripInfo trip[],
 
     for(i = 0; i < MAX_BUS; i++)
     {
-        if(strcmp(trip[i].tripNumber, tripNo) == 0)
+        if(compareStrings(trip[i].tripNumber, tripNo) == 0)
         {
             tripIndex = i;
         }
@@ -194,7 +194,7 @@ displayDropOffs(struct TripInfo trip[],
         printf("[%d] %s\n", i + 1, dropOffs[trip[tripIndex].dropOffSet][i]);
 
         // Break the loop if all available drop-off points have been displayed
-        if(strcmp(dropOffs[trip[tripIndex].dropOffSet][i + 1], "") == 0)
+        if(compareStrings(dropOffs[trip[tripIndex].dropOffSet][i + 1], "") == 0)
         {
             i = MAX_DROPOFFS;
         }
@@ -231,7 +231,7 @@ displayDropOffCount(struct TripInfo trip[],
                             passengerCount[i]);
 
         // Break the loop if all available drop-off points have been displayed
-        if(strcmp(dropOffs[trip[tripIndex].dropOffSet][i + 1], "") == 0)
+        if(compareStrings(dropOffs[trip[tripIndex].dropOffSet][i + 1], "") == 0)
         {
             i = MAX_DROPOFFS;
         }
