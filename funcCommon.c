@@ -82,6 +82,39 @@ getEmptySeat(int tripIndex,
     return emptySeat;
 }
 
+int
+compareStrings(char *string1, char *string2)
+{
+    char char1, char2;
+    int i = 0;
+    int diff = 0;
+
+    while((string1[i] != '\0' || string2[i] != '\0') && diff == 0)
+    {
+        char1 = string1[i];
+        char2 = string2[i];
+
+        if(char1 >= 'a' && char1 <= 'z')
+        {
+            char1 -= 32;
+        }
+
+        if(char2 >= 'a' && char2 <= 'z')
+        {
+            char2 -= 32;
+        }
+
+        if(diff == 0)
+        {
+            diff = char1 - char2;
+        }
+
+        i++;
+    }
+
+    return diff;
+}
+
 void
 copyStruct(struct Card *dest,
            struct Card *src)
