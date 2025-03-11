@@ -226,7 +226,7 @@ searchPassenger(struct TripInfo trip[],
     int found = 0;
     stringName searchName;
     stringFullName fullName;
-    stringDropOff origin = "\0";
+    stringDropOff origin = "";
     
     printSearchPassengerTitle();
     printf("Please enter the last name (No spaces, max 20 characters): ");
