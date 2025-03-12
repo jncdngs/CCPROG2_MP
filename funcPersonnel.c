@@ -11,7 +11,7 @@
  */
 void
 viewPassengerCount(struct TripInfo trip[],
-                   struct Card passengers[][MAX_PASS])  
+                   struct Card passengers[][MAX_PASS])
 {
     stringTrip tripNo;
 
@@ -133,7 +133,7 @@ viewDropOffCount(struct TripInfo trip[],
     // Display the drop-off list and count
     cls();
     printDropOffTitle();
-    printf("Drop-off Count for Trip %s\n\n\n", trip[tripIndex].tripNumber);
+    printf("Drop-off Count for Trip %s\n\n", trip[tripIndex].tripNumber);
 
     printf("%-36s%s\n\n", "Drop-off Point", "Passenger Count");
 

@@ -3,6 +3,7 @@
 
 #define MAX_CHARS 21    // Maximum of 20 chars each for last name and first name
 #define MAX_PASS 13     // Maximum of 13 passengers per regular shuttle
+#define SPECIAL_PASS 16 // Maximum of 16 passengers per special shuttle
 #define MAX_BUS 20      // Maximum of 20 regular shuttles
 #define MAX_DROPOFFS 4  // Maximum of 4 drop-off points per shuttle
 

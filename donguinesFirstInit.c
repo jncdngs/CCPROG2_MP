@@ -20,6 +20,7 @@ int
 main()
 {
     struct Card passengers[MAX_BUS][MAX_PASS];
+    // struct Card passengersSpecial[SPECIAL_PASS];
 
     struct TripInfo trip[MAX_BUS] = {   // Manila-Laguna
                                         {"AE101", "0600", "MNL-LAG", 0},
