@@ -288,7 +288,7 @@ searchPassenger(struct TripInfo trip[],
     }
     else
     {
-        printf("Passenger \"%s\" was not found.\n\n");
+        printf("Passenger \"%s\" was not found.\n\n", searchName);
     }
 
     pressAnyKey();
