@@ -249,7 +249,7 @@ savePassengerInfo(struct TripInfo trip[],
     int i, j;
     stringFullName fullName;
 
-    file = fopen("test.txt", "w");
+    file = fopen("test.txt", "a");
 
     for(i = 0; i < MAX_BUS; i++)
     {
