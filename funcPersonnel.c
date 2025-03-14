@@ -203,7 +203,7 @@ viewPassengerInfo(struct TripInfo trip[],
             // Combine first name and last name
             strcat(strcat(strcpy(fullName, passengers[tripIndex][i].lastName), ", "), passengers[tripIndex][i].firstName);
 
-            printf("%-08d%-46s%-12d%d\n", i + 1,
+            printf("%-8d%-46s%-12d%d\n", i + 1,
                                          fullName,
                                          passengers[tripIndex][i].priorityNo,
                                          passengers[tripIndex][i].idNo);
