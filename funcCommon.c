@@ -89,25 +89,26 @@ compareStrings(char *string1, char *string2)
     int i = 0;
     int diff = 0;
 
+    // Loop until reached end of string or found difference
     while((string1[i] != '\0' || string2[i] != '\0') && diff == 0)
     {
         char1 = string1[i];
         char2 = string2[i];
 
+        // If character is lowercase, convert to uppercase
         if(char1 >= 'a' && char1 <= 'z')
         {
             char1 -= 32;
         }
 
+        // If character is lowercase, convert to uppercase
         if(char2 >= 'a' && char2 <= 'z')
         {
             char2 -= 32;
         }
 
-        if(diff == 0)
-        {
-            diff = char1 - char2;
-        }
+        // Get the difference between the two characters
+        diff = char1 - char2;
 
         i++;
     }
