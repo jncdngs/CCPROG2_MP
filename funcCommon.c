@@ -276,7 +276,7 @@ savePassengerInfo(struct TripInfo trip[],
                 fprintf(file, "%s\n", fullName);
 
                 // ID number
-                fprintf(file, "%d\n", passengers[i][j].idNo);
+                fprintf(file, "%08d\n", passengers[i][j].idNo);
 
                 // Priority number
                 fprintf(file, "%d\n", passengers[i][j].priorityNo);

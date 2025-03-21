@@ -126,7 +126,7 @@ enterPassengerInfo(struct TripInfo trip[],
                 printPassengerInfoTitle();
                 printf("Please enter the following information\n\n");
     
-                printf("Please enter your ID Number (1xxxxxxx): ");
+                printf("Please enter your ID Number (xxxxxxxx): ");
                 if(scanf("%d", &temp.idNo) != 1)
                 {
                     // Prevent loop when entering char
@@ -137,13 +137,13 @@ enterPassengerInfo(struct TripInfo trip[],
                     printError();
                 }
                 
-                else if(temp.idNo < 10000000 || temp.idNo > 19999999)
+                else if(temp.idNo < 0 || temp.idNo > 99999999)
                 {
                     cls();
                     printError();
                 }
             }
-            while(temp.idNo < 10000000 || temp.idNo > 19999999);
+            while(temp.idNo < 0 || temp.idNo > 99999999);
             
             cls();
             do
@@ -179,7 +179,7 @@ enterPassengerInfo(struct TripInfo trip[],
             printf("Priority No: %d\n", temp.priorityNo);
             printf("Last Name:   %s\n", temp.lastName);
             printf("First Name:  %s\n", temp.firstName);
-            printf("ID Number:   %d\n", temp.idNo);
+            printf("ID Number:   %08d\n", temp.idNo);
             printf("Drop-off:    %s\n\n", dropOffs[trip[tripIndex].dropOffSet][temp.dropOff - 1]);
     
             // Ask user to check if information is correct
