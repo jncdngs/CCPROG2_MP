@@ -164,7 +164,7 @@ main()
                 printf("[3] View passenger information\n");
                 printf("[4] Load passenger\n");
                 printf("[5] Search passenger\n");
-                printf("[6] Load recent trip file\n");
+                printf("[6] View recent trip file\n");
                 printf("[7] Back to main menu\n\n");
                 printf("Enter option: ");
 
@@ -213,10 +213,10 @@ main()
                     cls();
                     searchPassenger(trip, passengers, dropOffs);
                 }
-                else if (personnelMenuOption == 6)  // [6] Load recent trip file
+                else if (personnelMenuOption == 6)  // [6] View recent trip file
                 {
                     cls();
-                    // Load recent trip file
+                    displayRecentTrip();
                 }
                 else if (personnelMenuOption == 7)  // [7] Back to main menu
                 {

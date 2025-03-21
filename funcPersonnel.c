@@ -203,7 +203,7 @@ viewPassengerInfo(struct TripInfo trip[],
             // Combine first name and last name
             strcat(strcat(strcpy(fullName, passengers[tripIndex][i].lastName), ", "), passengers[tripIndex][i].firstName);
 
-            printf("%-8d%-46s%-12d%d\n", i + 1,
+            printf("%-8d%-46s%-12d%08d\n", i + 1,
                                          fullName,
                                          passengers[tripIndex][i].priorityNo,
                                          passengers[tripIndex][i].idNo);
@@ -290,6 +290,96 @@ searchPassenger(struct TripInfo trip[],
     {
         printf("Passenger \"%s\" was not found.\n\n", searchName);
     }
+
+    pressAnyKey();
+
+    cls();
+}
+
+/**
+ * Asks for the file name and displays all the contents in the selected file
+ * 
+ * @param trip[]           array containing trip information (trip number, etc.)
+ * @param passengers[][]   array where the passenger information is stored
+ * @param dropOffs[][]     array containing full names of drop-off points
+ */
+void
+displayRecentTrip()
+{
+    FILE *file;
+    // int i;
+    stringFileName fileName = "test.txt";
+    struct FilePassenger temp;
+
+    file = fopen(fileName, "r");
+
+    while(file == NULL)
+	{
+		printf("\033[0;31mERROR:\033[0m File not found/invalid.\n\n");
+		printf("Enter file name: ");
+		scanf("%s", fileName);
+		file = fopen(fileName, "r");
+	}
+
+    printLoadRecentTripTitle();
+    printf("Passenger information from file %s\n\n", fileName);
+
+    while(fgets(temp.tripNumber, 6, file) != NULL)
+    {
+        fgetc(file);
+        printf("%-16s%s\n", "Trip No:", temp.tripNumber);
+        
+        fgets(temp.origin, 21, file);
+        // fgetc(file);
+        printf("%-16s%s", "Origin:", temp.origin);
+        
+        fgets(temp.fullName, 44, file);
+        // fgetc(file);
+        printf("%-16s%s", "Full Name:", temp.fullName);
+        
+        fscanf(file, "%d", &temp.idNo);
+        fgetc(file);
+        printf("%-16s%08d\n", "ID Number:", temp.idNo);
+        
+        fscanf(file, "%d", &temp.priorityNo);
+        fgetc(file);
+        printf("%-16s%d\n", "Priority No:", temp.priorityNo);
+        
+        fgets(temp.dropOff, 41, file);
+        fgetc(file);
+        printf("%-16s%s\n", "Drop-off:", temp.dropOff);
+
+        // fgetc(file);
+        // fgetc(file);
+    }
+
+    // while(fscanf(file, "%s", temp.tripNumber) == 1)
+    // {
+    //     printf("%-16s%s\n", "Trip No:", temp.tripNumber);
+        
+    //     if(fscanf(file, "%s", temp.origin) == 1)
+    //     {
+    //         printf("%-16s%s\n", "Origin:", temp.origin);
+    //     }
+    //     if(fscanf(file, "%s", temp.fullName) == 1)
+    //     {
+    //         printf("%-16s%s\n", "Full Name:", temp.fullName);
+    //     }
+    //     if(fscanf(file, "%d", &temp.idNo) == 1)
+    //     {
+    //         printf("%-16s%08d\n", "ID Number:", temp.idNo);
+    //     }
+    //     if(fscanf(file, "%d", &temp.priorityNo) == 1)
+    //     {
+    //         printf("%-16s%d\n", "Priority No:", temp.priorityNo);
+    //     }
+    //     if(fscanf(file, "%s", temp.dropOff) == 1)
+    //     {
+    //         printf("%-16s%s\n", "Drop-off:", temp.dropOff);
+    //     }
+    // }
+
+    fclose(file);
 
     pressAnyKey();
 

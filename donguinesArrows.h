@@ -10,9 +10,11 @@
 typedef char stringTrip[6];                     // "AE101", etc.
 typedef char stringTime[5];                     // "0600", etc.
 typedef char stringRoute[8];                    // "MNL-LAG", "LAG-MNL"
+typedef char stringOrigin[21];                  // "DLSU Manila Campus"
 typedef char stringDropOff[41];                 // Full drop-off point name
 typedef char stringName[MAX_CHARS];             // Passenger name
 typedef char stringFullName[MAX_CHARS * 2 + 2]; // Full name
+typedef char stringFileName[20];                // "Trip-dd-mm-yyyy.txt"
 
 struct TripInfo
 {
@@ -29,6 +31,16 @@ struct Card
     stringName firstName;
     int idNo;
     int dropOff;
+};
+
+struct FilePassenger
+{
+    stringTrip tripNumber;
+    stringOrigin origin;
+    stringFullName fullName;
+    int idNo;
+    int priorityNo;
+    stringDropOff dropOff;
 };
 
 // funcDisplay.c
@@ -67,5 +79,6 @@ void viewPassengerCount(struct TripInfo[], struct Card[][MAX_PASS]);
 void viewDropOffCount(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS]);
 void viewPassengerInfo(struct TripInfo[], struct Card[][MAX_PASS]);
 void searchPassenger(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS]);
+void displayRecentTrip();
 
 #endif
