@@ -242,11 +242,11 @@ loadPassenger(struct TripInfo trip[],
         fscanf(file, "%s", temp.firstName);
         fscanf(file, "%d", &temp.idNo);
         fscanf(file, "%d", &temp.dropOff);
-    
+        cls();
+
         // Ask user to check if information is correct
         do
         {
-            cls();
             printLoadPassengerTitle();
             printf("Here is the information stored in the file:\n\n");
             printf("Trip No:     %s\n", tripNo);
@@ -262,51 +262,56 @@ loadPassenger(struct TripInfo trip[],
             {
                 clearInputBuffer();
                 printError();
+                cls();
             }
             
             else if(correctInfo != 'Y' && correctInfo != 'y' &&
                     correctInfo != 'N' && correctInfo != 'n')
             {
                 printError();
+                cls();
             }
         }
         while(correctInfo != 'Y' && correctInfo != 'y' &&
-                correctInfo != 'N' && correctInfo != 'n');
-    
-        tripIndex = isValidTrip(trip, tripNo);
-    
-        if(tripIndex == -1)
+              correctInfo != 'N' && correctInfo != 'n');
+
+        if(correctInfo == 'Y' || correctInfo == 'y')
         {
-            cls();
-            printf("\033[0;31mERROR:\033[0m Trip not found or invalid. Please try again.\n\n");
-        }
-
-        fclose(file);
-
-        // If valid, check if trip is full
-        if(isFullTrip(tripIndex, passengers))
-        {
-            cls();
-            printPassengerInfoTitle();
-            printf("The selected trip is full.\n\n");
-
-            pressAnyKey();
-
-            tripIndex = -1;
-        }
-        else
-        {    
-            // If correct, pass to struct array (using trip number)
-            // Insert based on priority number
-            insertPassenger(passengers, tripIndex, temp);
-
-            // Tell user that information has been saved
-            cls();
-            printLoadPassengerTitle();
-            
-            printf("Information has been saved.\n\n");
-            
-            pressAnyKey();
+            tripIndex = isValidTrip(trip, tripNo);
+        
+            if(tripIndex == -1)
+            {
+                cls();
+                printf("\033[0;31mERROR:\033[0m Trip not found or invalid. Please try again.\n\n");
+            }
+    
+            fclose(file);
+    
+            // If valid, check if trip is full
+            if(isFullTrip(tripIndex, passengers))
+            {
+                cls();
+                printPassengerInfoTitle();
+                printf("The selected trip is full.\n\n");
+    
+                pressAnyKey();
+    
+                tripIndex = -1;
+            }
+            else
+            {    
+                // If correct, pass to struct array (using trip number)
+                // Insert based on priority number
+                insertPassenger(passengers, tripIndex, temp);
+    
+                // Tell user that information has been saved
+                cls();
+                printLoadPassengerTitle();
+                
+                printf("Information has been saved.\n\n");
+                
+                pressAnyKey();
+            }
         }
     }
     else
