@@ -154,21 +154,21 @@ displayTrips(struct TripInfo trip[])
     int rowsMax = 11;
     int firstRouteCount = 9;
     
-    printf("%-10s%-9s%-17s", "Trip", "Time", "Route");
-    printf("%-10s%-9s%s\n\n", "Trip", "Time", "Route");
+    printf("%-10s%-9s%-28s", "Trip", "Time", "Origin");
+    printf("%-10s%-9s%s\n\n", "Trip", "Time", "Origin");
 
     for(i = 0; i < rowsMax; i++)
     {
         // Display trips from first route (first 3 columns)
         if(trip[i].dropOffSet == 0 || trip[i].dropOffSet == 1)
         {
-            printf("%-10s%-9s%-17s", trip[i].tripNumber,
+            printf("%-10s%-9s%-28s", trip[i].tripNumber,
                                      trip[i].tripTime,
-                                     trip[i].tripRoute);
+                                     trip[i].tripOrigin);
         }
         else    // Print spaces if first route has less trips than second route
         {
-            printf("%36s", "");
+            printf("%47s", "");
         }
 
         // Display trips from second route (next 3 columns)
@@ -176,7 +176,7 @@ displayTrips(struct TripInfo trip[])
         {
             printf("%-10s%-9s%s\n", trip[i + firstRouteCount].tripNumber,
                                     trip[i + firstRouteCount].tripTime,
-                                    trip[i + firstRouteCount].tripRoute);
+                                    trip[i + firstRouteCount].tripOrigin);
         }
     }
 
@@ -248,9 +248,13 @@ savePassengerInfo(struct TripInfo trip[],
 {
     FILE *file;
     int i, j;
+    stringFileName fileName;
     stringFullName fullName;
+    // struct Date date;
 
-    file = fopen("test.txt", "a");
+    // Get date function (user input)
+
+    file = fopen(fileName, "a");
 
     for(i = 0; i < MAX_BUS; i++)
     {
@@ -262,14 +266,7 @@ savePassengerInfo(struct TripInfo trip[],
                 fprintf(file, "%s\n", trip[i].tripNumber);
 
                 // Embarkation point
-                if(trip[i].dropOffSet == 0 || trip[i].dropOffSet == 1)
-                {
-                    fprintf(file, "DLSU Manila Campus\n");
-                }
-                else if(trip[i].dropOffSet == 2 || trip[i].dropOffSet == 3)
-                {
-                    fprintf(file, "DLSU Laguna Campus\n");
-                }
+                fprintf(file, "%s\n", trip[i].tripOrigin);
 
                 // Passenger name
                 strcat(strcat(strcpy(fullName, passengers[i][j].lastName), ", "), passengers[i][j].firstName);
