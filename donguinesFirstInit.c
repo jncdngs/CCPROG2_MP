@@ -206,7 +206,7 @@ main()
                 else if (personnelMenuOption == 4)  // [4] Load passenger
                 {
                     cls();
-                    // Load passenger
+                    loadPassenger(trip, passengers, dropOffs);
                 }
                 else if (personnelMenuOption == 5)  // [5] Search passenger
                 {

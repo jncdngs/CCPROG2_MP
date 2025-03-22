@@ -84,6 +84,7 @@ void enterPassengerInfo(struct TripInfo[], struct Card[][MAX_PASS], stringDropOf
 void viewPassengerCount(struct TripInfo[], struct Card[][MAX_PASS]);
 void viewDropOffCount(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS]);
 void viewPassengerInfo(struct TripInfo[], struct Card[][MAX_PASS]);
+void loadPassenger(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS]);
 void searchPassenger(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS]);
 void displayRecentTrip();
 

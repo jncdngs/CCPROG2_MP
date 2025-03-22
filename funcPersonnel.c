@@ -217,6 +217,109 @@ viewPassengerInfo(struct TripInfo trip[],
     cls();
 }
 
+void
+loadPassenger(struct TripInfo trip[],
+              struct Card passengers[][MAX_PASS],
+              stringDropOff dropOffs[][MAX_DROPOFFS])
+{
+    stringTrip tripNo;
+    stringFileName fileName = "passenger.txt";
+    int tripIndex = -1;
+    char correctInfo = '\0';
+
+    struct Card temp = {99, "", "", 0, 0};
+
+    // Read contents of the file
+    FILE *file;
+
+    file = fopen(fileName, "r");
+
+    if(file != NULL)
+    {
+        fscanf(file, "%s", tripNo);
+        fscanf(file, "%d", &temp.priorityNo);
+        fscanf(file, "%s", temp.lastName);
+        fscanf(file, "%s", temp.firstName);
+        fscanf(file, "%d", &temp.idNo);
+        fscanf(file, "%d", &temp.dropOff);
+    
+        // Ask user to check if information is correct
+        do
+        {
+            cls();
+            printLoadPassengerTitle();
+            printf("Here is the information stored in the file:\n\n");
+            printf("Trip No:     %s\n", tripNo);
+            printf("Priority No: %d\n", temp.priorityNo);
+            printf("Last Name:   %s\n", temp.lastName);
+            printf("First Name:  %s\n", temp.firstName);
+            printf("ID Number:   %08d\n", temp.idNo);
+            printf("Drop-off:    %d - %s\n\n", temp.dropOff,
+                                               dropOffs[trip[tripIndex].dropOffSet][temp.dropOff - 1]);
+            
+            printf("Do you want to enter this information to the system? (Y/N): ");
+            if(scanf(" %c", &correctInfo) != 1)
+            {
+                clearInputBuffer();
+                printError();
+            }
+            
+            else if(correctInfo != 'Y' && correctInfo != 'y' &&
+                    correctInfo != 'N' && correctInfo != 'n')
+            {
+                printError();
+            }
+        }
+        while(correctInfo != 'Y' && correctInfo != 'y' &&
+                correctInfo != 'N' && correctInfo != 'n');
+    
+        tripIndex = isValidTrip(trip, tripNo);
+    
+        if(tripIndex == -1)
+        {
+            cls();
+            printf("\033[0;31mERROR:\033[0m Trip not found or invalid. Please try again.\n\n");
+        }
+
+        fclose(file);
+
+        // If valid, check if trip is full
+        if(isFullTrip(tripIndex, passengers))
+        {
+            cls();
+            printPassengerInfoTitle();
+            printf("The selected trip is full.\n\n");
+
+            pressAnyKey();
+
+            tripIndex = -1;
+        }
+        else
+        {    
+            // If correct, pass to struct array (using trip number)
+            // Insert based on priority number
+            insertPassenger(passengers, tripIndex, temp);
+
+            // Tell user that information has been saved
+            cls();
+            printLoadPassengerTitle();
+            
+            printf("Information has been saved.\n\n");
+            
+            pressAnyKey();
+        }
+    }
+    else
+    {
+        printLoadPassengerTitle();
+        printf("No passenger file found. Please check again.\n\n");
+
+        pressAnyKey();
+    }
+
+    cls();
+}
+
 /**
  * Asks for last name and displays information of passengers with that last name
  * 
@@ -307,7 +410,6 @@ void
 displayRecentTrip()
 {
     FILE *file;
-    // int i;
     stringFileName fileName = "test.txt";
     struct FilePassenger temp;
 
