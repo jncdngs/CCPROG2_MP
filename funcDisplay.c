@@ -166,7 +166,7 @@ printSearchPassengerTitle()
 }
 
 /**
- * Displays ASCII art for load recent trip menu
+ * Displays ASCII art for view recent trip menu
  */
 void
 printLoadRecentTripTitle()
