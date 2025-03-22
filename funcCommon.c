@@ -29,12 +29,8 @@ isValidTrip(struct TripInfo trip[],
     int tripIndex = -1;
 
     for(i = 0; i < MAX_BUS; i++)
-    {
         if(compareStrings(trip[i].tripNumber, tripNo) == 0)
-        {
             tripIndex = i;
-        }
-    }
 
     return tripIndex;
 }
@@ -48,17 +44,11 @@ isFullTrip(int tripIndex,
     int isFull = 0;
 
     for(i = 0; i < MAX_PASS; i++)
-    {
         if(passengers[tripIndex][i].priorityNo != 99)
-        {
             passengerCount++;
-        }
-    }
 
     if(passengerCount == MAX_PASS)
-    {
         isFull = 1;
-    }
 
     return isFull;
 }
@@ -97,15 +87,11 @@ compareStrings(char *string1, char *string2)
 
         // If character is lowercase, convert to uppercase
         if(char1 >= 'a' && char1 <= 'z')
-        {
             char1 -= 32;
-        }
 
         // If character is lowercase, convert to uppercase
         if(char2 >= 'a' && char2 <= 'z')
-        {
             char2 -= 32;
-        }
 
         // Get the difference between the two characters
         diff = char1 - char2;
@@ -135,9 +121,7 @@ insertPassenger(struct Card passengers[][MAX_PASS],
         if(temp.priorityNo < passengers[tripIndex][i].priorityNo)
         {
             if(i == MAX_PASS - 1)
-            {
                 copyStruct(&passengers[tripIndex][i], &temp);
-            }
             else
             {
                 copyStruct(&passengers[tripIndex][i + 1], &passengers[tripIndex][i]);
@@ -161,23 +145,17 @@ displayTrips(struct TripInfo trip[])
     {
         // Display trips from first route (first 3 columns)
         if(trip[i].dropOffSet == 0 || trip[i].dropOffSet == 1)
-        {
             printf("%-10s%-9s%-28s", trip[i].tripNumber,
                                      trip[i].tripTime,
                                      trip[i].tripOrigin);
-        }
         else    // Print spaces if first route has less trips than second route
-        {
             printf("%47s", "");
-        }
 
         // Display trips from second route (next 3 columns)
         if(trip[i + firstRouteCount].dropOffSet == 2 || trip[i + firstRouteCount].dropOffSet == 3)
-        {
             printf("%-10s%-9s%s\n", trip[i + firstRouteCount].tripNumber,
                                     trip[i + firstRouteCount].tripTime,
                                     trip[i + firstRouteCount].tripOrigin);
-        }
     }
 
     printf("\n");
@@ -196,9 +174,7 @@ displayDropOffs(struct TripInfo trip[],
 
         // Break the loop if all available drop-off points have been displayed
         if(compareStrings(dropOffs[trip[tripIndex].dropOffSet][i + 1], "") == 0)
-        {
             i = MAX_DROPOFFS;
-        }
     }
 
     printf("\n");
@@ -215,15 +191,9 @@ displayDropOffCount(struct TripInfo trip[],
 
     // Count number of passengers for each drop-off point
     for(i = 0; i < MAX_PASS; i++)
-    {      
         for(j = 0; j < MAX_DROPOFFS; j++)
-        {
             if(passengers[tripIndex][i].dropOff - 1 == j)
-            {
                 passengerCount[j]++;
-            }
-        }
-    }
 
     // Display list of drop-off points with passenger count
     for(i = 0; i < MAX_DROPOFFS; i++)
@@ -233,9 +203,7 @@ displayDropOffCount(struct TripInfo trip[],
 
         // Break the loop if all available drop-off points have been displayed
         if(compareStrings(dropOffs[trip[tripIndex].dropOffSet][i + 1], "") == 0)
-        {
             i = MAX_DROPOFFS;
-        }
     }
 
     printf("\n");

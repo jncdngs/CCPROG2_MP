@@ -193,9 +193,7 @@ enterPassengerInfo(struct TripInfo trip[],
                 
                 else if(correctInfo != 'Y' && correctInfo != 'y' &&
                         correctInfo != 'N' && correctInfo != 'n')
-                {
                     printError();
-                }
             }
             while(correctInfo != 'Y' && correctInfo != 'y' &&
                   correctInfo != 'N' && correctInfo != 'n');

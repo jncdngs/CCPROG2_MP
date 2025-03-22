@@ -53,9 +53,7 @@ viewPassengerCount(struct TripInfo trip[],
             passengerCount++;
         }
         else
-        {
             seatStatus[i] = 'O';
-        }
     }
 
     // Display seat map
@@ -68,15 +66,12 @@ viewPassengerCount(struct TripInfo trip[],
         if(i % 2)
         {
             for(j = 0; j < 3; j++)
-            {
                 printf("| %c ", seatStatus[(i / 2 * 3) + j]);
-            }
+
             printf("|");
         }
         else
-        {
             printf("+---+---+---+");
-        }
 
         printf("\n");
     }
@@ -192,9 +187,7 @@ viewPassengerInfo(struct TripInfo trip[],
         printf("%-8s%-46s%-12s%s\n\n", "Seat","Name", "Priority", "ID Number");
     }
     else
-    {
         printf("Trip %s has no passengers.\n", trip[tripIndex].tripNumber);
-    }
 
     for(i = 0; i < MAX_PASS; i++)
     {
@@ -391,13 +384,9 @@ searchPassenger(struct TripInfo trip[],
     }
 
     if(found > 0)
-    {
         printf("%d passenger/s with last name \"%s\" found.\n\n", found, searchName);
-    }
     else
-    {
         printf("Passenger \"%s\" was not found.\n\n", searchName);
-    }
 
     pressAnyKey();
 
@@ -455,36 +444,7 @@ displayRecentTrip()
         fgets(temp.dropOff, 41, file);
         fgetc(file);
         printf("%-16s%s\n", "Drop-off:", temp.dropOff);
-
-        // fgetc(file);
-        // fgetc(file);
     }
-
-    // while(fscanf(file, "%s", temp.tripNumber) == 1)
-    // {
-    //     printf("%-16s%s\n", "Trip No:", temp.tripNumber);
-        
-    //     if(fscanf(file, "%s", temp.origin) == 1)
-    //     {
-    //         printf("%-16s%s\n", "Origin:", temp.origin);
-    //     }
-    //     if(fscanf(file, "%s", temp.fullName) == 1)
-    //     {
-    //         printf("%-16s%s\n", "Full Name:", temp.fullName);
-    //     }
-    //     if(fscanf(file, "%d", &temp.idNo) == 1)
-    //     {
-    //         printf("%-16s%08d\n", "ID Number:", temp.idNo);
-    //     }
-    //     if(fscanf(file, "%d", &temp.priorityNo) == 1)
-    //     {
-    //         printf("%-16s%d\n", "Priority No:", temp.priorityNo);
-    //     }
-    //     if(fscanf(file, "%s", temp.dropOff) == 1)
-    //     {
-    //         printf("%-16s%s\n", "Drop-off:", temp.dropOff);
-    //     }
-    // }
 
     fclose(file);
 
