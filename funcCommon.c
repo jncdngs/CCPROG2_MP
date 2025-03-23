@@ -218,11 +218,73 @@ savePassengerInfo(struct TripInfo trip[],
     int i, j;
     stringFileName fileName;
     stringFullName fullName;
-    // struct Date date;
+    struct Date date = {0, 0, 0};
+    int maxDays[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-    // Get date function (user input)
+    // Ask user for date
+    printf("Please enter the date for the filename.\n\n");
+    
+    do
+    {
+        printf("Month (mm): ");
+        if(scanf("%d", &date.mm) != 1)
+        {
+            // Prevent loop when entering char
+            clearInputBuffer();
+            
+            // Display error when option is a char/str
+            printError();
+        }
+        
+        else if(date.mm < 1 || date.mm > 12)
+        {
+            printError();
+        }
+    }
+    while(date.mm < 1 || date.mm > 12);
+    
+    do
+    {
+        printf("Day (dd): ");
+        if(scanf("%d", &date.dd) != 1)
+        {
+            // Prevent loop when entering char
+            clearInputBuffer();
+            
+            // Display error when option is a char/str
+            printError();
+        }
+        
+        else if(date.dd < 1 || date.dd > maxDays[date.mm - 1])
+        {
+            printError();
+        }
+    }
+    while(date.dd < 1 || date.dd > maxDays[date.mm - 1]);
 
-    file = fopen(fileName, "a");
+    do
+    {
+        printf("Year (yyyy): ");
+        if(scanf("%d", &date.yyyy) != 1)
+        {
+            // Prevent loop when entering char
+            clearInputBuffer();
+            
+            // Display error when option is a char/str
+            printError();
+        }
+        
+        else if(date.yyyy < 1900 || date.yyyy > 2025)
+        {
+            printError();
+        }
+    }
+    while (date.yyyy < 1900 || date.yyyy > 2025);
+    
+    // Write the date info into a fileName string
+    sprintf(fileName, "Trip-%02d-%02d-%04d.txt", date.dd, date.mm, date.yyyy);
+
+    file = fopen(fileName, "w");
 
     for(i = 0; i < MAX_BUS; i++)
     {
@@ -252,6 +314,15 @@ savePassengerInfo(struct TripInfo trip[],
             }
         }
     }
+
+    cls();
+    printTitle();
+    printf("Saved to file %s\n\n", fileName);
+    printf("Thank you for using the Arrows Express Embarkation System!\n\n");
+    printf("Press any key to exit...");
+    getch();
+
+    // Save special shuttle info
 
     fclose(file);
 }

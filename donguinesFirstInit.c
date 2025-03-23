@@ -266,15 +266,9 @@ main()
     while(exit != 'Y' && exit != 'y');
 
     // Save information to file
-    savePassengerInfo(trip, passengers, dropOffs);
-    
     cls();
     printTitle();
+    savePassengerInfo(trip, passengers, dropOffs);
     
-    printf("Thank you for using the Arrows Express Embarkation System!\n\n");
-    
-    printf("Press any key to exit...");
-    getch();
-
     return 0;
 }
