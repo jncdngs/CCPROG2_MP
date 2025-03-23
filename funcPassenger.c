@@ -17,6 +17,7 @@ enterPassengerInfo(struct TripInfo trip[],
     stringTrip tripNo;
     
     int tripIndex = -1;
+    int dropOffCount[MAX_DROPOFFS] = {3, 2, 4, 4};
     char correctInfo = '\0';
 
     struct Card temp = {99, "", "", 0, 0};
@@ -94,7 +95,6 @@ enterPassengerInfo(struct TripInfo trip[],
                     cls();
                     printError();
                 }
-                
                 else if(temp.priorityNo != 1 && temp.priorityNo != 2 && temp.priorityNo != 3
                      && temp.priorityNo != 4 && temp.priorityNo != 5 && temp.priorityNo != 6)
                 {
@@ -135,7 +135,6 @@ enterPassengerInfo(struct TripInfo trip[],
                     cls();
                     printError();
                 }
-                
                 else if(temp.idNo < 0 || temp.idNo > 99999999)
                 {
                     cls();
@@ -162,14 +161,13 @@ enterPassengerInfo(struct TripInfo trip[],
                     cls();
                     printError();
                 }
-                
-                else if(temp.dropOff != 1 && temp.dropOff != 2 && temp.dropOff != 3 && temp.dropOff != 4)
+                else if(temp.dropOff < 1 || temp.dropOff > dropOffCount[trip[tripIndex].dropOffSet])
                 {
                     cls();
                     printError();
                 }
             }
-            while(temp.dropOff != 1 && temp.dropOff != 2 && temp.dropOff != 3 && temp.dropOff != 4);
+            while(temp.dropOff < 1 || temp.dropOff > dropOffCount[trip[tripIndex].dropOffSet]);
     
             // Display entered information
             cls();
@@ -190,7 +188,6 @@ enterPassengerInfo(struct TripInfo trip[],
                     clearInputBuffer();
                     printError();
                 }
-                
                 else if(correctInfo != 'Y' && correctInfo != 'y' &&
                         correctInfo != 'N' && correctInfo != 'n')
                     printError();
