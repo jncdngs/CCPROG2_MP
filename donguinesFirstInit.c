@@ -244,7 +244,6 @@ main()
                     clearInputBuffer();
                     printError();
                 }
-                
                 else if(exit != 'Y' && exit != 'y' &&
                         exit != 'N' && exit != 'n')
                 {

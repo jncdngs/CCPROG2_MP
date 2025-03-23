@@ -257,7 +257,6 @@ loadPassenger(struct TripInfo trip[],
                 printError();
                 cls();
             }
-            
             else if(correctInfo != 'Y' && correctInfo != 'y' &&
                     correctInfo != 'N' && correctInfo != 'n')
             {

@@ -235,7 +235,6 @@ savePassengerInfo(struct TripInfo trip[],
             // Display error when option is a char/str
             printError();
         }
-        
         else if(date.mm < 1 || date.mm > 12)
         {
             printError();
@@ -254,7 +253,6 @@ savePassengerInfo(struct TripInfo trip[],
             // Display error when option is a char/str
             printError();
         }
-        
         else if(date.dd < 1 || date.dd > maxDays[date.mm - 1])
         {
             printError();
@@ -273,7 +271,6 @@ savePassengerInfo(struct TripInfo trip[],
             // Display error when option is a char/str
             printError();
         }
-        
         else if(date.yyyy < 1900 || date.yyyy > 2025)
         {
             printError();
