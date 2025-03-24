@@ -11,7 +11,7 @@
  */
 void
 enterPassengerInfo(struct TripInfo trip[],
-                   struct Card passengers[][MAX_PASS],
+                   struct Card passengers[][SPECIAL_PASS],
                    stringDropOff dropOffs[][MAX_DROPOFFS])
 {
     stringTrip tripNo;
@@ -56,8 +56,40 @@ enterPassengerInfo(struct TripInfo trip[],
     }
     while(tripIndex == -1);
 
-    // If valid, check if trip is full
-    if(isFullTrip(tripIndex, passengers))
+    // Ask user for priority number
+    cls();
+    do
+    {
+        printPassengerInfoTitle();
+        printf("Please enter the following information\n\n");
+
+        printf("[1] Faculty / ASF with Inter-Campus Assignments\n");
+        printf("[2] Student with Inter-Campus Subjects\n");
+        printf("[3] Researcher\n");
+        printf("[4] School Administrator\n");
+        printf("[5] University Fellow\n");
+        printf("[6] Employee / Student with Official Business\n\n");
+
+        printf("Please enter type of passenger: ");
+        if(scanf("%d", &temp.priorityNo) != 1)
+        {
+            // Prevent loop when entering char
+            clearInputBuffer();
+            
+            // Display error when option is a char/str
+            cls();
+            printError();
+        }
+        else if(temp.priorityNo < 1 || temp.priorityNo > 6)
+        {
+            cls();
+            printError();
+        }
+    }
+    while(temp.priorityNo < 1 || temp.priorityNo > 6);
+
+    // Check if there are seats available or if priority is higher than last passenger in the trip
+    if(isFullTrip(tripIndex, passengers, temp.priorityNo))
     {
         cls();
         printPassengerInfoTitle();
@@ -71,40 +103,7 @@ enterPassengerInfo(struct TripInfo trip[],
     {
         do
         {       
-            // Ask user for information
-            cls();
-            do
-            {
-                printPassengerInfoTitle();
-                printf("Please enter the following information\n\n");
-
-                printf("[1] Faculty / ASF with Inter-Campus Assignments\n");
-                printf("[2] Student with Inter-Campus Subjects\n");
-                printf("[3] Researcher\n");
-                printf("[4] School Administrator\n");
-                printf("[5] University Fellow\n");
-                printf("[6] Employee / Student with Official Business\n\n");
-    
-                printf("Please enter type of passenger: ");
-                if(scanf("%d", &temp.priorityNo) != 1)
-                {
-                    // Prevent loop when entering char
-                    clearInputBuffer();
-                    
-                    // Display error when option is a char/str
-                    cls();
-                    printError();
-                }
-                else if(temp.priorityNo != 1 && temp.priorityNo != 2 && temp.priorityNo != 3
-                     && temp.priorityNo != 4 && temp.priorityNo != 5 && temp.priorityNo != 6)
-                {
-                    cls();
-                    printError();
-                }
-            }
-            while(temp.priorityNo != 1 && temp.priorityNo != 2 && temp.priorityNo != 3
-               && temp.priorityNo != 4 && temp.priorityNo != 5 && temp.priorityNo != 6);
-
+            // Ask user for other information
             cls();
             printPassengerInfoTitle();
             printf("Please enter the following information\n\n");

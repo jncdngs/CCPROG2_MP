@@ -11,14 +11,14 @@
  * @param passengersSpecial[][]     array where the passenger info in special trips is stored
  */
 void
-initializePassengers(struct Card passengers[][MAX_PASS],
+initializePassengers(struct Card passengers[][SPECIAL_PASS],
                      struct Card passengersSpecial[][SPECIAL_PASS])
 {
     int i, j;
 
     for(i = 0; i < MAX_BUS; i++)
     {
-        for(j = 0; j < MAX_PASS; j++)
+        for(j = 0; j < SPECIAL_PASS; j++)
         {
             passengers[i][j].priorityNo = 99;
             strcpy(passengers[i][j].lastName, "");
@@ -71,17 +71,12 @@ isValidTrip(struct TripInfo trip[],
  */
 int
 isFullTrip(int tripIndex,
-           struct Card passengers[][MAX_PASS])
+           struct Card passengers[][SPECIAL_PASS],
+           int priorityNo)
 {
-    int i;
-    int passengerCount = 0;
     int isFull = 0;
 
-    for(i = 0; i < MAX_PASS; i++)
-        if(passengers[tripIndex][i].priorityNo != 99)
-            passengerCount++;
-
-    if(passengerCount == MAX_PASS)
+    if(passengers[tripIndex][SPECIAL_PASS - 1].priorityNo <= priorityNo)
         isFull = 1;
 
     return isFull;
@@ -96,17 +91,17 @@ isFullTrip(int tripIndex,
  */
 int
 getEmptySeat(int tripIndex,
-             struct Card passengers[][MAX_PASS])
+             struct Card passengers[][SPECIAL_PASS])
 {
     int i;
     int emptySeat = -1;
 
-    for(i = 0; i < MAX_PASS; i++)
+    for(i = 0; i < SPECIAL_PASS; i++)
     {
         if(passengers[tripIndex][i].priorityNo == 99)
         {
             emptySeat = i;
-            i = MAX_PASS;
+            i = SPECIAL_PASS;
         }
     }
 
@@ -172,17 +167,17 @@ copyStruct(struct Card *dest,
  * @param temp              struct containing the information of the passenger to be inserted
  */
 void
-insertPassenger(struct Card passengers[][MAX_PASS],
+insertPassenger(struct Card passengers[][SPECIAL_PASS],
                 int tripIndex,
                 struct Card temp)
 {
     int i;
     
-    for(i = MAX_PASS - 1; i >= 0; i--)
+    for(i = SPECIAL_PASS - 1; i >= 0; i--)
     {
         if(temp.priorityNo < passengers[tripIndex][i].priorityNo)
         {
-            if(i == MAX_PASS - 1)
+            if(i == SPECIAL_PASS - 1)
                 copyStruct(&passengers[tripIndex][i], &temp);
             else
             {
@@ -266,14 +261,14 @@ displayDropOffs(struct TripInfo trip[],
 void
 displayDropOffCount(struct TripInfo trip[],
                     int tripIndex,
-                    struct Card passengers[][MAX_PASS],
+                    struct Card passengers[][SPECIAL_PASS],
                     stringDropOff dropOffs[][MAX_DROPOFFS],
                     int passengerCount[])
 {
     int i, j;
 
     // Count number of passengers for each drop-off point
-    for(i = 0; i < MAX_PASS; i++)
+    for(i = 0; i < SPECIAL_PASS; i++)
         for(j = 0; j < MAX_DROPOFFS; j++)
             if(passengers[tripIndex][i].dropOff - 1 == j)
                 passengerCount[j]++;
@@ -374,7 +369,7 @@ struct Date getDate()
  */
 void
 savePassengerInfo(struct TripInfo trip[],
-                  struct Card passengers[][MAX_PASS],
+                  struct Card passengers[][SPECIAL_PASS],
                   stringDropOff dropOffs[][MAX_DROPOFFS])
 {
     FILE *file;
@@ -393,7 +388,7 @@ savePassengerInfo(struct TripInfo trip[],
 
     for(i = 0; i < MAX_BUS; i++)
     {
-        for(j = 0; j < MAX_PASS; j++)
+        for(j = 0; j < SPECIAL_PASS; j++)
         {
             if(passengers[i][j].priorityNo != 99)
             {
