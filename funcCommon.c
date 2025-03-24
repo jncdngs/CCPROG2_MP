@@ -285,6 +285,8 @@ struct Date getDate()
     }
     while (dateTemp.yyyy < 1900 || dateTemp.yyyy > 2025);
 
+    cls();
+
     return dateTemp;
 }
 

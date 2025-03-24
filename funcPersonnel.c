@@ -82,7 +82,6 @@ viewPassengerCount(struct TripInfo trip[],
     printf("Seats available: %d\n\n", MAX_PASS - passengerCount);
 
     pressAnyKey();
-
     cls();
 }
 
@@ -135,7 +134,6 @@ viewDropOffCount(struct TripInfo trip[],
     displayDropOffCount(trip, tripIndex, passengers, dropOffs, passengerCount);
     
     pressAnyKey();
-
     cls();
 }
 
@@ -206,7 +204,6 @@ viewPassengerInfo(struct TripInfo trip[],
     printf("\n");
 
     pressAnyKey();
-
     cls();
 }
 
@@ -388,7 +385,6 @@ searchPassenger(struct TripInfo trip[],
         printf("Passenger \"%s\" was not found.\n\n", searchName);
 
     pressAnyKey();
-
     cls();
 }
 
@@ -408,6 +404,7 @@ displayRecentTrip()
     struct Date date = {0, 0, 0};
 
     // Ask user for the date
+    printLoadRecentTripTitle();
     date = getDate();
     
     // Write the date info into a fileName string
@@ -415,47 +412,45 @@ displayRecentTrip()
 
     file = fopen(fileName, "r");
 
-    while(file == NULL)
+    if(file == NULL)
     {
         printLoadRecentTripTitle();
         printf("\033[0;31mERROR:\033[0m File not found/empty.\n\n");
-        printf("Enter file name: ");
-        scanf("%s", fileName);
-        file = fopen(fileName, "r");
     }
-
-    printLoadRecentTripTitle();
-    printf("Passenger information from file %s\n\n", fileName);
-
-    while(fgets(temp.tripNumber, 6, file) != NULL)
+    else
     {
-        fgetc(file);
-        printf("%-16s%s\n", "Trip No:", temp.tripNumber);
+            printLoadRecentTripTitle();
+            printf("Passenger information from file %s\n\n", fileName);
         
-        fgets(temp.origin, 21, file);
-        // fgetc(file);
-        printf("%-16s%s", "Origin:", temp.origin);
+            while(fgets(temp.tripNumber, 6, file) != NULL)
+            {
+                fgetc(file);
+                printf("%-16s%s\n", "Trip No:", temp.tripNumber);
+                
+                fgets(temp.origin, 21, file);
+                // fgetc(file);
+                printf("%-16s%s", "Origin:", temp.origin);
+                
+                fgets(temp.fullName, 44, file);
+                // fgetc(file);
+                printf("%-16s%s", "Full Name:", temp.fullName);
+                
+                fscanf(file, "%d", &temp.idNo);
+                fgetc(file);
+                printf("%-16s%08d\n", "ID Number:", temp.idNo);
+                
+                fscanf(file, "%d", &temp.priorityNo);
+                fgetc(file);
+                printf("%-16s%d\n", "Priority No:", temp.priorityNo);
+                
+                fgets(temp.dropOff, 41, file);
+                fgetc(file);
+                printf("%-16s%s\n", "Drop-off:", temp.dropOff);
+            }
         
-        fgets(temp.fullName, 44, file);
-        // fgetc(file);
-        printf("%-16s%s", "Full Name:", temp.fullName);
-        
-        fscanf(file, "%d", &temp.idNo);
-        fgetc(file);
-        printf("%-16s%08d\n", "ID Number:", temp.idNo);
-        
-        fscanf(file, "%d", &temp.priorityNo);
-        fgetc(file);
-        printf("%-16s%d\n", "Priority No:", temp.priorityNo);
-        
-        fgets(temp.dropOff, 41, file);
-        fgetc(file);
-        printf("%-16s%s\n", "Drop-off:", temp.dropOff);
+            fclose(file);
     }
-
-    fclose(file);
 
     pressAnyKey();
-
     cls();
 }
