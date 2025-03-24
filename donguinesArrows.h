@@ -76,6 +76,7 @@ void insertPassenger(struct Card[][MAX_PASS], int, struct Card);
 void displayTrips(struct TripInfo[]);
 void displayDropOffs(struct TripInfo[], int, stringDropOff[][MAX_DROPOFFS]);
 void displayDropOffCount(struct TripInfo[], int, struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS], int[]);
+struct Date getDate();
 void savePassengerInfo(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS]);
 
 // funcPassenger.c

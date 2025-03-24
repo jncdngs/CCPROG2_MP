@@ -403,19 +403,26 @@ void
 displayRecentTrip()
 {
     FILE *file;
-    stringFileName fileName = "Trip-23-03-2025.txt";
+    stringFileName fileName;
     struct FilePassenger temp;
+    struct Date date = {0, 0, 0};
+
+    // Ask user for the date
+    date = getDate();
+    
+    // Write the date info into a fileName string
+    sprintf(fileName, "Trip-%02d-%02d-%04d.txt", date.dd, date.mm, date.yyyy);
 
     file = fopen(fileName, "r");
 
     while(file == NULL)
-	{
+    {
         printLoadRecentTripTitle();
         printf("\033[0;31mERROR:\033[0m File not found/empty.\n\n");
-		printf("Enter file name: ");
-		scanf("%s", fileName);
-		file = fopen(fileName, "r");
-	}
+        printf("Enter file name: ");
+        scanf("%s", fileName);
+        file = fopen(fileName, "r");
+    }
 
     printLoadRecentTripTitle();
     printf("Passenger information from file %s\n\n", fileName);

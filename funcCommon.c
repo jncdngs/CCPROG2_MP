@@ -222,6 +222,72 @@ displayDropOffCount(struct TripInfo trip[],
     printf("\n");
 }
 
+struct Date getDate()
+{
+    struct Date dateTemp = {0, 0, 0};
+    
+    int maxDays[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    // Ask user for date
+    printf("Please enter the date for the filename.\n\n");
+    
+    do
+    {
+        printf("Month (mm): ");
+        if(scanf("%d", &dateTemp.mm) != 1)
+        {
+            // Prevent loop when entering char
+            clearInputBuffer();
+            
+            // Display error when option is a char/str
+            printError();
+        }
+        else if(dateTemp.mm < 1 || dateTemp.mm > 12)
+        {
+            printError();
+        }
+    }
+    while(dateTemp.mm < 1 || dateTemp.mm > 12);
+    
+    do
+    {
+        printf("Day (dd): ");
+        if(scanf("%d", &dateTemp.dd) != 1)
+        {
+            // Prevent loop when entering char
+            clearInputBuffer();
+            
+            // Display error when option is a char/str
+            printError();
+        }
+        else if(dateTemp.dd < 1 || dateTemp.dd > maxDays[dateTemp.mm - 1])
+        {
+            printError();
+        }
+    }
+    while(dateTemp.dd < 1 || dateTemp.dd > maxDays[dateTemp.mm - 1]);
+
+    do
+    {
+        printf("Year (yyyy): ");
+        if(scanf("%d", &dateTemp.yyyy) != 1)
+        {
+            // Prevent loop when entering char
+            clearInputBuffer();
+            
+            // Display error when option is a char/str
+            printError();
+        }
+        else if(dateTemp.yyyy < 1900 || dateTemp.yyyy > 2025)
+        {
+            printError();
+        }
+    }
+    while (dateTemp.yyyy < 1900 || dateTemp.yyyy > 2025);
+
+    return dateTemp;
+}
+
 void
 savePassengerInfo(struct TripInfo trip[],
                   struct Card passengers[][MAX_PASS],
@@ -232,64 +298,9 @@ savePassengerInfo(struct TripInfo trip[],
     stringFileName fileName;
     stringFullName fullName;
     struct Date date = {0, 0, 0};
-    int maxDays[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-    // Ask user for date
-    printf("Please enter the date for the filename.\n\n");
-    
-    do
-    {
-        printf("Month (mm): ");
-        if(scanf("%d", &date.mm) != 1)
-        {
-            // Prevent loop when entering char
-            clearInputBuffer();
-            
-            // Display error when option is a char/str
-            printError();
-        }
-        else if(date.mm < 1 || date.mm > 12)
-        {
-            printError();
-        }
-    }
-    while(date.mm < 1 || date.mm > 12);
-    
-    do
-    {
-        printf("Day (dd): ");
-        if(scanf("%d", &date.dd) != 1)
-        {
-            // Prevent loop when entering char
-            clearInputBuffer();
-            
-            // Display error when option is a char/str
-            printError();
-        }
-        else if(date.dd < 1 || date.dd > maxDays[date.mm - 1])
-        {
-            printError();
-        }
-    }
-    while(date.dd < 1 || date.dd > maxDays[date.mm - 1]);
-
-    do
-    {
-        printf("Year (yyyy): ");
-        if(scanf("%d", &date.yyyy) != 1)
-        {
-            // Prevent loop when entering char
-            clearInputBuffer();
-            
-            // Display error when option is a char/str
-            printError();
-        }
-        else if(date.yyyy < 1900 || date.yyyy > 2025)
-        {
-            printError();
-        }
-    }
-    while (date.yyyy < 1900 || date.yyyy > 2025);
+    // Ask user for the date
+    date = getDate();
     
     // Write the date info into a fileName string
     sprintf(fileName, "Trip-%02d-%02d-%04d.txt", date.dd, date.mm, date.yyyy);
