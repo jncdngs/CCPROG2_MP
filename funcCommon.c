@@ -4,7 +4,8 @@
 #include "donguinesArrows.h"
 
 void
-initializePassengers(struct Card passengers[][MAX_PASS])
+initializePassengers(struct Card passengers[][MAX_PASS],
+                     struct Card passengersSpecial[][SPECIAL_PASS])
 {
     int i, j;
 
@@ -17,6 +18,18 @@ initializePassengers(struct Card passengers[][MAX_PASS])
             strcpy(passengers[i][j].firstName, "");
             passengers[i][j].idNo = 0;
             passengers[i][j].dropOff = 0;
+        }
+    }
+
+    for(i = 0; i < SPECIAL_BUS; i++)
+    {
+        for(j = 0; j < SPECIAL_PASS; j++)
+        {
+            passengersSpecial[i][j].priorityNo = 99;
+            strcpy(passengersSpecial[i][j].lastName, "");
+            strcpy(passengersSpecial[i][j].firstName, "");
+            passengersSpecial[i][j].idNo = 0;
+            passengersSpecial[i][j].dropOff = 0;
         }
     }
 }

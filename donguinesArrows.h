@@ -5,6 +5,7 @@
 #define MAX_PASS 13     // Maximum of 13 passengers per regular shuttle
 #define SPECIAL_PASS 16 // Maximum of 16 passengers per special shuttle
 #define MAX_BUS 20      // Maximum of 20 regular shuttles
+#define SPECIAL_BUS 2   // Maximum of 2 special shuttles
 #define MAX_DROPOFFS 4  // Maximum of 4 drop-off points per shuttle
 
 typedef char stringTrip[6];                     // "AE101", etc.
@@ -65,7 +66,7 @@ void printSearchPassengerTitle();
 void printLoadRecentTripTitle();
 
 // funcCommon.c
-void initializePassengers(struct Card[][MAX_PASS]);
+void initializePassengers(struct Card[][MAX_PASS], struct Card[][SPECIAL_PASS]);
 int isValidTrip(struct TripInfo[], stringTrip);
 int isFullTrip(int, struct Card[][MAX_PASS]);
 int getEmptySeat(int, struct Card[][MAX_PASS]);

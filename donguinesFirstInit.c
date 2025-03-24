@@ -20,60 +20,69 @@ int
 main()
 {
     struct Card passengers[MAX_BUS][MAX_PASS];
-    // struct Card passengersSpecial[SPECIAL_PASS];
+    struct Card passengersSpecial[SPECIAL_BUS][SPECIAL_PASS];
 
-    struct TripInfo trip[MAX_BUS] = {   // Manila-Laguna
-                                        {"AE101", "0600", "DLSU Manila Campus", 0},
-                                        {"AE102", "0730", "DLSU Manila Campus", 1},
-                                        {"AE103", "0930", "DLSU Manila Campus", 0},
-                                        {"AE104", "1100", "DLSU Manila Campus", 1},
-                                        {"AE105", "1300", "DLSU Manila Campus", 0},
-                                        {"AE106", "1430", "DLSU Manila Campus", 1},
-                                        {"AE107", "1530", "DLSU Manila Campus", 0},
-                                        {"AE108", "1700", "DLSU Manila Campus", 1},
-                                        {"AE109", "1815", "DLSU Manila Campus", 0},
-                                        
-                                        // Laguna-Manila
-                                        {"AE150", "0530", "DLSU Laguna Campus", 3},
-                                        {"AE151", "0545", "DLSU Laguna Campus", 2},
-                                        {"AE152", "0700", "DLSU Laguna Campus", 3},
-                                        {"AE153", "0730", "DLSU Laguna Campus", 2},
-                                        {"AE154", "0900", "DLSU Laguna Campus", 3},
-                                        {"AE155", "1100", "DLSU Laguna Campus", 2},
-                                        {"AE156", "1300", "DLSU Laguna Campus", 3},
-                                        {"AE157", "1430", "DLSU Laguna Campus", 2},
-                                        {"AE158", "1530", "DLSU Laguna Campus", 3},
-                                        {"AE159", "1700", "DLSU Laguna Campus", 2},
-                                        {"AE160", "1815", "DLSU Laguna Campus", 3}
-                                    };
+    struct TripInfo trip[MAX_BUS] =
+    {   // Manila-Laguna
+        {"AE101", "0600", "DLSU Manila Campus", 0},
+        {"AE102", "0730", "DLSU Manila Campus", 1},
+        {"AE103", "0930", "DLSU Manila Campus", 0},
+        {"AE104", "1100", "DLSU Manila Campus", 1},
+        {"AE105", "1300", "DLSU Manila Campus", 0},
+        {"AE106", "1430", "DLSU Manila Campus", 1},
+        {"AE107", "1530", "DLSU Manila Campus", 0},
+        {"AE108", "1700", "DLSU Manila Campus", 1},
+        {"AE109", "1815", "DLSU Manila Campus", 0},
+        
+        // Laguna-Manila
+        {"AE150", "0530", "DLSU Laguna Campus", 3},
+        {"AE151", "0545", "DLSU Laguna Campus", 2},
+        {"AE152", "0700", "DLSU Laguna Campus", 3},
+        {"AE153", "0730", "DLSU Laguna Campus", 2},
+        {"AE154", "0900", "DLSU Laguna Campus", 3},
+        {"AE155", "1100", "DLSU Laguna Campus", 2},
+        {"AE156", "1300", "DLSU Laguna Campus", 3},
+        {"AE157", "1430", "DLSU Laguna Campus", 2},
+        {"AE158", "1530", "DLSU Laguna Campus", 3},
+        {"AE159", "1700", "DLSU Laguna Campus", 2},
+        {"AE160", "1815", "DLSU Laguna Campus", 3}
+    };
+
+    struct TripInfo tripSpecial[SPECIAL_BUS] =
+    {
+        {"SPEC1", "1815", "DLSU Manila Campus", 0},
+        {"SPEC2", "1815", "DLSU Laguna Campus", 2}
+    };
 
     stringDropOff dropOffs[MAX_DROPOFFS][MAX_DROPOFFS] = 
-                                   {{
-                                        "Mamplasan Toll Exit",
-                                        "Phase 5, San Jose Village",
-                                        "Milagros Del Rosario (MRR) Bldg."
-                                    },
-                                    {
-                                        "Laguna Blvd. Guard House",
-                                        "Milagros Del Rosario (MRR) Bldg."
-                                    },
-                                    {
-                                        "Petron Gasoline Station",
-                                        "Gate 4: Gokongwei",
-                                        "Gate 2: Henry Sy (North)",
-                                        "Gate 1: LS Hall (South)"
-                                    },
-                                    {
-                                        "College of St. Benilde (CSB)",
-                                        "Gate 4: Gokongwei",
-                                        "Gate 2: Henry Sy (North)",
-                                        "Gate 1: LS Hall (South)"
-                                    }};
+    {
+        {
+            "Mamplasan Toll Exit",
+            "Phase 5, San Jose Village",
+            "Milagros Del Rosario (MRR) Bldg."
+        },
+        {
+            "Laguna Blvd. Guard House",
+            "Milagros Del Rosario (MRR) Bldg."
+        },
+        {
+            "Petron Gasoline Station",
+            "Gate 4: Gokongwei",
+            "Gate 2: Henry Sy (North)",
+            "Gate 1: LS Hall (South)"
+        },
+        {
+            "College of St. Benilde (CSB)",
+            "Gate 4: Gokongwei",
+            "Gate 2: Henry Sy (North)",
+            "Gate 1: LS Hall (South)"
+        }
+    };
 
     float mainMenuOption, passengerMenuOption, personnelMenuOption;
     char exit = '\0';
     
-    initializePassengers(passengers);
+    initializePassengers(passengers, passengersSpecial);
     cls();
 
     do
