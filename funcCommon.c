@@ -3,6 +3,13 @@
 #include <string.h>
 #include "donguinesArrows.h"
 
+/**
+ * Initializes the struct arrays to "empty" to avoid garbage values.
+ * Initializes priority numbers to 99 for sorting.
+ * 
+ * @param passengers[][]            array where the passenger info in regular trips is stored
+ * @param passengersSpecial[][]     array where the passenger info in special trips is stored
+ */
 void
 initializePassengers(struct Card passengers[][MAX_PASS],
                      struct Card passengersSpecial[][SPECIAL_PASS])
@@ -34,6 +41,13 @@ initializePassengers(struct Card passengers[][MAX_PASS],
     }
 }
 
+/**
+ * Checks if the string tripNo is in the trip array and returns the index in the array if found.
+ * 
+ * @param trip[]    array containing trip information (trip number, etc.)
+ * @param tripNo    trip number to find in the array (AE101, etc.)
+ * @return          the index of the trip number in the trip array if found, -1 if not found
+ */
 int
 isValidTrip(struct TripInfo trip[],
             stringTrip tripNo)
@@ -48,6 +62,13 @@ isValidTrip(struct TripInfo trip[],
     return tripIndex;
 }
 
+/**
+ * Checks if the chosen trip is full.
+ * 
+ * @param tripIndex         the index of the trip number to use
+ * @param passengers[][]    array where the passenger info in regular trips is stored
+ * @return                  1 if the trip is full, 0 if not full
+ */
 int
 isFullTrip(int tripIndex,
            struct Card passengers[][MAX_PASS])
@@ -66,6 +87,13 @@ isFullTrip(int tripIndex,
     return isFull;
 }
 
+/**
+ * Finds the first empty seat in the selected trip.
+ * 
+ * @param tripIndex         the index of the trip number to use
+ * @param passengers[][]    array where the passenger info in regular trips is stored
+ * @return                  the index of the seat in the passengers array if found, -1 if not found
+ */
 int
 getEmptySeat(int tripIndex,
              struct Card passengers[][MAX_PASS])
@@ -85,6 +113,14 @@ getEmptySeat(int tripIndex,
     return emptySeat;
 }
 
+/**
+ * Converts two strings to UPPERCASE and compares them.
+ * Works like strcmp() but is case-insensitive.
+ * 
+ * @param *string1      pointer to the first string to be compared
+ * @param *string2      pointer to the second string to be compared
+ * @return              difference between the two strings, 0 if similar
+ */
 int
 compareStrings(char *string1, char *string2)
 {
@@ -115,6 +151,12 @@ compareStrings(char *string1, char *string2)
     return diff;
 }
 
+/**
+ * Copies all elements of one struct to another.
+ * 
+ * @param *dest     pointer to the struct to copy into
+ * @param *src      pointer to the original struct to be copied
+ */
 void
 copyStruct(struct Card *dest,
            struct Card *src)
@@ -122,6 +164,13 @@ copyStruct(struct Card *dest,
     *dest = *src;
 }
 
+/**
+ * Inserts passenger info to the given trip based on priority number.
+ * 
+ * @param passengers[][]    array where the passenger info in regular trips is stored
+ * @param tripIndex         the index of the trip number to use
+ * @param temp              struct containing the information of the passenger to be inserted
+ */
 void
 insertPassenger(struct Card passengers[][MAX_PASS],
                 int tripIndex,
@@ -144,6 +193,11 @@ insertPassenger(struct Card passengers[][MAX_PASS],
     }
 }
 
+/**
+ * Displays the trip number, time, and origin of each trip in the trip array.
+ * 
+ * @param trip[]    array containing trip information (trip number, etc.)
+ */
 void
 displayTrips(struct TripInfo trip[])
 {
@@ -174,6 +228,13 @@ displayTrips(struct TripInfo trip[])
     printf("\n");
 }
 
+/**
+ * Displays the trip number, time, and origin of each trip in the trip array.
+ * 
+ * @param trip[]        array containing trip information (trip number, etc.)
+ * @param tripIndex     the index of the trip number to use
+ * @param dropOffs[][]  array containing full names of drop-off points
+ */
 void
 displayDropOffs(struct TripInfo trip[],
                 int tripIndex,
@@ -193,6 +254,15 @@ displayDropOffs(struct TripInfo trip[],
     printf("\n");
 }
 
+/**
+ * Displays the full name of valid drop-off points in given trip and number of passengers getting off in each.
+ * 
+ * @param trip[]            array containing trip information (trip number, etc.)
+ * @param tripIndex         the index of the trip number to use
+ * @param passengers[][]    array where the passenger info in regular trips is stored
+ * @param dropOffs[][]      array containing full names of drop-off points
+ * @param passengerCount[]  passenger count for each drop-off point
+ */
 void
 displayDropOffCount(struct TripInfo trip[],
                     int tripIndex,
@@ -222,6 +292,11 @@ displayDropOffCount(struct TripInfo trip[],
     printf("\n");
 }
 
+/**
+ * Ask user for valid month, day, and year.
+ * 
+ * @return struct containing the month, day, and year
+ */
 struct Date getDate()
 {
     struct Date dateTemp = {0, 0, 0};
@@ -290,6 +365,13 @@ struct Date getDate()
     return dateTemp;
 }
 
+/**
+ * Saves information of all passengers to a text file
+ * 
+ * @param trip[]            array containing trip information (trip number, etc.)
+ * @param passengers[][]    array where the passenger info in regular trips is stored
+ * @param dropOffs[][]      array containing full names of drop-off points
+ */
 void
 savePassengerInfo(struct TripInfo trip[],
                   struct Card passengers[][MAX_PASS],

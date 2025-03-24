@@ -6,7 +6,7 @@
  * Asks for trip number and passenger information and assigns user a seat if the trip is not full.
  * 
  * @param trip[]           array containing trip information (trip number, etc.)
- * @param passengers[][]   array where the passenger information is stored
+ * @param passengers[][]   array where the passenger info in regular trips is stored
  * @param dropOffs[][]     array containing full names of drop-off points
  */
 void

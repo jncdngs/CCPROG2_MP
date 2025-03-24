@@ -7,7 +7,7 @@
  * Asks for trip number and displays the seat map and passenger count for the trip.
  * 
  * @param trip[]           array containing trip information (trip number, etc.)
- * @param passengers[][]   array where the passenger information is stored
+ * @param passengers[][]   array where the passenger info in regular trips is stored
  */
 void
 viewPassengerCount(struct TripInfo trip[],
@@ -86,10 +86,10 @@ viewPassengerCount(struct TripInfo trip[],
 }
 
 /**
- * Asks for trip number and displays drop-off points for the trip with corresponding passenger counts
+ * Asks for trip number and displays drop-off points for the trip with corresponding passenger counts.
  * 
  * @param trip[]           array containing trip information (trip number, etc.)
- * @param passengers[][]   array where the passenger information is stored
+ * @param passengers[][]   array where the passenger info in regular trips is stored
  * @param dropOffs[][]     array containing full names of drop-off points
  */
 void
@@ -138,10 +138,10 @@ viewDropOffCount(struct TripInfo trip[],
 }
 
 /**
- * Asks for trip number and displays information of all passengers in the trip sorted by priority number
+ * Asks for trip number and displays information of all passengers in the trip sorted by priority number.
  * 
  * @param trip[]           array containing trip information (trip number, etc.)
- * @param passengers[][]   array where the passenger information is stored
+ * @param passengers[][]   array where the passenger info in regular trips is stored
  */
 void
 viewPassengerInfo(struct TripInfo trip[],
@@ -207,6 +207,13 @@ viewPassengerInfo(struct TripInfo trip[],
     cls();
 }
 
+/**
+ * Loads passenger info from passenger.txt and assigns it to the corresponding trip.
+ * 
+ * @param trip[]           array containing trip information (trip number, etc.)
+ * @param passengers[][]   array where the passenger info in regular trips is stored
+ * @param dropOffs[][]     array containing full names of drop-off points
+ */
 void
 loadPassenger(struct TripInfo trip[],
               struct Card passengers[][MAX_PASS],
@@ -315,10 +322,10 @@ loadPassenger(struct TripInfo trip[],
 }
 
 /**
- * Asks for last name and displays information of passengers with that last name
+ * Asks for last name and displays information of passengers with that last name.
  * 
  * @param trip[]           array containing trip information (trip number, etc.)
- * @param passengers[][]   array where the passenger information is stored
+ * @param passengers[][]   array where the passenger info in regular trips is stored
  * @param dropOffs[][]     array containing full names of drop-off points
  */
 void
@@ -389,10 +396,10 @@ searchPassenger(struct TripInfo trip[],
 }
 
 /**
- * Asks for the file name and displays all the contents in the selected file
+ * Asks for the file name and displays all the contents in the selected file.
  * 
  * @param trip[]           array containing trip information (trip number, etc.)
- * @param passengers[][]   array where the passenger information is stored
+ * @param passengers[][]   array where the passenger info in regular trips is stored
  * @param dropOffs[][]     array containing full names of drop-off points
  */
 void

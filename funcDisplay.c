@@ -10,7 +10,6 @@
 #include <conio.h>  // for getch()
 #include "donguinesArrows.h"
 
-
 /**
  * Clears the screen by using ANSI escape codes.
  * 
