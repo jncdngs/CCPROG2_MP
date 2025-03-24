@@ -11,14 +11,15 @@
  */
 void
 viewPassengerCount(struct TripInfo trip[],
-                   struct Card passengers[][MAX_PASS])
+                   struct Card passengers[][SPECIAL_PASS])
 {
     stringTrip tripNo;
 
     int tripIndex = -1;
 
     int passengerCount = 0;
-    char seatStatus[MAX_PASS];
+    int seatsAvail = MAX_PASS;
+    char seatStatus[SPECIAL_PASS];
 
     int i, j;
 
@@ -45,7 +46,7 @@ viewPassengerCount(struct TripInfo trip[],
 
     // Count total passengers in trip
     // Assign X for taken seats and O for empty seats 
-    for(i = 0; i < MAX_PASS; i++)
+    for(i = 0; i < SPECIAL_PASS; i++)
     {
         if(passengers[tripIndex][i].priorityNo != 99)
         {
@@ -61,25 +62,53 @@ viewPassengerCount(struct TripInfo trip[],
     printPassengerCountTitle();
     printf("Seat Map for Trip %s\n\n", trip[tripIndex].tripNumber);
     
-    for(i = 0; i < 9; i++)
+    if(passengerCount <= MAX_PASS)
     {
-        if(i % 2)
+        for(i = 0; i < 9; i++)
         {
-            for(j = 0; j < 3; j++)
-                printf("| %c ", seatStatus[(i / 2 * 3) + j]);
-
-            printf("|");
+            if(i % 2)
+            {
+                for(j = 0; j < 3; j++)
+                    printf("| %c ", seatStatus[(i / 2 * 3) + j]);
+    
+                printf("|");
+            }
+            else
+                printf("+---+---+---+");
+    
+            printf("\n");
         }
-        else
-            printf("+---+---+---+");
-
-        printf("\n");
+        printf("| %c |       |\n", seatStatus[12]);
+        printf("+---+---+---+\n\n");
     }
-    printf("| %c |       |\n", seatStatus[12]);
-    printf("+---+---+---+\n\n");
+    else
+    {
+        for(i = 0; i < 7; i++)
+        {
+            if(i % 2)
+            {
+                for(j = 0; j < 4; j++)
+                    printf("| %c ", seatStatus[(i - 1) * 2 + j]);
+    
+                printf("|");
+            }
+            else
+                printf("+---+---+---+---+");
+    
+            printf("\n");
+        }
+        printf("|   | %c | %c | %c |\n", seatStatus[12],
+                                         seatStatus[13],
+                                         seatStatus[14]);
+        printf("+---+---+---+---+\n");
+        printf("|   %c   |       |\n", seatStatus[15]);
+        printf("+---+---+---+---+\n\n");
+
+        seatsAvail = SPECIAL_PASS;
+    }
 
     printf("Seats taken:     %d\n", passengerCount);
-    printf("Seats available: %d\n\n", MAX_PASS - passengerCount);
+    printf("Seats available: %d\n\n", seatsAvail - passengerCount);
 
     pressAnyKey();
     cls();
@@ -94,7 +123,7 @@ viewPassengerCount(struct TripInfo trip[],
  */
 void
 viewDropOffCount(struct TripInfo trip[],
-                 struct Card passengers[][MAX_PASS],
+                 struct Card passengers[][SPECIAL_PASS],
                  stringDropOff dropOffs[][MAX_DROPOFFS])
 {
     stringTrip tripNo;
@@ -145,7 +174,7 @@ viewDropOffCount(struct TripInfo trip[],
  */
 void
 viewPassengerInfo(struct TripInfo trip[],
-                  struct Card passengers[][MAX_PASS])
+                  struct Card passengers[][SPECIAL_PASS])
 {
     stringTrip tripNo;
     stringFullName fullName;
@@ -187,7 +216,7 @@ viewPassengerInfo(struct TripInfo trip[],
     else
         printf("Trip %s has no passengers.\n", trip[tripIndex].tripNumber);
 
-    for(i = 0; i < MAX_PASS; i++)
+    for(i = 0; i < SPECIAL_PASS; i++)
     {
         if(passengers[tripIndex][i].priorityNo != 99)
         {
@@ -216,7 +245,7 @@ viewPassengerInfo(struct TripInfo trip[],
  */
 void
 loadPassenger(struct TripInfo trip[],
-              struct Card passengers[][MAX_PASS],
+              struct Card passengers[][SPECIAL_PASS],
               stringDropOff dropOffs[][MAX_DROPOFFS])
 {
     stringTrip tripNo;
@@ -284,7 +313,7 @@ loadPassenger(struct TripInfo trip[],
             fclose(file);
     
             // If valid, check if trip is full
-            if(isFullTrip(tripIndex, passengers))
+            if(isFullTrip(tripIndex, passengers, temp.priorityNo))
             {
                 cls();
                 printPassengerInfoTitle();
@@ -330,7 +359,7 @@ loadPassenger(struct TripInfo trip[],
  */
 void
 searchPassenger(struct TripInfo trip[],
-                struct Card passengers[][MAX_PASS],
+                struct Card passengers[][SPECIAL_PASS],
                 stringDropOff dropOffs[][MAX_DROPOFFS])
 {
     int i, j;
@@ -349,7 +378,7 @@ searchPassenger(struct TripInfo trip[],
 
     for(i = 0; i < MAX_BUS; i++)
     {
-        for(j = 0; j < MAX_PASS; j++)
+        for(j = 0; j < SPECIAL_PASS; j++)
         {
             if(compareStrings(passengers[i][j].lastName, searchName) == 0)
             {

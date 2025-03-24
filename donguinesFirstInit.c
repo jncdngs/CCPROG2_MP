@@ -17,7 +17,7 @@ students and/or persons.
 int
 main()
 {
-    struct Card passengers[MAX_BUS][MAX_PASS];
+    struct Card passengers[MAX_BUS][SPECIAL_PASS];
     struct Card passengersSpecial[SPECIAL_BUS][SPECIAL_PASS];
 
     struct TripInfo trip[MAX_BUS] =
