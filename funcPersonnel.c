@@ -403,14 +403,15 @@ void
 displayRecentTrip()
 {
     FILE *file;
-    stringFileName fileName = "test.txt";
+    stringFileName fileName = "Trip-23-03-2025.txt";
     struct FilePassenger temp;
 
     file = fopen(fileName, "r");
 
     while(file == NULL)
 	{
-		printf("\033[0;31mERROR:\033[0m File not found/invalid.\n\n");
+        printLoadRecentTripTitle();
+        printf("\033[0;31mERROR:\033[0m File not found/empty.\n\n");
 		printf("Enter file name: ");
 		scanf("%s", fileName);
 		file = fopen(fileName, "r");
