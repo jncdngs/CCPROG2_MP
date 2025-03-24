@@ -12,8 +12,6 @@ students and/or persons.
 *******************************************************************************/
 
 #include <stdio.h>
-#include <conio.h>  // for getch()
-#include <string.h>
 #include "donguinesArrows.h"
 
 int
