@@ -48,11 +48,11 @@ main()
         {"AE160", "1815", "DLSU Laguna Campus", 3}
     };
 
-    struct TripInfo tripSpecial[SPECIAL_BUS] =
-    {
-        {"SPEC1", "1815", "DLSU Manila Campus", 0},
-        {"SPEC2", "1815", "DLSU Laguna Campus", 2}
-    };
+    // struct TripInfo tripSpecial[SPECIAL_BUS] =
+    // {
+    //     {"SPEC1", "1815", "DLSU Manila Campus", 0},
+    //     {"SPEC2", "1815", "DLSU Laguna Campus", 2}
+    // };
 
     stringDropOff dropOffs[MAX_DROPOFFS][MAX_DROPOFFS] = 
     {

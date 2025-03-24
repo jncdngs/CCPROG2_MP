@@ -14,9 +14,9 @@
 /**
  * Clears the screen by using ANSI escape codes.
  * 
- * \033[H	Moves cursor to top-left (home)
- * \033[J	Erases everything below the cursor
- * \033[3J	Erases everything, including scrolled-up text
+ * \033[H   Moves cursor to top-left (home)
+ * \033[J   Erases everything below the cursor
+ * \033[3J  Erases everything, including scrolled-up text
  */
 void
 cls()
