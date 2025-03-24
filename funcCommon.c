@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <conio.h>  // for getch()
+#include <conio.h>
 #include <string.h>
 #include "donguinesArrows.h"
 

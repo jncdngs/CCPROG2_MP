@@ -7,7 +7,7 @@
 *******************************************************************************/
 
 #include <stdio.h>
-#include <conio.h>  // for getch()
+#include <conio.h>
 #include "donguinesArrows.h"
 
 /**
