@@ -66,28 +66,28 @@ void printSearchPassengerTitle();
 void printLoadRecentTripTitle();
 
 // funcCommon.c
-void initializePassengers(struct Card[][MAX_PASS], struct Card[][SPECIAL_PASS]);
+void initializePassengers(struct Card[][SPECIAL_PASS], struct Card[][SPECIAL_PASS]);
 int isValidTrip(struct TripInfo[], stringTrip);
-int isFullTrip(int, struct Card[][MAX_PASS]);
-int getEmptySeat(int, struct Card[][MAX_PASS]);
+int isFullTrip(int, struct Card[][SPECIAL_PASS], int);
+int getEmptySeat(int, struct Card[][SPECIAL_PASS]);
 int compareStrings(char*, char*);
 void copyStruct(struct Card*, struct Card*);
-void insertPassenger(struct Card[][MAX_PASS], int, struct Card);
+void insertPassenger(struct Card[][SPECIAL_PASS], int, struct Card);
 void displayTrips(struct TripInfo[]);
 void displayDropOffs(struct TripInfo[], int, stringDropOff[][MAX_DROPOFFS]);
-void displayDropOffCount(struct TripInfo[], int, struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS], int[]);
+void displayDropOffCount(struct TripInfo[], int, struct Card[][SPECIAL_PASS], stringDropOff[][MAX_DROPOFFS], int[]);
 struct Date getDate();
-void savePassengerInfo(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS]);
+void savePassengerInfo(struct TripInfo[], struct Card[][SPECIAL_PASS], stringDropOff[][MAX_DROPOFFS]);
 
 // funcPassenger.c
-void enterPassengerInfo(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS]);
+void enterPassengerInfo(struct TripInfo[], struct Card[][SPECIAL_PASS], stringDropOff[][MAX_DROPOFFS]);
 
 // funcPersonnel.c
-void viewPassengerCount(struct TripInfo[], struct Card[][MAX_PASS]);
-void viewDropOffCount(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS]);
-void viewPassengerInfo(struct TripInfo[], struct Card[][MAX_PASS]);
-void loadPassenger(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS]);
-void searchPassenger(struct TripInfo[], struct Card[][MAX_PASS], stringDropOff[][MAX_DROPOFFS]);
+void viewPassengerCount(struct TripInfo[], struct Card[][SPECIAL_PASS]);
+void viewDropOffCount(struct TripInfo[], struct Card[][SPECIAL_PASS], stringDropOff[][MAX_DROPOFFS]);
+void viewPassengerInfo(struct TripInfo[], struct Card[][SPECIAL_PASS]);
+void loadPassenger(struct TripInfo[], struct Card[][SPECIAL_PASS], stringDropOff[][MAX_DROPOFFS]);
+void searchPassenger(struct TripInfo[], struct Card[][SPECIAL_PASS], stringDropOff[][MAX_DROPOFFS]);
 void displayRecentTrip();
 
 #endif
