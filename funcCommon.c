@@ -129,32 +129,6 @@ isSpecDeployed(struct Card passengers[][SPECIAL_PASS])
 }
 
 /**
- * Finds the first empty seat in the selected trip.
- * 
- * @param tripIndex         the index of the trip number to use
- * @param passengers[][]    array where all the passenger info is stored
- * @return                  the index of the seat in the passengers array if found, -1 if not found
- */
-// int
-// getEmptySeat(int tripIndex,
-//              struct Card passengers[][SPECIAL_PASS])
-// {
-//     int i;
-//     int emptySeat = -1;
-
-//     for(i = 0; i < SPECIAL_PASS; i++)
-//     {
-//         if(passengers[tripIndex][i].priorityNo == 99)
-//         {
-//             emptySeat = i;
-//             i = SPECIAL_PASS;
-//         }
-//     }
-
-//     return emptySeat;
-// }
-
-/**
  * Converts two strings to UPPERCASE and compares them.
  * Works like strcmp() but is case-insensitive.
  * 
@@ -364,7 +338,8 @@ displayDropOffCount(struct TripInfo trip[],
  * 
  * @return struct containing the month, day, and year
  */
-struct Date getDate()
+struct Date
+getDate()
 {
     struct Date dateTemp = {0, 0, 0};
     

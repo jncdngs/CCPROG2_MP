@@ -35,7 +35,7 @@ clearInputBuffer()
 /**
  * Displays a message and waits for a key press before continuing
  */
- void
+void
 pressAnyKey()
 {
     printf("Press any key to return to the main menu...");
