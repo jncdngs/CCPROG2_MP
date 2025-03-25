@@ -12,7 +12,8 @@
 void
 enterPassengerInfo(struct TripInfo trip[],
                    struct Card passengers[][SPECIAL_PASS],
-                   stringDropOff dropOffs[][MAX_DROPOFFS])
+                   stringDropOff dropOffs[][MAX_DROPOFFS],
+                   int *specDeployed)
 {
     stringTrip tripNo;
     
@@ -41,7 +42,7 @@ enterPassengerInfo(struct TripInfo trip[],
         // Ask user for trip number
         printPassengerInfoTitle();
 
-        displayTrips(trip);
+        displayTrips(trip, *specDeployed);
 
         printf("Please enter the trip number (AE1xx): ");
         scanf("%5s", tripNo);

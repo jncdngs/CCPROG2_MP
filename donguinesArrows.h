@@ -73,19 +73,19 @@ int getEmptySeat(int, struct Card[][SPECIAL_PASS]);
 int compareStrings(char*, char*);
 void copyStruct(struct Card*, struct Card*);
 void insertPassenger(struct Card[][SPECIAL_PASS], int, struct Card);
-void displayTrips(struct TripInfo[]);
+void displayTrips(struct TripInfo[], int);
 void displayDropOffs(struct TripInfo[], int, stringDropOff[][MAX_DROPOFFS]);
 void displayDropOffCount(struct TripInfo[], int, struct Card[][SPECIAL_PASS], stringDropOff[][MAX_DROPOFFS], int[]);
 struct Date getDate();
 void savePassengerInfo(struct TripInfo[], struct Card[][SPECIAL_PASS], stringDropOff[][MAX_DROPOFFS]);
 
 // funcPassenger.c
-void enterPassengerInfo(struct TripInfo[], struct Card[][SPECIAL_PASS], stringDropOff[][MAX_DROPOFFS]);
+void enterPassengerInfo(struct TripInfo[], struct Card[][SPECIAL_PASS], stringDropOff[][MAX_DROPOFFS], int*);
 
 // funcPersonnel.c
-void viewPassengerCount(struct TripInfo[], struct Card[][SPECIAL_PASS]);
-void viewDropOffCount(struct TripInfo[], struct Card[][SPECIAL_PASS], stringDropOff[][MAX_DROPOFFS]);
-void viewPassengerInfo(struct TripInfo[], struct Card[][SPECIAL_PASS]);
+void viewPassengerCount(struct TripInfo[], struct Card[][SPECIAL_PASS], int*);
+void viewDropOffCount(struct TripInfo[], struct Card[][SPECIAL_PASS], stringDropOff[][MAX_DROPOFFS], int*);
+void viewPassengerInfo(struct TripInfo[], struct Card[][SPECIAL_PASS], int*);
 void loadPassenger(struct TripInfo[], struct Card[][SPECIAL_PASS], stringDropOff[][MAX_DROPOFFS]);
 void searchPassenger(struct TripInfo[], struct Card[][SPECIAL_PASS], stringDropOff[][MAX_DROPOFFS]);
 void displayRecentTrip();

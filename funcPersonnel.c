@@ -11,7 +11,8 @@
  */
 void
 viewPassengerCount(struct TripInfo trip[],
-                   struct Card passengers[][SPECIAL_PASS])
+                   struct Card passengers[][SPECIAL_PASS],
+                   int *specDeployed)
 {
     stringTrip tripNo;
 
@@ -28,7 +29,7 @@ viewPassengerCount(struct TripInfo trip[],
         // Ask user for trip number
         printPassengerCountTitle();
         
-        displayTrips(trip);
+        displayTrips(trip, *specDeployed);
         
         printf("Please enter the trip number (AE1xx): ");
         scanf("%5s", tripNo);
@@ -62,7 +63,7 @@ viewPassengerCount(struct TripInfo trip[],
     printPassengerCountTitle();
     printf("Seat Map for Trip %s\n\n", trip[tripIndex].tripNumber);
     
-    if(passengerCount <= MAX_PASS)
+    if(passengerCount <= MAX_PASS && tripIndex != 9 && tripIndex != 21)
     {
         for(i = 0; i < 9; i++)
         {
@@ -124,7 +125,8 @@ viewPassengerCount(struct TripInfo trip[],
 void
 viewDropOffCount(struct TripInfo trip[],
                  struct Card passengers[][SPECIAL_PASS],
-                 stringDropOff dropOffs[][MAX_DROPOFFS])
+                 stringDropOff dropOffs[][MAX_DROPOFFS],
+                 int *specDeployed)
 {
     stringTrip tripNo;
     
@@ -137,7 +139,7 @@ viewDropOffCount(struct TripInfo trip[],
         // Ask user for trip number
         printDropOffTitle();
         
-        displayTrips(trip);
+        displayTrips(trip, *specDeployed);
         
         printf("Please enter the trip number (AE1xx): ");
         scanf("%5s", tripNo);
@@ -174,7 +176,8 @@ viewDropOffCount(struct TripInfo trip[],
  */
 void
 viewPassengerInfo(struct TripInfo trip[],
-                  struct Card passengers[][SPECIAL_PASS])
+                  struct Card passengers[][SPECIAL_PASS],
+                  int *specDeployed)
 {
     stringTrip tripNo;
     stringFullName fullName;
@@ -188,7 +191,7 @@ viewPassengerInfo(struct TripInfo trip[],
         // Ask user for trip number
         printPassengerInfoTitle();
         
-        displayTrips(trip);
+        displayTrips(trip, *specDeployed);
         
         printf("Please enter the trip number (AE1xx): ");
         scanf("%5s", tripNo);
@@ -314,7 +317,7 @@ loadPassenger(struct TripInfo trip[],
             fclose(file);
     
             // If valid, check if trip is full
-            if(isFullTrip(tripIndex, passengers, temp.priorityNo))
+            if(isFullTrip(tripIndex, passengers, temp.priorityNo) == 2)
             {
                 cls();
                 printLoadPassengerTitle();

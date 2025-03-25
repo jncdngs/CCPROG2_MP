@@ -30,7 +30,7 @@ main()
         {"AE107", "1530", "DLSU Manila Campus", 0},
         {"AE108", "1700", "DLSU Manila Campus", 1},
         {"AE109", "1815", "DLSU Manila Campus", 0},
-        {"SPEC1", "1815", "DLSU Manila Campus", 0},
+        {"SPEC1", "1815", "DLSU Manila Campus", 1},
         
         // Laguna-Manila
         {"AE150", "0530", "DLSU Laguna Campus", 3},
@@ -74,6 +74,12 @@ main()
 
     float mainMenuOption, passengerMenuOption, personnelMenuOption;
     char exit = '\0';
+
+    // 0 if special trips not deployed
+    // 1 if only SPEC1 has been deployed
+    // 2 if only SPEC2 has been deployed
+    // 3 if both special trips have been deployed
+    int specDeployed = 0;
     
     initializePassengers(passengers);
     cls();
@@ -138,7 +144,7 @@ main()
                 if(passengerMenuOption == 1)        // [1] Enter passenger information
                 {
                     cls();
-                    enterPassengerInfo(trip, passengers, dropOffs);
+                    enterPassengerInfo(trip, passengers, dropOffs, &specDeployed);
                 }
                 else if(passengerMenuOption == 2)   // [2] Back to main menu
                 {
@@ -193,17 +199,17 @@ main()
                 if (personnelMenuOption == 1)       // [1] View passenger count
                 {
                     cls();
-                    viewPassengerCount(trip, passengers);
+                    viewPassengerCount(trip, passengers, &specDeployed);
                 }
                 else if (personnelMenuOption == 2)  // [2] View drop-off count
                 {
                     cls();
-                    viewDropOffCount(trip, passengers, dropOffs);
+                    viewDropOffCount(trip, passengers, dropOffs, &specDeployed);
                 }
                 else if (personnelMenuOption == 3)  // [3] View passenger information
                 {
                     cls();
-                    viewPassengerInfo(trip, passengers);
+                    viewPassengerInfo(trip, passengers, &specDeployed);
                 }
                 else if (personnelMenuOption == 4)  // [4] Load passenger
                 {

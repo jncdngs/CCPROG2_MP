@@ -217,14 +217,17 @@ insertPassenger(struct Card passengers[][SPECIAL_PASS],
 /**
  * Displays the trip number, time, and origin of each trip in the trip array.
  * 
- * @param trip[]    array containing trip information (trip number, etc.)
+ * @param trip[]        array containing trip information (trip number, etc.)
+ * @param specDeployed  flag that specifies if special trips were deployed
  */
 void
-displayTrips(struct TripInfo trip[])
+displayTrips(struct TripInfo trip[], int specDeployed)
 {
     int i;
-    int rowsMax = 11;
-    int firstRouteCount = 9;
+    int rowsMax = 12;
+    int firstRouteCount = 10;
+    int spec1 = 0;
+    int spec2 = 0;
     
     printf("%-10s%-9s%-28s", "Trip", "Time", "Origin");
     printf("%-10s%-9s%s\n\n", "Trip", "Time", "Origin");
@@ -232,18 +235,39 @@ displayTrips(struct TripInfo trip[])
     for(i = 0; i < rowsMax; i++)
     {
         // Display trips from first route (first 3 columns)
-        if(trip[i].dropOffSet == 0 || trip[i].dropOffSet == 1)
+        if((trip[i].dropOffSet == 0 || 
+            trip[i].dropOffSet == 1) && 
+            i != 9)
             printf("%-10s%-9s%-28s", trip[i].tripNumber,
                                      trip[i].tripTime,
                                      trip[i].tripOrigin);
-        else    // Print spaces if first route has less trips than second route
+        // Print SPEC1 if deployed
+        else if((specDeployed == 1 || specDeployed == 3) && !spec1)
+        {    
+            printf("%-10s%-9s%-28s", trip[9].tripNumber,
+                                     trip[9].tripTime,
+                                     trip[9].tripOrigin);
+            spec1++;
+        }
+        // Print spaces if first route has less trips than second route
+        else
             printf("%47s", "");
 
         // Display trips from second route (next 3 columns)
-        if(trip[i + firstRouteCount].dropOffSet == 2 || trip[i + firstRouteCount].dropOffSet == 3)
+        if((trip[i + firstRouteCount].dropOffSet == 2 || 
+            trip[i + firstRouteCount].dropOffSet == 3) && 
+            i + firstRouteCount != 21)
             printf("%-10s%-9s%s\n", trip[i + firstRouteCount].tripNumber,
                                     trip[i + firstRouteCount].tripTime,
                                     trip[i + firstRouteCount].tripOrigin);
+        // Print SPEC2 if deployed
+        else if((specDeployed == 2 || specDeployed == 3) && !spec2)
+        {
+            printf("%-10s%-9s%s\n", trip[21].tripNumber,
+                                    trip[21].tripTime,
+                                    trip[21].tripOrigin);
+            spec2++;
+        }
     }
 
     printf("\n");
