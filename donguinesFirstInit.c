@@ -18,9 +18,8 @@ int
 main()
 {
     struct Card passengers[MAX_BUS][SPECIAL_PASS];
-    struct Card passengersSpecial[SPECIAL_BUS][SPECIAL_PASS];
 
-    struct TripInfo trip[MAX_BUS] =
+    struct TripInfo trip[MAX_BUS] = 
     {   // Manila-Laguna
         {"AE101", "0600", "DLSU Manila Campus", 0},
         {"AE102", "0730", "DLSU Manila Campus", 1},
@@ -31,6 +30,7 @@ main()
         {"AE107", "1530", "DLSU Manila Campus", 0},
         {"AE108", "1700", "DLSU Manila Campus", 1},
         {"AE109", "1815", "DLSU Manila Campus", 0},
+        {"SPEC1", "1815", "DLSU Manila Campus", 0},
         
         // Laguna-Manila
         {"AE150", "0530", "DLSU Laguna Campus", 3},
@@ -43,14 +43,9 @@ main()
         {"AE157", "1430", "DLSU Laguna Campus", 2},
         {"AE158", "1530", "DLSU Laguna Campus", 3},
         {"AE159", "1700", "DLSU Laguna Campus", 2},
-        {"AE160", "1815", "DLSU Laguna Campus", 3}
+        {"AE160", "1815", "DLSU Laguna Campus", 3},
+        {"SPEC2", "1815", "DLSU Laguna Campus", 2}
     };
-
-    // struct TripInfo tripSpecial[SPECIAL_BUS] =
-    // {
-    //     {"SPEC1", "1815", "DLSU Manila Campus", 0},
-    //     {"SPEC2", "1815", "DLSU Laguna Campus", 2}
-    // };
 
     stringDropOff dropOffs[MAX_DROPOFFS][MAX_DROPOFFS] = 
     {
@@ -80,7 +75,7 @@ main()
     float mainMenuOption, passengerMenuOption, personnelMenuOption;
     char exit = '\0';
     
-    initializePassengers(passengers, passengersSpecial);
+    initializePassengers(passengers);
     cls();
 
     do

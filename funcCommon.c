@@ -8,11 +8,9 @@
  * Initializes priority numbers to 99 for sorting.
  * 
  * @param passengers[][]            array where the passenger info in regular trips is stored
- * @param passengersSpecial[][]     array where the passenger info in special trips is stored
  */
 void
-initializePassengers(struct Card passengers[][SPECIAL_PASS],
-                     struct Card passengersSpecial[][SPECIAL_PASS])
+initializePassengers(struct Card passengers[][SPECIAL_PASS])
 {
     int i, j;
 
@@ -27,26 +25,16 @@ initializePassengers(struct Card passengers[][SPECIAL_PASS],
             passengers[i][j].dropOff = 0;
         }
     }
-
-    for(i = 0; i < SPECIAL_BUS; i++)
-    {
-        for(j = 0; j < SPECIAL_PASS; j++)
-        {
-            passengersSpecial[i][j].priorityNo = 99;
-            strcpy(passengersSpecial[i][j].lastName, "");
-            strcpy(passengersSpecial[i][j].firstName, "");
-            passengersSpecial[i][j].idNo = 0;
-            passengersSpecial[i][j].dropOff = 0;
-        }
-    }
 }
 
 /**
  * Checks if the string tripNo is in the trip array and returns the index in the array if found.
  * 
- * @param trip[]    array containing trip information (trip number, etc.)
- * @param tripNo    trip number to find in the array (AE101, etc.)
- * @return          the index of the trip number in the trip array if found, -1 if not found
+ * @param trip[]            array containing trip information (trip number, etc.)
+ * @param tripNo            trip number to find in the array (AE101, etc.)
+ * @return                  the index of the trip number in the trip array if found in regular trips, 
+ *                          the index of the trip number + MAX_PASS if special trip, 
+ *                          -1 if not found
  */
 int
 isValidTrip(struct TripInfo trip[],
