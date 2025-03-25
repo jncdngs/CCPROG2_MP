@@ -252,6 +252,7 @@ loadPassenger(struct TripInfo trip[],
     stringFileName fileName = "passenger.txt";
     int tripIndex = -1;
     char correctInfo = '\0';
+    int validID = 0;
 
     struct Card temp = {99, "", "", 0, 0};
 
@@ -316,7 +317,7 @@ loadPassenger(struct TripInfo trip[],
             if(isFullTrip(tripIndex, passengers, temp.priorityNo))
             {
                 cls();
-                printPassengerInfoTitle();
+                printLoadPassengerTitle();
                 printf("The selected trip is full.\n\n");
     
                 pressAnyKey();
@@ -325,17 +326,30 @@ loadPassenger(struct TripInfo trip[],
             }
             else
             {    
-                // If correct, pass to struct array (using trip number)
-                // Insert based on priority number
-                insertPassenger(passengers, tripIndex, temp);
-    
-                // Tell user that information has been saved
-                cls();
-                printLoadPassengerTitle();
-                
-                printf("Information has been saved.\n\n");
-                
-                pressAnyKey();
+                if((validID = isValidID(passengers, temp.idNo)) == 2)
+                {
+                    cls();
+                    printLoadPassengerTitle();
+
+                    printf("\033[0;31mERROR: \033[0m");
+                    printf("Duplicate ID. Information was not saved.\n\n");
+
+                    pressAnyKey();
+                }
+                else if(validID == 1)
+                {
+                    // If correct, pass to struct array (using trip number)
+                    // Insert based on priority number
+                    insertPassenger(passengers, tripIndex, temp);
+        
+                    // Tell user that information has been saved
+                    cls();
+                    printLoadPassengerTitle();
+                    
+                    printf("Information has been saved.\n\n");
+                    
+                    pressAnyKey();
+                }
             }
         }
     }

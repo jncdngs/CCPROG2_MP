@@ -19,6 +19,7 @@ enterPassengerInfo(struct TripInfo trip[],
     int tripIndex = -1;
     int dropOffCount[MAX_DROPOFFS] = {3, 2, 4, 4};
     char correctInfo = '\0';
+    int validID = 0;
 
     struct Card temp = {99, "", "", 0, 0};
 
@@ -89,7 +90,7 @@ enterPassengerInfo(struct TripInfo trip[],
     while(temp.priorityNo < 1 || temp.priorityNo > 6);
 
     // Check if there are seats available or if priority is higher than last passenger in the trip
-    if(isFullTrip(tripIndex, passengers, temp.priorityNo))
+    if(isFullTrip(tripIndex, passengers, temp.priorityNo) == 2)
     {
         cls();
         printPassengerInfoTitle();
@@ -134,13 +135,19 @@ enterPassengerInfo(struct TripInfo trip[],
                     cls();
                     printError();
                 }
-                else if(temp.idNo < 0 || temp.idNo > 99999999)
+                else if((validID = isValidID(passengers, temp.idNo)) == 0)
                 {
                     cls();
                     printError();
                 }
+                else if(validID == 2)
+                {
+                    cls();
+                    printf("\033[0;31mERROR: \033[0m");
+                    printf("Duplicate ID. Please try again.\n\n");
+                }
             }
-            while(temp.idNo < 0 || temp.idNo > 99999999);
+            while(validID == 0 || validID == 2);
             
             cls();
             do
