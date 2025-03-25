@@ -20,7 +20,7 @@ initializePassengers(struct Card passengers[][SPECIAL_PASS],
     {
         for(j = 0; j < SPECIAL_PASS; j++)
         {
-            passengers[i][j].priorityNo = 99;
+            passengers[i][j].priorityNo = 2;
             strcpy(passengers[i][j].lastName, "");
             strcpy(passengers[i][j].firstName, "");
             passengers[i][j].idNo = 0;
@@ -63,21 +63,59 @@ isValidTrip(struct TripInfo trip[],
 }
 
 /**
+ * Checks if ID number is valid and unique.
+ * 
+ * @param passengers[][]    array where the passenger info in regular trips is stored
+ * @param idNo              ID number to be checked
+ * @return                  0 if the ID number is invalid, 
+ *                          1 if the ID number is valid and unique, 
+ *                          2 if the ID number is valid but not unique
+ */
+int
+isValidID(struct Card passengers[][SPECIAL_PASS],
+          int idNo)
+{
+    int i, j;
+    int valid = 0;
+
+    // Check if in valid range
+    if(idNo > 0 && idNo <= 99999999)
+    {   
+        valid = 1;
+
+        // Check if unique
+        for(i = 0; i < MAX_BUS; i++)
+            for(j = 0; j < SPECIAL_PASS; j++)
+                if(idNo == passengers[i][j].idNo)
+                    valid = 2;
+    }
+    
+    return valid;
+}
+
+/**
  * Checks if the chosen trip is full.
  * 
  * @param tripIndex         the index of the trip number to use
  * @param passengers[][]    array where the passenger info in regular trips is stored
- * @return                  1 if the trip is full, 0 if not full
+ * @param priorityNo        priority number of the new passenger
+ * @return                  0 if the trip is not full, 
+ *                          1 if the passenger has higher priority, 
+ *                          2 if the passenger has lower priority
  */
 int
 isFullTrip(int tripIndex,
            struct Card passengers[][SPECIAL_PASS],
            int priorityNo)
 {
-    int isFull = 0;
+    int isFull;
 
-    if(passengers[tripIndex][SPECIAL_PASS - 1].priorityNo <= priorityNo)
+    if(passengers[tripIndex][SPECIAL_PASS - 1].priorityNo == 99)
+        isFull = 0;
+    else if(passengers[tripIndex][SPECIAL_PASS - 1].priorityNo > priorityNo)
         isFull = 1;
+    else
+        isFull = 2;
 
     return isFull;
 }

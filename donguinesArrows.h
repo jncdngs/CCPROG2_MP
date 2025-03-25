@@ -68,6 +68,7 @@ void printLoadRecentTripTitle();
 // funcCommon.c
 void initializePassengers(struct Card[][SPECIAL_PASS], struct Card[][SPECIAL_PASS]);
 int isValidTrip(struct TripInfo[], stringTrip);
+int isValidID(struct Card[][SPECIAL_PASS], int);
 int isFullTrip(int, struct Card[][SPECIAL_PASS], int);
 int getEmptySeat(int, struct Card[][SPECIAL_PASS]);
 int compareStrings(char*, char*);
