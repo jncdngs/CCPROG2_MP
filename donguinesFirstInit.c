@@ -88,12 +88,14 @@ main()
     {
         mainMenuOption = 0;         // Initialize to zero (invalid by default)
         
+        specDeployed = isSpecDeployed(passengers);
+        
         printTitle();
         printf("[1] Passenger\n");
         printf("[2] Arrows Express Personnel\n");
         printf("[3] Exit\n\n");
         printf("Enter option: ");
-
+        
         if(scanf("%f", &mainMenuOption) != 1)
         {
             // Prevent loop when entering char
@@ -103,14 +105,14 @@ main()
             cls();
             printError();
         }
-
+        
         // Explicitly invalidate non-integers
         else if(mainMenuOption != 1 && mainMenuOption != 2 && mainMenuOption != 3)
         {
             cls();
             printError();
         }
-
+        
         if(mainMenuOption == 1) // Passenger
         {
             cls();
@@ -118,12 +120,13 @@ main()
             do
             {
                 passengerMenuOption = 0;    // Initialize to zero (invalid by default)
+                specDeployed = isSpecDeployed(passengers);
                 
                 printPassengerTitle();
                 printf("[1] Enter passenger information\n");
                 printf("[2] Back to main menu\n\n");
                 printf("Enter option: ");
-
+                
                 if(scanf("%f", &passengerMenuOption) != 1)
                 {
                     // Prevent loop when entering char
@@ -133,7 +136,7 @@ main()
                     cls();
                     printError();
                 }
-            
+                
                 // Display error when option is an invalid number
                 else if(passengerMenuOption != 1 && passengerMenuOption != 2)
                 {
@@ -164,6 +167,7 @@ main()
             
             do
             {
+                specDeployed = isSpecDeployed(passengers);
                 personnelMenuOption = 0;    // Initialize to zero (invalid by default)
                 
                 printPersonnelTitle();

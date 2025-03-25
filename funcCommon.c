@@ -108,6 +108,19 @@ isFullTrip(int tripIndex,
     return isFull;
 }
 
+int
+isSpecDeployed(struct Card passengers[][SPECIAL_PASS])
+{
+    int deploy = 0;
+
+    if(passengers[8][SPECIAL_PASS - 1].priorityNo != 99)
+        deploy++;
+    if(passengers[20][SPECIAL_PASS - 1].priorityNo != 99)
+        deploy += 2;
+
+    return deploy;
+}
+
 /**
  * Finds the first empty seat in the selected trip.
  * 

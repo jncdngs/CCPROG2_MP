@@ -69,6 +69,7 @@ void initializePassengers(struct Card[][SPECIAL_PASS]);
 int isValidTrip(struct TripInfo[], stringTrip);
 int isValidID(struct Card[][SPECIAL_PASS], int);
 int isFullTrip(int, struct Card[][SPECIAL_PASS], int);
+int isSpecDeployed(struct Card[][SPECIAL_PASS]);
 int getEmptySeat(int, struct Card[][SPECIAL_PASS]);
 int compareStrings(char*, char*);
 void copyStruct(struct Card*, struct Card*);
