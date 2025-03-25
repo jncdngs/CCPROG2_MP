@@ -1,13 +1,13 @@
 #include <stdio.h>
-#include <conio.h>
 #include <string.h>
 #include "donguinesArrows.h"
 
 /**
  * Asks for trip number and displays the seat map and passenger count for the trip.
  * 
- * @param trip[]           array containing trip information (trip number, etc.)
- * @param passengers[][]   array where the passenger info in regular trips is stored
+ * @param trip[]            array containing trip information (trip number, etc.)
+ * @param passengers[][]    array where all the passenger info is stored
+ * @param specDeployed      flag that specifies if special trips were deployed
  */
 void
 viewPassengerCount(struct TripInfo trip[],
@@ -46,7 +46,7 @@ viewPassengerCount(struct TripInfo trip[],
     while(tripIndex == -1);
 
     // Count total passengers in trip
-    // Assign X for taken seats and O for empty seats 
+    // Assign 'X' for taken seats and 'O' for empty seats 
     for(i = 0; i < SPECIAL_PASS; i++)
     {
         if(passengers[tripIndex][i].priorityNo != 99)
@@ -63,6 +63,7 @@ viewPassengerCount(struct TripInfo trip[],
     printPassengerCountTitle();
     printf("Seat Map for Trip %s\n\n", trip[tripIndex].tripNumber);
     
+    // Display 13-seater map for regular shuttles
     if(passengerCount <= MAX_PASS && tripIndex != 9 && tripIndex != 21)
     {
         for(i = 0; i < 9; i++)
@@ -82,6 +83,7 @@ viewPassengerCount(struct TripInfo trip[],
         printf("| %c |       |\n", seatStatus[12]);
         printf("+---+---+---+\n\n");
     }
+    // Display 16-seater map for worst-case scenario and special shuttles
     else
     {
         for(i = 0; i < 7; i++)
@@ -118,9 +120,10 @@ viewPassengerCount(struct TripInfo trip[],
 /**
  * Asks for trip number and displays drop-off points for the trip with corresponding passenger counts.
  * 
- * @param trip[]           array containing trip information (trip number, etc.)
- * @param passengers[][]   array where the passenger info in regular trips is stored
- * @param dropOffs[][]     array containing full names of drop-off points
+ * @param trip[]            array containing trip information (trip number, etc.)
+ * @param passengers[][]    array where all the passenger info is stored
+ * @param dropOffs[][]      array containing full names of drop-off points
+ * @param specDeployed      flag that specifies if special trips were deployed
  */
 void
 viewDropOffCount(struct TripInfo trip[],
@@ -171,8 +174,9 @@ viewDropOffCount(struct TripInfo trip[],
 /**
  * Asks for trip number and displays information of all passengers in the trip sorted by priority number.
  * 
- * @param trip[]           array containing trip information (trip number, etc.)
- * @param passengers[][]   array where the passenger info in regular trips is stored
+ * @param trip[]            array containing trip information (trip number, etc.)
+ * @param passengers[][]    array where all the passenger info is stored
+ * @param specDeployed      flag that specifies if special trips were deployed
  */
 void
 viewPassengerInfo(struct TripInfo trip[],
@@ -242,9 +246,9 @@ viewPassengerInfo(struct TripInfo trip[],
 /**
  * Loads passenger info from passenger.txt and assigns it to the corresponding trip.
  * 
- * @param trip[]           array containing trip information (trip number, etc.)
- * @param passengers[][]   array where the passenger info in regular trips is stored
- * @param dropOffs[][]     array containing full names of drop-off points
+ * @param trip[]            array containing trip information (trip number, etc.)
+ * @param passengers[][]    array where all the passenger info is stored
+ * @param dropOffs[][]      array containing full names of drop-off points
  */
 void
 loadPassenger(struct TripInfo trip[],
@@ -348,7 +352,6 @@ loadPassenger(struct TripInfo trip[],
                     // Tell user that information has been saved
                     cls();
                     printLoadPassengerTitle();
-                    
                     printf("Information has been saved.\n\n");
                     
                     pressAnyKey();
@@ -371,7 +374,7 @@ loadPassenger(struct TripInfo trip[],
  * Asks for last name and displays information of passengers with that last name.
  * 
  * @param trip[]           array containing trip information (trip number, etc.)
- * @param passengers[][]   array where the passenger info in regular trips is stored
+ * @param passengers[][]   array where all the passenger info is stored
  * @param dropOffs[][]     array containing full names of drop-off points
  */
 void
@@ -383,7 +386,6 @@ searchPassenger(struct TripInfo trip[],
     int found = 0;
     stringName searchName;
     stringFullName fullName;
-    stringDropOff origin = "";
     
     printSearchPassengerTitle();
     printf("Please enter the last name (No spaces, max 20 characters): ");
@@ -413,16 +415,7 @@ searchPassenger(struct TripInfo trip[],
                 printf("ID Number:      %d\n", passengers[i][j].idNo);
 
                 // Embarkation point
-                if(trip[i].dropOffSet == 0 || trip[i].dropOffSet == 1)
-                {
-                    strcpy(origin, "DLSU Manila Campus");
-                }
-                else if(trip[i].dropOffSet == 2 || trip[i].dropOffSet == 3)
-                {
-                    strcpy(origin, "DLSU Laguna Campus");
-                }
-                
-                printf("From:           %s\n", origin);
+                printf("From:           %s\n", trip[i].tripOrigin);
 
                 // Drop-off point
                 printf("To:             %s\n\n", dropOffs[trip[i].dropOffSet][passengers[i][j].dropOff - 1]);
@@ -443,10 +436,6 @@ searchPassenger(struct TripInfo trip[],
 
 /**
  * Asks for the file name and displays all the contents in the selected file.
- * 
- * @param trip[]           array containing trip information (trip number, etc.)
- * @param passengers[][]   array where the passenger info in regular trips is stored
- * @param dropOffs[][]     array containing full names of drop-off points
  */
 void
 displayRecentTrip()
@@ -481,11 +470,9 @@ displayRecentTrip()
                 printf("%-16s%s\n", "Trip No:", temp.tripNumber);
                 
                 fgets(temp.origin, 21, file);
-                // fgetc(file);
                 printf("%-16s%s", "Origin:", temp.origin);
                 
                 fgets(temp.fullName, 44, file);
-                // fgetc(file);
                 printf("%-16s%s", "Full Name:", temp.fullName);
                 
                 fscanf(file, "%d", &temp.idNo);

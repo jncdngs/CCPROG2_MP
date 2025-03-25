@@ -5,9 +5,10 @@
 /**
  * Asks for trip number and passenger information and assigns user a seat if the trip is not full.
  * 
- * @param trip[]           array containing trip information (trip number, etc.)
- * @param passengers[][]   array where the passenger info in regular trips is stored
- * @param dropOffs[][]     array containing full names of drop-off points
+ * @param trip[]            array containing trip information (trip number, etc.)
+ * @param passengers[][]    array where all the passenger info is stored
+ * @param dropOffs[][]      array containing full names of drop-off points
+ * @param specDeployed      flag that specifies if special trips were deployed
  */
 void
 enterPassengerInfo(struct TripInfo trip[],
@@ -24,7 +25,7 @@ enterPassengerInfo(struct TripInfo trip[],
 
     struct Card temp = {99, "", "", 0, 0};
 
-    // Display disclaimer (can be moved to next trip or removed)
+    // Display disclaimer
     printPassengerInfoTitle();
     printf("\033[0;31mDISCLAIMER: \033[0m\n\n");
     printf("This system automatically assigns you to a seat on your selected trip.\n");
@@ -39,11 +40,11 @@ enterPassengerInfo(struct TripInfo trip[],
     cls();
     do
     {
-        // Ask user for trip number
         printPassengerInfoTitle();
-
+        
         displayTrips(trip, *specDeployed);
-
+        
+        // Ask user for trip number
         printf("Please enter the trip number (AE1xx): ");
         scanf("%5s", tripNo);
 
@@ -58,20 +59,19 @@ enterPassengerInfo(struct TripInfo trip[],
     }
     while(tripIndex == -1);
 
-    // Ask user for priority number
     cls();
     do
     {
         printPassengerInfoTitle();
         printf("Please enter the following information\n\n");
-
         printf("[1] Faculty / ASF with Inter-Campus Assignments\n");
         printf("[2] Student with Inter-Campus Subjects\n");
         printf("[3] Researcher\n");
         printf("[4] School Administrator\n");
         printf("[5] University Fellow\n");
         printf("[6] Employee / Student with Official Business\n\n");
-
+        
+        // Ask user for priority number
         printf("Please enter type of passenger: ");
         if(scanf("%d", &temp.priorityNo) != 1)
         {
@@ -125,7 +125,6 @@ enterPassengerInfo(struct TripInfo trip[],
             {
                 printPassengerInfoTitle();
                 printf("Please enter the following information\n\n");
-    
                 printf("Please enter your ID Number (xxxxxxxx): ");
                 if(scanf("%d", &temp.idNo) != 1)
                 {
@@ -211,7 +210,6 @@ enterPassengerInfo(struct TripInfo trip[],
         // Tell user that information has been saved
         cls();
         printPassengerInfoTitle();
-        
         printf("Information has been saved.\n\n");
         
         pressAnyKey();

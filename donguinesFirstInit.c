@@ -74,11 +74,6 @@ main()
 
     float mainMenuOption, passengerMenuOption, personnelMenuOption;
     char exit = '\0';
-
-    // 0 if special trips not deployed
-    // 1 if only SPEC1 has been deployed
-    // 2 if only SPEC2 has been deployed
-    // 3 if both special trips have been deployed
     int specDeployed = 0;
     
     initializePassengers(passengers);
@@ -86,9 +81,9 @@ main()
 
     do
     {
-        mainMenuOption = 0;         // Initialize to zero (invalid by default)
+        mainMenuOption = 0;                         // Initialize to zero (invalid by default)
         
-        specDeployed = isSpecDeployed(passengers);
+        specDeployed = isSpecDeployed(passengers);  // Check if special trips are deployed
         
         printTitle();
         printf("[1] Passenger\n");
@@ -105,8 +100,6 @@ main()
             cls();
             printError();
         }
-        
-        // Explicitly invalidate non-integers
         else if(mainMenuOption != 1 && mainMenuOption != 2 && mainMenuOption != 3)
         {
             cls();
@@ -119,8 +112,8 @@ main()
             
             do
             {
-                passengerMenuOption = 0;    // Initialize to zero (invalid by default)
-                specDeployed = isSpecDeployed(passengers);
+                passengerMenuOption = 0;                    // Initialize to zero (invalid by default)
+                specDeployed = isSpecDeployed(passengers);  // Check if special trips are deployed
                 
                 printPassengerTitle();
                 printf("[1] Enter passenger information\n");
@@ -136,7 +129,6 @@ main()
                     cls();
                     printError();
                 }
-                
                 // Display error when option is an invalid number
                 else if(passengerMenuOption != 1 && passengerMenuOption != 2)
                 {
@@ -167,8 +159,8 @@ main()
             
             do
             {
-                specDeployed = isSpecDeployed(passengers);
-                personnelMenuOption = 0;    // Initialize to zero (invalid by default)
+                personnelMenuOption = 0;                    // Initialize to zero (invalid by default)
+                specDeployed = isSpecDeployed(passengers);  // Check if special trips are deployed
                 
                 printPersonnelTitle();
                 printf("[1] View passenger count\n");
@@ -189,7 +181,6 @@ main()
                     cls();
                     printError();
                 }
-            
                 // Display error when option is an invalid number
                 else if(personnelMenuOption != 1 && personnelMenuOption != 2
                      && personnelMenuOption != 3 && personnelMenuOption != 4

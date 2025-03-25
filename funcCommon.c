@@ -7,7 +7,7 @@
  * Initializes the struct arrays to "empty" to avoid garbage values.
  * Initializes priority numbers to 99 for sorting.
  * 
- * @param passengers[][]            array where the passenger info in regular trips is stored
+ * @param passengers[][]    array where all the passenger info is stored
  */
 void
 initializePassengers(struct Card passengers[][SPECIAL_PASS])
@@ -18,7 +18,7 @@ initializePassengers(struct Card passengers[][SPECIAL_PASS])
     {
         for(j = 0; j < SPECIAL_PASS; j++)
         {
-            passengers[i][j].priorityNo = 2;
+            passengers[i][j].priorityNo = 99;
             strcpy(passengers[i][j].lastName, "");
             strcpy(passengers[i][j].firstName, "");
             passengers[i][j].idNo = 0;
@@ -28,12 +28,11 @@ initializePassengers(struct Card passengers[][SPECIAL_PASS])
 }
 
 /**
- * Checks if the string tripNo is in the trip array and returns the index in the array if found.
+ * Checks if the string tripNo is valid and in the trip array and returns the index in the array if found.
  * 
  * @param trip[]            array containing trip information (trip number, etc.)
  * @param tripNo            trip number to find in the array (AE101, etc.)
  * @return                  the index of the trip number in the trip array if found in regular trips, 
- *                          the index of the trip number + MAX_PASS if special trip, 
  *                          -1 if not found
  */
 int
@@ -53,7 +52,7 @@ isValidTrip(struct TripInfo trip[],
 /**
  * Checks if ID number is valid and unique.
  * 
- * @param passengers[][]    array where the passenger info in regular trips is stored
+ * @param passengers[][]    array where all the passenger info is stored
  * @param idNo              ID number to be checked
  * @return                  0 if the ID number is invalid, 
  *                          1 if the ID number is valid and unique, 
@@ -82,10 +81,10 @@ isValidID(struct Card passengers[][SPECIAL_PASS],
 }
 
 /**
- * Checks if the chosen trip is full.
+ * Checks if the chosen trip is full by comparing the priority level of the last passenger.
  * 
  * @param tripIndex         the index of the trip number to use
- * @param passengers[][]    array where the passenger info in regular trips is stored
+ * @param passengers[][]    array where all the passenger info is stored
  * @param priorityNo        priority number of the new passenger
  * @return                  0 if the trip is not full, 
  *                          1 if the passenger has higher priority, 
@@ -108,6 +107,14 @@ isFullTrip(int tripIndex,
     return isFull;
 }
 
+/**
+ * Checks if a special trip has been deployed.
+ * 
+ * @param passengers[][]    array where all the passenger info is stored
+ * @return                  0 if no special trip was deployed, 
+ *                          1 if only SPEC1 has been deployed, 
+ *                          2 if only SPEC2 has been deployed
+ */
 int
 isSpecDeployed(struct Card passengers[][SPECIAL_PASS])
 {
@@ -125,27 +132,27 @@ isSpecDeployed(struct Card passengers[][SPECIAL_PASS])
  * Finds the first empty seat in the selected trip.
  * 
  * @param tripIndex         the index of the trip number to use
- * @param passengers[][]    array where the passenger info in regular trips is stored
+ * @param passengers[][]    array where all the passenger info is stored
  * @return                  the index of the seat in the passengers array if found, -1 if not found
  */
-int
-getEmptySeat(int tripIndex,
-             struct Card passengers[][SPECIAL_PASS])
-{
-    int i;
-    int emptySeat = -1;
+// int
+// getEmptySeat(int tripIndex,
+//              struct Card passengers[][SPECIAL_PASS])
+// {
+//     int i;
+//     int emptySeat = -1;
 
-    for(i = 0; i < SPECIAL_PASS; i++)
-    {
-        if(passengers[tripIndex][i].priorityNo == 99)
-        {
-            emptySeat = i;
-            i = SPECIAL_PASS;
-        }
-    }
+//     for(i = 0; i < SPECIAL_PASS; i++)
+//     {
+//         if(passengers[tripIndex][i].priorityNo == 99)
+//         {
+//             emptySeat = i;
+//             i = SPECIAL_PASS;
+//         }
+//     }
 
-    return emptySeat;
-}
+//     return emptySeat;
+// }
 
 /**
  * Converts two strings to UPPERCASE and compares them.
@@ -156,7 +163,8 @@ getEmptySeat(int tripIndex,
  * @return              difference between the two strings, 0 if similar
  */
 int
-compareStrings(char *string1, char *string2)
+compareStrings(char *string1,
+               char *string2)
 {
     char char1, char2;
     int i = 0;
@@ -186,10 +194,10 @@ compareStrings(char *string1, char *string2)
 }
 
 /**
- * Copies all elements of one struct to another.
+ * Copies all elements of one Card struct to another.
  * 
- * @param *dest     pointer to the struct to copy into
- * @param *src      pointer to the original struct to be copied
+ * @param *dest     pointer to the destination struct
+ * @param *src      pointer to the original struct
  */
 void
 copyStruct(struct Card *dest,
@@ -201,9 +209,9 @@ copyStruct(struct Card *dest,
 /**
  * Inserts passenger info to the given trip based on priority number.
  * 
- * @param passengers[][]    array where the passenger info in regular trips is stored
+ * @param passengers[][]    array where all the passenger info is stored
  * @param tripIndex         the index of the trip number to use
- * @param temp              struct containing the information of the passenger to be inserted
+ * @param temp              Card struct containing the information of the passenger to be inserted
  */
 void
 insertPassenger(struct Card passengers[][SPECIAL_PASS],
@@ -234,7 +242,8 @@ insertPassenger(struct Card passengers[][SPECIAL_PASS],
  * @param specDeployed  flag that specifies if special trips were deployed
  */
 void
-displayTrips(struct TripInfo trip[], int specDeployed)
+displayTrips(struct TripInfo trip[],
+             int specDeployed)
 {
     int i;
     int rowsMax = 12;
@@ -287,7 +296,7 @@ displayTrips(struct TripInfo trip[], int specDeployed)
 }
 
 /**
- * Displays the trip number, time, and origin of each trip in the trip array.
+ * Displays the list of drop-offs in the given trip and number of passenger getting off.
  * 
  * @param trip[]        array containing trip information (trip number, etc.)
  * @param tripIndex     the index of the trip number to use
@@ -317,7 +326,7 @@ displayDropOffs(struct TripInfo trip[],
  * 
  * @param trip[]            array containing trip information (trip number, etc.)
  * @param tripIndex         the index of the trip number to use
- * @param passengers[][]    array where the passenger info in regular trips is stored
+ * @param passengers[][]    array where all the passenger info is stored
  * @param dropOffs[][]      array containing full names of drop-off points
  * @param passengerCount[]  passenger count for each drop-off point
  */
@@ -424,10 +433,10 @@ struct Date getDate()
 }
 
 /**
- * Saves information of all passengers to a text file
+ * Saves information of all saved passengers to a text file
  * 
  * @param trip[]            array containing trip information (trip number, etc.)
- * @param passengers[][]    array where the passenger info in regular trips is stored
+ * @param passengers[][]    array where all the passenger info is stored
  * @param dropOffs[][]      array containing full names of drop-off points
  */
 void
@@ -477,6 +486,8 @@ savePassengerInfo(struct TripInfo trip[],
             }
         }
     }
+    
+    fclose(file);
 
     cls();
     printTitle();
@@ -484,8 +495,4 @@ savePassengerInfo(struct TripInfo trip[],
     printf("Thank you for using the Arrows Express Embarkation System!\n\n");
     printf("Press any key to exit...");
     getch();
-
-    // Save special shuttle info
-
-    fclose(file);
 }
