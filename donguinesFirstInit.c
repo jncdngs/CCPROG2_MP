@@ -49,21 +49,25 @@ main()
 
     stringDropOff dropOffs[MAX_DROPOFFS][MAX_DROPOFFS] = 
     {
+        // dropOffSet = 0
         {
             "Mamplasan Toll Exit",
             "Phase 5, San Jose Village",
             "Milagros Del Rosario (MRR) Bldg."
         },
+        // dropOffSet = 1
         {
             "Laguna Blvd. Guard House",
             "Milagros Del Rosario (MRR) Bldg."
         },
+        // dropOffSet = 2
         {
             "Petron Gasoline Station",
             "Gate 4: Gokongwei",
             "Gate 2: Henry Sy (North)",
             "Gate 1: LS Hall (South)"
         },
+        // dropOffSet = 3
         {
             "College of St. Benilde (CSB)",
             "Gate 4: Gokongwei",
