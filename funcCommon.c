@@ -120,12 +120,45 @@ isSpecDeployed(struct Card passengers[][SPECIAL_PASS])
 {
     int deploy = 0;
 
-    if(passengers[8][SPECIAL_PASS - 1].priorityNo != 99)
+    if(passengers[9][0].priorityNo != 99)
         deploy++;
-    if(passengers[20][SPECIAL_PASS - 1].priorityNo != 99)
+    if(passengers[21][0].priorityNo != 99)
         deploy += 2;
 
     return deploy;
+}
+
+/**
+ * Converts the drop-off point of a passenger when moved to another trip.
+ * 
+ * @param dropOffOld        drop-off number to be converted
+ * @param dropOffSetOld     drop-off set of the old trip 
+ * @param dropOffSetNew     drop-off set of the new trip 
+ * @return                  converted drop-off point number 
+ */
+int
+convertDropOff(int dropOffOld, int dropOffSetOld, int dropOffSetNew)
+{
+    int dropOffNew = dropOffOld;
+    
+    // Check if drop-off sets are different
+    if(dropOffSetOld != dropOffSetNew)
+    {
+        // Convert from set 0 to 1
+        if(dropOffSetOld == 0)
+            dropOffNew = 2;
+
+        // Convert from set 1 to 0
+        else if(dropOffSetOld == 1)
+            dropOffNew = 3;
+
+        // Convert from set 2 to 3 or set 3 to 2
+        else if(dropOffSetOld == 2 || dropOffSetOld == 3)
+            if(dropOffOld == 1)
+                dropOffNew = 4;
+    }
+
+    return dropOffNew;
 }
 
 /**

@@ -71,6 +71,7 @@ int isValidTrip(struct TripInfo[], stringTrip);
 int isValidID(struct Card[][SPECIAL_PASS], int);
 int isFullTrip(int, struct Card[][SPECIAL_PASS], int);
 int isSpecDeployed(struct Card[][SPECIAL_PASS]);
+int convertDropOff(int, int, int);
 int compareStrings(char*, char*);
 void copyStruct(struct Card*, struct Card*);
 void insertPassenger(struct Card[][SPECIAL_PASS], int, struct Card);
