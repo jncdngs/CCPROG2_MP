@@ -16,6 +16,8 @@
  * \033[H   Moves cursor to top-left (home)
  * \033[J   Erases everything below the cursor
  * \033[3J  Erases everything, including scrolled-up text
+ * 
+ * https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
  */
 void
 cls()
