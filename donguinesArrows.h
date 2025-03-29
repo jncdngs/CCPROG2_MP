@@ -75,6 +75,7 @@ int convertDropOff(int, int, int);
 int compareStrings(char*, char*);
 void copyStruct(struct Card*, struct Card*);
 void insertPassenger(struct Card[][SPECIAL_PASS], int, struct Card);
+int movePassenger(struct TripInfo[], struct Card[][SPECIAL_PASS], int);
 void displayTrips(struct TripInfo[], int);
 void displayDropOffs(struct TripInfo[], int, stringDropOff[][MAX_DROPOFFS]);
 void displayDropOffCount(struct TripInfo[], int, struct Card[][SPECIAL_PASS], stringDropOff[][MAX_DROPOFFS], int[]);

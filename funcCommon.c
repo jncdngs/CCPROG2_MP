@@ -137,7 +137,9 @@ isSpecDeployed(struct Card passengers[][SPECIAL_PASS])
  * @return                  converted drop-off point number 
  */
 int
-convertDropOff(int dropOffOld, int dropOffSetOld, int dropOffSetNew)
+convertDropOff(int dropOffOld,
+               int dropOffSetOld,
+               int dropOffSetNew)
 {
     int dropOffNew = dropOffOld;
     
@@ -226,7 +228,7 @@ insertPassenger(struct Card passengers[][SPECIAL_PASS],
                 struct Card temp)
 {
     int i;
-    
+        
     for(i = SPECIAL_PASS - 1; i >= 0; i--)
     {
         if(temp.priorityNo < passengers[tripIndex][i].priorityNo)
@@ -240,6 +242,60 @@ insertPassenger(struct Card passengers[][SPECIAL_PASS],
             }
         }
     }
+}
+
+/**
+ * Finds the next available trip and shifts last passengers accordingly
+ * 
+ * @param trip[]            array containing trip information (trip number, etc.)
+ * @param passengers[][]    array where all the passenger info is stored
+ * @param tripIndex         the index of the trip number to use
+ * @return                  1 if successfully moved, 
+ *                          0 if not
+ */
+int
+movePassenger(struct TripInfo trip[],
+              struct Card passengers[][SPECIAL_PASS],
+              int tripIndex)
+{
+    int i = tripIndex;
+    int tripAvail = -1;
+    int lastTrip = -1;
+    int success = 0;
+
+    // Assign last trip index to check based on route
+    if(tripIndex < 9)
+        lastTrip = 9;
+    else
+        lastTrip = 21;
+
+    // Find next trip with vacant seat/s
+    while(i <= lastTrip && tripAvail == -1)
+    {
+        // Check if last seat in next trip
+        if(passengers[i][SPECIAL_PASS - 1].priorityNo == 99)
+            tripAvail = i;
+        i++;
+    }
+
+    // Shift last passengers from tripAvail backwards       
+    if(tripAvail != -1)
+    {
+        for(i = tripAvail; i >= tripIndex; i--)
+        {
+            // Copy the passenger to the new trip
+            copyStruct(&passengers[i][SPECIAL_PASS - 1], &passengers[i - 1][SPECIAL_PASS - 1]);        
+            
+            // Convert the drop-off point of the passenger
+            passengers[i][SPECIAL_PASS - 1].dropOff = convertDropOff(passengers[i - 1][SPECIAL_PASS - 1].dropOff,
+                                                                     trip[i - 1].dropOffSet,
+                                                                     trip[i].dropOffSet);
+        }
+        
+        success = 1;
+    }
+
+    return success;
 }
 
 /**
