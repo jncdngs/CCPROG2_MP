@@ -203,13 +203,20 @@ enterPassengerInfo(struct TripInfo trip[],
         }
         while(correctInfo != 'Y' && correctInfo != 'y');    // If incorrect, repeat process
         
-        // If correct, pass to struct array (using trip number)
-        // Insert based on priority number
-        insertPassenger(passengers, tripIndex, temp);
-
         // Tell user that information has been saved
         cls();
         printPassengerInfoTitle();
+        
+        // Check if a lower priority passenger will be moved
+        if(isFullTrip(tripIndex, passengers, temp.priorityNo) == 1)
+        {
+            movePassenger(trip, passengers, tripIndex);
+            printf("Lower priority passenger has been moved.\n\n");
+        }
+        
+        // Insert the new passenger into the passengers array
+        insertPassenger(passengers, tripIndex, temp);
+        
         printf("Information has been saved.\n\n");
         
         pressAnyKey();
