@@ -13,6 +13,10 @@ students and/or persons.
 
 #include <stdio.h>
 #include "donguinesArrows.h"
+#include "funcDisplay.c"
+#include "funcCommon.c"
+#include "funcPassenger.c"
+#include "funcPersonnel.c"
 
 int
 main()
