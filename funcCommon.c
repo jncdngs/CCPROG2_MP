@@ -250,10 +250,8 @@ insertPassenger(struct Card passengers[][SPECIAL_PASS],
  * @param trip[]            array containing trip information (trip number, etc.)
  * @param passengers[][]    array where all the passenger info is stored
  * @param tripIndex         the index of the trip number to use
- * @return                  1 if successfully moved, 
- *                          0 if not
  */
-int
+void
 movePassenger(struct TripInfo trip[],
               struct Card passengers[][SPECIAL_PASS],
               int tripIndex)
@@ -261,7 +259,6 @@ movePassenger(struct TripInfo trip[],
     int i = tripIndex;
     int tripAvail = -1;
     int lastTrip = -1;
-    int success = 0;
 
     // Assign last trip index to check based on route
     if(tripIndex < 9)
@@ -292,11 +289,7 @@ movePassenger(struct TripInfo trip[],
                                                                      trip[i - 1].dropOffSet,
                                                                      trip[i].dropOffSet);
         }
-        
-        success = 1;
     }
-
-    return success;
 }
 
 /**
