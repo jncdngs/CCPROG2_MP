@@ -275,6 +275,7 @@ movePassenger(struct TripInfo trip[],
         // Check if last seat in next trip
         if(passengers[i][SPECIAL_PASS - 1].priorityNo == 99)
             tripAvail = i;
+        
         i++;
     }
 
@@ -283,8 +284,8 @@ movePassenger(struct TripInfo trip[],
     {
         for(i = tripAvail; i >= tripIndex; i--)
         {
-            // Copy the passenger to the new trip
-            copyStruct(&passengers[i][SPECIAL_PASS - 1], &passengers[i - 1][SPECIAL_PASS - 1]);        
+            // Insert the passenger to the new trip
+            insertPassenger(passengers, i, passengers[i - 1][SPECIAL_PASS - 1]);
             
             // Convert the drop-off point of the passenger
             passengers[i][SPECIAL_PASS - 1].dropOff = convertDropOff(passengers[i - 1][SPECIAL_PASS - 1].dropOff,
