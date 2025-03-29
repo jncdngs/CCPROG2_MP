@@ -83,6 +83,7 @@ main()
     float mainMenuOption, passengerMenuOption, personnelMenuOption;
     char exit = '\0';
     int specDeployed = 0;
+    int exitFlag = 0;
     
     initializePassengers(passengers);
     cls();
@@ -161,7 +162,7 @@ main()
             }
             while(passengerMenuOption != 2);
         }
-        else if(mainMenuOption == 2) // Arrows Express Personnel
+        else if(mainMenuOption == 2 && !exitFlag) // Arrows Express Personnel
         {
             cls();
             
@@ -177,7 +178,8 @@ main()
                 printf("[4] Load passenger\n");
                 printf("[5] Search passenger\n");
                 printf("[6] View recent trip file\n");
-                printf("[7] Back to main menu\n\n");
+                printf("[7] Exit program\n");
+                printf("[8] Back to main menu\n\n");
                 printf("Enter option: ");
 
                 if(scanf("%f", &personnelMenuOption) != 1)
@@ -193,7 +195,7 @@ main()
                 else if(personnelMenuOption != 1 && personnelMenuOption != 2
                      && personnelMenuOption != 3 && personnelMenuOption != 4
                      && personnelMenuOption != 5 && personnelMenuOption != 6
-                     && personnelMenuOption != 7)
+                     && personnelMenuOption != 7 && personnelMenuOption != 8)
                 {
                     cls();
                     printError();
@@ -229,7 +231,36 @@ main()
                     cls();
                     displayRecentTrip();
                 }
-                else if (personnelMenuOption == 7)  // [7] Back to main menu
+                else if (personnelMenuOption == 7)  // [7] Exit program
+                {
+                    cls();
+                    
+                    do
+                    {
+                        printTitle();
+                        printf("Are you sure you want to exit? (Y/N): ");
+                        if(scanf(" %c", &exit) != 1)
+                        {
+                            cls();
+                            clearInputBuffer();
+                            printError();
+                        }
+                        else if(exit != 'Y' && exit != 'y' &&
+                                exit != 'N' && exit != 'n')
+                        {
+                            cls();
+                            printError();
+                        }
+                    }
+                    while(exit != 'Y' && exit != 'y' &&
+                          exit != 'N' && exit != 'n');
+                    
+                    if(exit == 'Y' || exit == 'y')
+                        exitFlag = 1;
+                    
+                    cls();
+                }
+                else if (personnelMenuOption == 8)  // [8] Back to main menu
                 {
                     cls();
                 }
@@ -239,9 +270,9 @@ main()
                     printError();
                 }
             }
-            while(personnelMenuOption != 7);
+            while(personnelMenuOption != 8 && !exitFlag);
         }
-        else if(mainMenuOption == 3) // Exit
+        else if(mainMenuOption == 3 || exitFlag) // Exit
         {
             cls();
 
