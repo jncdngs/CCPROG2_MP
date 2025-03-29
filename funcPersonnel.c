@@ -64,7 +64,7 @@ viewPassengerCount(struct TripInfo trip[],
     printf("Seat Map for Trip %s\n\n", trip[tripIndex].tripNumber);
     
     // Display 13-seater map for regular shuttles
-    if(passengerCount <= MAX_PASS && tripIndex != 9 && tripIndex != 21)
+    if(passengerCount <= MAX_PASS)
     {
         for(i = 0; i < 9; i++)
         {
