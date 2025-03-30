@@ -4,7 +4,7 @@
 #include "donguinesArrows.h"
 
 /**
- * Initializes the struct arrays to "empty" to avoid garbage values.
+ * Initializes the passenger struct array to "empty" to avoid garbage values.
  * Initializes priority numbers to 99 for sorting.
  * 
  * @param passengers[][]    array where all the passenger info is stored
@@ -169,7 +169,8 @@ convertDropOff(int dropOffOld,
  * 
  * @param *string1      pointer to the first string to be compared
  * @param *string2      pointer to the second string to be compared
- * @return              difference between the two strings, 0 if similar
+ * @return              difference between the two strings,
+ *                      0 if similar
  */
 int
 compareStrings(char *string1,
@@ -353,7 +354,7 @@ displayTrips(struct TripInfo trip[],
 }
 
 /**
- * Displays the list of drop-offs in the given trip and number of passenger getting off.
+ * Displays the full name of valid drop-off points in the given trip.
  * 
  * @param trip[]        array containing trip information (trip number, etc.)
  * @param tripIndex     the index of the trip number to use
@@ -443,9 +444,7 @@ getDate()
             printError();
         }
         else if(dateTemp.mm < 1 || dateTemp.mm > 12)
-        {
             printError();
-        }
     }
     while(dateTemp.mm < 1 || dateTemp.mm > 12);
     
@@ -461,9 +460,7 @@ getDate()
             printError();
         }
         else if(dateTemp.dd < 1 || dateTemp.dd > maxDays[dateTemp.mm - 1])
-        {
             printError();
-        }
     }
     while(dateTemp.dd < 1 || dateTemp.dd > maxDays[dateTemp.mm - 1]);
 
@@ -479,9 +476,7 @@ getDate()
             printError();
         }
         else if(dateTemp.yyyy < 1900 || dateTemp.yyyy > 2025)
-        {
             printError();
-        }
     }
     while (dateTemp.yyyy < 1900 || dateTemp.yyyy > 2025);
 
