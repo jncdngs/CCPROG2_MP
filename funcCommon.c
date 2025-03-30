@@ -132,7 +132,8 @@ isValidID(struct Card passengers[][SPECIAL_PASS],
  *                          1 if the passenger has higher priority, 
  *                          2 if the passenger has lower priority
  * 
- * Pre-condition:           priorityNo is a valid priority number (1-6)
+ * Pre-condition:           tripIndex is a valid trip index (0 to MAX_BUS - 1)
+ *                          priorityNo is a valid priority number (1-6)
  */
 int
 isFullTrip(int tripIndex,
@@ -158,6 +159,7 @@ isFullTrip(int tripIndex,
  * @return                  0 if no special trip was deployed, 
  *                          1 if only SPEC1 has been deployed, 
  *                          2 if only SPEC2 has been deployed
+ *                          3 if both have been deployed
  */
 int
 isSpecDeployed(struct Card passengers[][SPECIAL_PASS])
@@ -176,9 +178,13 @@ isSpecDeployed(struct Card passengers[][SPECIAL_PASS])
  * Converts the drop-off point of a passenger when moved to another trip.
  * 
  * @param dropOffOld        drop-off number to be converted
- * @param dropOffSetOld     drop-off set of the old trip 
- * @param dropOffSetNew     drop-off set of the new trip 
- * @return                  converted drop-off point number 
+ * @param dropOffSetOld     drop-off set of the old trip
+ * @param dropOffSetNew     drop-off set of the new trip
+ * @return                  converted drop-off point number
+ * 
+ * Pre-condition:           dropOffOld is a valid drop-off number (1-4)
+ *                          dropOffSetOld is a valid drop-off set number (0-3)
+ *                          dropOffSetNew is a valid drop-off set number (0-3)
  */
 int
 convertDropOff(int dropOffOld,
@@ -226,6 +232,9 @@ copyStruct(struct Card *dest,
  * @param passengers[][]    array where all the passenger info is stored
  * @param tripIndex         the index of the trip number to use
  * @param temp              Card struct containing the information of the passenger to be inserted
+ * 
+ * Pre-condition:           tripIndex is a valid trip index (0 to MAX_BUS - 1)
+ *                          temp is a valid Card struct with valid member values
  */
 void
 insertPassenger(struct Card passengers[][SPECIAL_PASS],
@@ -255,6 +264,8 @@ insertPassenger(struct Card passengers[][SPECIAL_PASS],
  * @param trip[]            array containing trip information (trip number, etc.)
  * @param passengers[][]    array where all the passenger info is stored
  * @param tripIndex         the index of the trip number to use
+ * 
+ * Pre-condition:           tripIndex is a valid trip index (0 to MAX_BUS - 1)
  */
 void
 movePassenger(struct TripInfo trip[],
@@ -302,6 +313,8 @@ movePassenger(struct TripInfo trip[],
  * 
  * @param trip[]        array containing trip information (trip number, etc.)
  * @param specDeployed  flag that specifies if special trips were deployed
+ * 
+ * Pre-condition:       specDeployed is a valid number (0-2)
  */
 void
 displayTrips(struct TripInfo trip[],
@@ -363,6 +376,8 @@ displayTrips(struct TripInfo trip[],
  * @param trip[]        array containing trip information (trip number, etc.)
  * @param tripIndex     the index of the trip number to use
  * @param dropOffs[][]  array containing full names of drop-off points
+ * 
+ * Pre-condition:       tripIndex is a valid trip index (0 to MAX_BUS - 1)
  */
 void
 displayDropOffs(struct TripInfo trip[],
@@ -391,6 +406,8 @@ displayDropOffs(struct TripInfo trip[],
  * @param passengers[][]    array where all the passenger info is stored
  * @param dropOffs[][]      array containing full names of drop-off points
  * @param passengerCount[]  passenger count for each drop-off point
+ * 
+ * Pre-condition:           tripIndex is a valid trip index (0 to MAX_BUS - 1)
  */
 void
 displayDropOffCount(struct TripInfo trip[],

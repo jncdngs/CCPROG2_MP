@@ -9,6 +9,8 @@
  * @param passengers[][]    array where all the passenger info is stored
  * @param dropOffs[][]      array containing full names of drop-off points
  * @param specDeployed      flag that specifies if special trips were deployed
+ * 
+ * Pre-condition:           specDeployed is a valid number (0-2)
  */
 void
 enterPassengerInfo(struct TripInfo trip[],

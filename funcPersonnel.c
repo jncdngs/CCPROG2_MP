@@ -8,6 +8,8 @@
  * @param trip[]            array containing trip information (trip number, etc.)
  * @param passengers[][]    array where all the passenger info is stored
  * @param specDeployed      flag that specifies if special trips were deployed
+ * 
+ * Pre-condition:           specDeployed is a valid number (0-2)
  */
 void
 viewPassengerCount(struct TripInfo trip[],
@@ -124,6 +126,8 @@ viewPassengerCount(struct TripInfo trip[],
  * @param passengers[][]    array where all the passenger info is stored
  * @param dropOffs[][]      array containing full names of drop-off points
  * @param specDeployed      flag that specifies if special trips were deployed
+ * 
+ * Pre-condition:           specDeployed is a valid number (0-2)
  */
 void
 viewDropOffCount(struct TripInfo trip[],
@@ -177,6 +181,8 @@ viewDropOffCount(struct TripInfo trip[],
  * @param trip[]            array containing trip information (trip number, etc.)
  * @param passengers[][]    array where all the passenger info is stored
  * @param specDeployed      flag that specifies if special trips were deployed
+ * 
+ * Pre-condition:           specDeployed is a valid number (0-2)
  */
 void
 viewPassengerInfo(struct TripInfo trip[],
@@ -249,6 +255,8 @@ viewPassengerInfo(struct TripInfo trip[],
  * @param trip[]            array containing trip information (trip number, etc.)
  * @param passengers[][]    array where all the passenger info is stored
  * @param dropOffs[][]      array containing full names of drop-off points
+ * 
+ * Pre-condition:           All information from passenger.txt is in order and valid
  */
 void
 loadPassenger(struct TripInfo trip[],
