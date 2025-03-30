@@ -283,7 +283,7 @@ movePassenger(struct TripInfo trip[],
         lastTrip = 21;
 
     // Find next trip with vacant seat/s
-    while(i <= lastTrip && tripAvail == -1)
+    while(i <= lastTrip && tripAvail == -1 && i != 0 && i != 10)
     {
         // Check if last seat in next trip
         if(passengers[i][SPECIAL_PASS - 1].priorityNo == 99)
