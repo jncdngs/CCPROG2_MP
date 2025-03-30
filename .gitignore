@@ -3,9 +3,4 @@ junk.txt
 input.txt
 test.txt
 passenger.txt
-test/test.h
-test/testCommon.c
-test/testDisplay.c
-test/testMain.c
-test/testPassenger.c
-test/testPersonnel.c
+test/
