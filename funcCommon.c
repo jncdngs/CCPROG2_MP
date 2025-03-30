@@ -28,6 +28,48 @@ initializePassengers(struct Card passengers[][SPECIAL_PASS])
 }
 
 /**
+ * Converts two strings to UPPERCASE and compares them.
+ * Works like strcmp() but is case-insensitive.
+ * 
+ * @param *string1      pointer to the first string to be compared
+ * @param *string2      pointer to the second string to be compared
+ * @return              difference between the two strings,
+ *                      0 if similar
+ * 
+ * Pre-condition:       Both strings do not contain spaces or special characters
+ */
+int
+compareStrings(char *string1,
+               char *string2)
+{
+    char char1, char2;
+    int i = 0;
+    int diff = 0;
+
+    // Loop until reached end of string or found difference
+    while((string1[i] != '\0' || string2[i] != '\0') && diff == 0)
+    {
+        char1 = string1[i];
+        char2 = string2[i];
+
+        // If character is lowercase, convert to uppercase
+        if(char1 >= 'a' && char1 <= 'z')
+            char1 -= 32;
+
+        // If character is lowercase, convert to uppercase
+        if(char2 >= 'a' && char2 <= 'z')
+            char2 -= 32;
+
+        // Get the difference between the two characters
+        diff = char1 - char2;
+
+        i++;
+    }
+
+    return diff;
+}
+
+/**
  * Checks if the string tripNo is valid and in the trip array and returns the index in the array if found.
  * 
  * @param trip[]            array containing trip information (trip number, etc.)
@@ -89,6 +131,8 @@ isValidID(struct Card passengers[][SPECIAL_PASS],
  * @return                  0 if the trip is not full, 
  *                          1 if the passenger has higher priority, 
  *                          2 if the passenger has lower priority
+ * 
+ * Pre-condition:           priorityNo is a valid priority number (1-6)
  */
 int
 isFullTrip(int tripIndex,
@@ -161,46 +205,6 @@ convertDropOff(int dropOffOld,
     }
 
     return dropOffNew;
-}
-
-/**
- * Converts two strings to UPPERCASE and compares them.
- * Works like strcmp() but is case-insensitive.
- * 
- * @param *string1      pointer to the first string to be compared
- * @param *string2      pointer to the second string to be compared
- * @return              difference between the two strings,
- *                      0 if similar
- */
-int
-compareStrings(char *string1,
-               char *string2)
-{
-    char char1, char2;
-    int i = 0;
-    int diff = 0;
-
-    // Loop until reached end of string or found difference
-    while((string1[i] != '\0' || string2[i] != '\0') && diff == 0)
-    {
-        char1 = string1[i];
-        char2 = string2[i];
-
-        // If character is lowercase, convert to uppercase
-        if(char1 >= 'a' && char1 <= 'z')
-            char1 -= 32;
-
-        // If character is lowercase, convert to uppercase
-        if(char2 >= 'a' && char2 <= 'z')
-            char2 -= 32;
-
-        // Get the difference between the two characters
-        diff = char1 - char2;
-
-        i++;
-    }
-
-    return diff;
 }
 
 /**
