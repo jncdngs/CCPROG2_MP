@@ -1,0 +1,175 @@
+AE101
+DLSU Manila Campus
+Doe, John
+12345678
+1
+3 - Milagros Del Rosario (MRR) Bldg.
+
+AE101
+DLSU Manila Campus
+Donguines, Chester
+12413933
+2
+3 - Milagros Del Rosario (MRR) Bldg.
+
+AE101
+DLSU Manila Campus
+Cooper, Sheldon
+36152763
+3
+3 - Milagros Del Rosario (MRR) Bldg.
+
+AE101
+DLSU Manila Campus
+Hofstadter, Leonard
+17637128
+3
+3 - Milagros Del Rosario (MRR) Bldg.
+
+AE101
+DLSU Manila Campus
+Koothrappali, Rajesh
+31672363
+3
+3 - Milagros Del Rosario (MRR) Bldg.
+
+AE101
+DLSU Manila Campus
+Fowler, Amy
+74183263
+3
+3 - Milagros Del Rosario (MRR) Bldg.
+
+AE101
+DLSU Manila Campus
+Sturgis, John
+87321364
+4
+3 - Milagros Del Rosario (MRR) Bldg.
+
+AE101
+DLSU Manila Campus
+Wolowitz, Howard
+16753763
+5
+3 - Milagros Del Rosario (MRR) Bldg.
+
+AE101
+DLSU Manila Campus
+Kripke, Barry
+73672163
+5
+3 - Milagros Del Rosario (MRR) Bldg.
+
+AE101
+DLSU Manila Campus
+Winkle, Leslie
+36472312
+5
+3 - Milagros Del Rosario (MRR) Bldg.
+
+AE102
+DLSU Manila Campus
+Santiago, Amy
+98478193
+1
+2 - Milagros Del Rosario (MRR) Bldg.
+
+AE102
+DLSU Manila Campus
+Holt, Raymond
+76476836
+1
+2 - Milagros Del Rosario (MRR) Bldg.
+
+AE102
+DLSU Manila Campus
+Peralta, Jacob
+47126378
+2
+2 - Milagros Del Rosario (MRR) Bldg.
+
+AE102
+DLSU Manila Campus
+Boyle, Charles
+32163723
+3
+2 - Milagros Del Rosario (MRR) Bldg.
+
+AE150
+DLSU Laguna Campus
+Halpert, Jim
+37324623
+1
+4 - Gate 1: LS Hall (South)
+
+AE150
+DLSU Laguna Campus
+Bernard, Andrew
+47126817
+2
+4 - Gate 1: LS Hall (South)
+
+AE150
+DLSU Laguna Campus
+Schrute, Dwight
+87423613
+3
+3 - Gate 2: Henry Sy (North)
+
+AE150
+DLSU Laguna Campus
+Scott, Michael
+63712632
+4
+3 - Gate 2: Henry Sy (North)
+
+AE150
+DLSU Laguna Campus
+Beesly, Pam
+55141315
+4
+3 - Gate 2: Henry Sy (North)
+
+AE150
+DLSU Laguna Campus
+Howard, Ryan
+13461783
+6
+2 - Gate 4: Gokongwei
+
+AE151
+DLSU Laguna Campus
+Verstappen, Max
+33333333
+1
+3 - Gate 2: Henry Sy (North)
+
+AE151
+DLSU Laguna Campus
+Norris, Lando
+04040404
+2
+2 - Gate 4: Gokongwei
+
+AE151
+DLSU Laguna Campus
+Leclerc, Charles
+16161616
+2
+3 - Gate 2: Henry Sy (North)
+
+AE151
+DLSU Laguna Campus
+Piastri, Oscar
+81818181
+3
+4 - Gate 1: LS Hall (South)
+
+AE151
+DLSU Laguna Campus
+Sainz, Carlos
+55555555
+4
+3 - Gate 2: Henry Sy (North)
+
